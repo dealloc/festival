@@ -6,3 +6,5 @@ Homestead.json
 .env
 .idea/
 database/database.sqlite
+public/css/
+public/js/
