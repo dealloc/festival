@@ -20,4 +20,29 @@ class AuthenticationTest extends TestCase
 			->seeStatusCode(200)
 			->seeJson([ 'token' => $user->secret ]);
 	}
+
+	public function testEmptyEmail()
+	{
+		$this->fail('Not implemented yet');
+	}
+
+	public function testEmptyPassword()
+	{
+		$this->fail('Not implemented yet');
+	}
+
+	public function testEmptyPayload()
+	{
+		$this->fail('Not implemented yet');
+	}
+
+	public function testInvalidEmail()
+	{
+		$this->fail('Not implemented yet');
+	}
+
+	public function testInvalidPassword()
+	{
+		$this->fail('Not implemented yet');
+	}
 }

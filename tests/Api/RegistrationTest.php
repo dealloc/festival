@@ -23,4 +23,44 @@ class RegistrationTest extends TestCase
 			->seeJson()
 			->seeInDatabase('users', array_except($user, [ 'password', 'password_confirmation' ]));
 	}
+
+	public function testWithoutFname()
+	{
+		$this->fail('Not implemented yet!');
+	}
+
+	public function testWithoutLname()
+	{
+		$this->fail('Not implemented yet!');
+	}
+
+	public function testWithoutEmail()
+	{
+		$this->fail('Not implemented yet!');
+	}
+
+	public function testWithoutPassword()
+	{
+		$this->fail('Not implemented yet!');
+	}
+
+	public function testWithoutPasswordConfirmation()
+	{
+		$this->fail('Not implemented yet!');
+	}
+
+	public function testInvalidEmail()
+	{
+		$this->fail('Not implemented yet!');
+	}
+
+	public function testInvalidPasswordConfirmation()
+	{
+		$this->fail('Not implemented yet!');
+	}
+
+	public function testPasswordTooShort()
+	{
+		$this->fail('Not implemented yet!');
+	}
 }
