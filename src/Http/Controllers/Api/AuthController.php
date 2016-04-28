@@ -3,6 +3,7 @@
 
 namespace Festival\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use Festival\Http\Controllers\Controller;
 use Festival\Commands\Users\CreateUserCommand;
 use Festival\Http\Requests\Users\CreateUserRequest;
@@ -12,5 +13,9 @@ class AuthController extends Controller
 	public function register(CreateUserRequest $request)
 	{
 		return $this->execute(new CreateUserCommand($request));
+	}
+
+	public function login(Request $request)
+	{
 	}
 }

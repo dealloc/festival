@@ -4,9 +4,11 @@
 $router->get('/', function ()
 {
 	return [
-		'name' => 'Evento API v1',
-		'author' => 'Wannes Gennar'
+		'name'   => 'Evento API v1',
+		'author' => 'Wannes Gennar',
 	];
 });
 
 $router->post('register', [ 'uses' => 'AuthController@register', 'as' => 'api.register' ]);
+
+$router->post('login', [ 'uses' => 'AuthController@login', 'as' => 'api.login' ]);
