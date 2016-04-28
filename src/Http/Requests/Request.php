@@ -15,4 +15,11 @@ abstract class Request extends FormRequest
 	{
 		return true;
     }
+
+	/**
+	 * Define the rules for validating this request.
+	 *
+	 * @return array
+	 */
+	abstract public function rules();
 }
