@@ -9,4 +9,4 @@ $router->get('/', function ()
 	];
 });
 
-$router->post('users/register', [ 'uses' => 'AuthController@register', 'as' => 'api.register' ]);
+$router->post('register', [ 'uses' => 'AuthController@register', 'as' => 'api.register' ]);

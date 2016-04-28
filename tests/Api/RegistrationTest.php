@@ -18,7 +18,7 @@ class RegistrationTest extends TestCase
 			'password_confirmation' => 12345,
 		];
 
-		$this->post('/api/users/register', $user, [ 'Accept' => 'application/json' ])
+		$this->post('/api/register', $user, [ 'Accept' => 'application/json' ])
 			->seeStatusCode(200)
 			->seeJson()
 			->seeInDatabase('users', array_except($user, [ 'password', 'password_confirmation' ]));
