@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ba4480fa645e0d56cf494853e71bf9cf",
-    "content-hash": "d9f859c920b07caba9b99d77efb1ae93",
+    "hash": "1f36d92389a3eb442261c58b808de825",
+    "content-hash": "f5a648edad5817fd886fb5f8f11b2ac0",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -215,16 +215,16 @@
         },
         {
             "name": "ichtus/exceptions",
-            "version": "v1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ichtus/exceptions.git",
-                "reference": "e08fb3fec50082a4861ffbe1ee4545982e27580d"
+                "reference": "06ba659f25a91c605b7bab935f28094466caa3cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ichtus/exceptions/zipball/e08fb3fec50082a4861ffbe1ee4545982e27580d",
-                "reference": "e08fb3fec50082a4861ffbe1ee4545982e27580d",
+                "url": "https://api.github.com/repos/ichtus/exceptions/zipball/06ba659f25a91c605b7bab935f28094466caa3cf",
+                "reference": "06ba659f25a91c605b7bab935f28094466caa3cf",
                 "shasum": ""
             },
             "require": {
@@ -248,7 +248,7 @@
                 }
             ],
             "description": "Fluent exception handling in Laravel 5.2",
-            "time": "2016-04-28 10:20:39"
+            "time": "2016-04-28 13:42:32"
         },
         {
             "name": "jakub-onderka/php-console-color",

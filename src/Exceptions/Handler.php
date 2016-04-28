@@ -51,7 +51,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-//		return parent::render($request, $e); // temporary for debugging until fixed upstream
 		return $this->dispatch($e);
     }
+
+	/**
+	 * Called by the dispatcher when an exception isn't handled.
+	 *
+	 * @param \Exception $exception
+	 * @return mixed
+	 */
+	public function unhandled(\Exception $exception)
+	{
+		return parent::render(null, $exception);
+	}
 }
