@@ -1,10 +1,10 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Repositories\Users;
+namespace Festival\Repositories\Users;
 
-use Contracts\Repositories\Users\UserRepository;
-use Repositories\EloquentEntityRepository;
+use Festival\Contracts\Repositories\Users\UserRepository;
+use Festival\Repositories\EloquentEntityRepository;
 
 class EloquentUserRepository extends EloquentEntityRepository implements UserRepository
 {

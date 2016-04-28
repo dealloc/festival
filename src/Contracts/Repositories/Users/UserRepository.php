@@ -1,9 +1,9 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Contracts\Repositories\Users;
+namespace Festival\Contracts\Repositories\Users;
 
-use Contracts\Repositories\EntityRepository;
+use Festival\Contracts\Repositories\EntityRepository;
 
 interface UserRepository extends EntityRepository
 {

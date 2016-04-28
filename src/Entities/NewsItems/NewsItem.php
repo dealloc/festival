@@ -1,7 +1,7 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Entities\NewsItems;
+namespace Festival\Entities\NewsItems;
 
 use Illuminate\Database\Eloquent\Model;
 

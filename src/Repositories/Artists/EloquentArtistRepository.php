@@ -1,10 +1,10 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Repositories\Artists;
+namespace Festival\Repositories\Artists;
 
-use Contracts\Repositories\Artists\ArtistRepository;
-use Repositories\EloquentEntityRepository;
+use Festival\Contracts\Repositories\Artists\ArtistRepository;
+use Festival\Repositories\EloquentEntityRepository;
 
 class EloquentArtistRepository extends EloquentEntityRepository implements ArtistRepository
 {

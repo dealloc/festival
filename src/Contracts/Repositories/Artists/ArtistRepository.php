@@ -1,9 +1,9 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Contracts\Repositories\Artists;
+namespace Festival\Contracts\Repositories\Artists;
 
-use Contracts\Repositories\EntityRepository;
+use Festival\Contracts\Repositories\EntityRepository;
 
 interface ArtistRepository extends EntityRepository
 {

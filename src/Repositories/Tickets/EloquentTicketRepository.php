@@ -1,10 +1,10 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Repositories\Tickets;
+namespace Festival\Repositories\Tickets;
 
-use Contracts\Repositories\Tickets\TicketRepository;
-use Repositories\EloquentEntityRepository;
+use Festival\Contracts\Repositories\Tickets\TicketRepository;
+use Festival\Repositories\EloquentEntityRepository;
 
 class EloquentTicketRepository extends EloquentEntityRepository implements TicketRepository
 {

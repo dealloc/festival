@@ -1,9 +1,9 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Repositories;
+namespace Festival\Repositories;
 
-use Contracts\Repositories\EntityRepository;
+use Festival\Contracts\Repositories\EntityRepository;
 use Illuminate\Database\Eloquent\Model;
 
 abstract class EloquentEntityRepository implements EntityRepository

@@ -1,7 +1,7 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Entities\Artists;
+namespace Festival\Entities\Artists;
 
 use Illuminate\Database\Eloquent\Model;
 

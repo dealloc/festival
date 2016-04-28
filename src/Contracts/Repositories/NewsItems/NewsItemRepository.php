@@ -1,9 +1,9 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Contracts\Repositories\NewsItems;
+namespace Festival\Contracts\Repositories\NewsItems;
 
-use Contracts\Repositories\EntityRepository;
+use Festival\Contracts\Repositories\EntityRepository;
 
 interface NewsItemRepository extends EntityRepository
 {

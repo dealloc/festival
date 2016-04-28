@@ -1,7 +1,7 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Entities\Tickets;
+namespace Festival\Entities\Tickets;
 
 use Illuminate\Database\Eloquent\Model;
 

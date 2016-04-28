@@ -1,10 +1,10 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Repositories\NewsItems;
+namespace Festival\Repositories\NewsItems;
 
-use Contracts\Repositories\NewsItems\NewsItemRepository;
-use Repositories\EloquentEntityRepository;
+use Festival\Contracts\Repositories\NewsItems\NewsItemRepository;
+use Festival\Repositories\EloquentEntityRepository;
 
 class EloquentNewsItemRepository extends EloquentEntityRepository implements NewsItemRepository
 {

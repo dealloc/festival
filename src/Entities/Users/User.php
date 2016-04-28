@@ -1,6 +1,6 @@
 <?php
 
-namespace Festival\Entities\Users;
+namespace Festival\Festival\Entities\Users;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
