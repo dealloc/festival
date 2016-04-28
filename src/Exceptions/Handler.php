@@ -8,9 +8,15 @@ use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Ichtus\Exceptions\Dispatchers\Dispatcher as DispatchesExceptions;
 
 class Handler extends ExceptionHandler
 {
+    use DispatchesExceptions;
+
+    protected $handlers = [
+    ];
+
     /**
      * A list of the exception types that should not be reported.
      *
@@ -45,6 +51,6 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+		return $this->dispatch($e);
     }
 }

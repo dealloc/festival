@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ce63b8bbdcd126e6255803038a23c361",
-    "content-hash": "4f9e0b6c41524aa3a59a2ae3cd7b0f64",
+    "hash": "c6dedbb864b8d651c661a60906c9c9ca",
+    "content-hash": "bc1d2b94a89faf79f9989ce5bdb796a7",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -160,6 +160,43 @@
                 "string"
             ],
             "time": "2015-11-06 14:35:42"
+        },
+        {
+            "name": "ichtus/exceptions",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ichtus/exceptions.git",
+                "reference": "e08fb3fec50082a4861ffbe1ee4545982e27580d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ichtus/exceptions/zipball/e08fb3fec50082a4861ffbe1ee4545982e27580d",
+                "reference": "e08fb3fec50082a4861ffbe1ee4545982e27580d",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "^5.2",
+                "illuminate/http": "^5.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Ichtus\\Exceptions\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Wannes Gennar",
+                    "email": "wannes.gennar@gmail.com"
+                }
+            ],
+            "description": "Fluent exception handling in Laravel 5.2",
+            "time": "2016-04-28 10:20:39"
         },
         {
             "name": "jakub-onderka/php-console-color",
