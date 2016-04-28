@@ -4,9 +4,21 @@
 namespace Festival\Auth;
 
 use Festival\Contracts\Auth\AuthenticateService as AuthContract;
+use Festival\Contracts\Repositories\Users\UserRepository;
 
 class EloquentAuthenticateService implements AuthContract
 {
+	/**
+	 * @var \Festival\Contracts\Repositories\Users\UserRepository
+	 */
+	private $repository;
+	private $user;
+
+	public function __construct(UserRepository $repository)
+	{
+		$this->repository = $repository;
+	}
+
 	/**
 	 * Check authentication credentials.
 	 *
@@ -15,17 +27,22 @@ class EloquentAuthenticateService implements AuthContract
 	 */
 	public function login(array $credentials)
 	{
-		// TODO: Implement login() method.
+		if ( ! array_key_exists('email', $credentials) || ! array_key_exists('password', $credentials) )
+			return false;
+
+		$this->user = $this->repository->query($credentials);
+
+		return ( ! is_null($this->user) );
 	}
 
 	public function user()
 	{
-		// TODO: Implement user() method.
+		return $this->user;
 	}
 
 	public function guest()
 	{
-		// TODO: Implement guest() method.
+		return ( is_null($this->user) );
 	}
 
 	/**
@@ -36,6 +53,8 @@ class EloquentAuthenticateService implements AuthContract
 	 */
 	public function authenticate($token)
 	{
-		// TODO: Implement authenticate() method.
+		$this->user = $this->repository->query([ 'secret' => $token ]);
+
+		return ( ! is_null($this->user) );
 	}
 }

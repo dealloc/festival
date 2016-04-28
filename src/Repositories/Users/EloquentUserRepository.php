@@ -32,4 +32,19 @@ class EloquentUserRepository extends EloquentEntityRepository implements UserRep
 
 		return parent::create($attributes);
 	}
+
+	/**
+	 * Retrieve a user based on an array of fields and values.
+	 *
+	 * @param array $fields
+	 * @return mixed
+	 */
+	public function query(array $fields)
+	{
+		$query = $this->model->query();
+		foreach ( $fields as $name => $value )
+			$query = $query->where($name, $value);
+
+		return $query->first();
+	}
 }
