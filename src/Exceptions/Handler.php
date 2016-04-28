@@ -3,6 +3,8 @@
 namespace Festival\Exceptions;
 
 use Exception;
+use Festival\Exceptions\Handlers\HttpExceptionHandler;
+use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -15,6 +17,7 @@ class Handler extends ExceptionHandler
     use DispatchesExceptions;
 
     protected $handlers = [
+		HttpResponseException::class => HttpExceptionHandler::class
     ];
 
     /**
