@@ -155,6 +155,7 @@ return [
         Festival\Providers\AuthServiceProvider::class,
         Festival\Providers\EventServiceProvider::class,
         Festival\Providers\RouteServiceProvider::class,
+        \Festival\Providers\CommandServiceProvider::class,
 
     ],
 
