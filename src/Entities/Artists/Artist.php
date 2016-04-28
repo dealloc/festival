@@ -3,8 +3,13 @@
 
 namespace Entities\Artists;
 
+use Illuminate\Database\Eloquent\Model;
 
-class Artist
+/**
+ * Class Artist
+ * @package Entities\Artists
+ */
+class Artist extends Model
 {
-	
+	protected $fillable = [];
 }
