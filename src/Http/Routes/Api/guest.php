@@ -8,3 +8,5 @@ $router->get('/', function ()
 		'author' => 'Wannes Gennar'
 	];
 });
+
+$router->post('users/register', [ 'uses' => 'AuthController@register', 'as' => 'api.register' ]);
