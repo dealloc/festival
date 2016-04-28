@@ -1,27 +1,57 @@
-# Laravel PHP Framework
+# Festival
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+## Roadmap ![Progressbar](http://progressed.io/bar/0)
+ - [ ] Newsfeed
+	 - [ ] Can post new items on newsfeed
+	 - [ ] users can comment on newsitems
+ - [ ] line-up page
+	 - [ ] can add new artists on lineup
+	 - [ ] each artist has a photo, name, description and a daterange they perform
+	 - [ ] lineup shows photo and name of artist, on hover shows description and hour
+ - [ ] contact page
+ 	- [ ] contact messages are emailed to administrators
+ - [ ] ticket purchase workflow
+ - [ ] authentication
+	 - [ ] users need to authenticate for commenting
+	 - [ ] users need to authenticate for purchasing ticket
+	 - [ ] user has first name, last name and email address
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+## Requirements
+ - [Laravel requirements](https://laravel.com/docs/5.2#server-requirements)
+	 - PHP >= 5.5.9 (application was developed on 7.0.5)
+	 - OpenSSL PHP Extension
+	 - PDO PHP Extension
+	 - Mbstring PHP Extension
+	 - Tokenizer PHP Extension
+ - [NodeJS && NPM](https://nodejs.org)
+ 	- Gulp (installed globally)
+ - PHPUnit (to run unit tests)
 
-Laravel is accessible, yet powerful, providing tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+## Instal instructions
+ - Clone from [Github](http://github.dealloc.be)
+ - run ``` npm install ```
+ - copy and modify ``` .env.example ``` to ``` .env ```
+ - run ``` php artisan migrate --seed ```
 
-## Official Documentation
+You can run the application by executing the ``` php artisan serve ``` command.
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+## Acknowledgements
+This software contains (parts of) software written by other authors.
+All software is the property of the respective author.
+This software is not endorsed or acknowledged by any of above authors unless explicitly mentioned otherwise.
 
-## Contributing
+## License (BSD-4)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Copyright (c) 2016 Wannes Gennar. All rights reserved.
+Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
 
-## Security Vulnerabilities
+1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
 
-## License
+3. All advertising materials mentioning features or use of this software must display the following acknowledgement:
+This product includes software developed by Wannes Gennar.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+4. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY WANNES GENNAR "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL WANNES GENNAR BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
