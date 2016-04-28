@@ -23,6 +23,6 @@ class HttpExceptionHandler implements Handler
 			'error' => 'validation failed',
 			'error_code' => $exception->getResponse()->getStatusCode(),
 			'reason' => $reason
-		]);
+		], 422);
 	}
 }
