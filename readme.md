@@ -1,6 +1,6 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/0)
+## Roadmap ![Progressbar](http://progressed.io/bar/13)
  - [ ] Newsfeed
 	 - [ ] Can post new items on newsfeed
 	 - [ ] users can comment on newsitems
@@ -12,9 +12,10 @@
  	- [ ] contact messages are emailed to administrators
  - [ ] ticket purchase workflow
  - [ ] authentication
+	 - [X] users can register
 	 - [ ] users need to authenticate for commenting
 	 - [ ] users need to authenticate for purchasing ticket
-	 - [ ] user has first name, last name and email address
+	 - [X] user has first name, last name and email address
 
 ## Requirements
  - [Laravel requirements](https://laravel.com/docs/5.2#server-requirements)
