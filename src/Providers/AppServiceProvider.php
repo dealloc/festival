@@ -3,6 +3,8 @@
 namespace Festival\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Festival\Auth\EloquentAuthenticateService;
+use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Repositories\Users\EloquentUserRepository;
 use Festival\Contracts\Repositories\Users\UserRepository;
 use Festival\Repositories\Tickets\EloquentTicketRepository;
@@ -14,21 +16,22 @@ use Festival\Contracts\Repositories\NewsItems\NewsItemRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
-    protected $bindings = [
-		UserRepository::class => EloquentUserRepository::class,
-		ArtistRepository::class => EloquentArtistRepository::class,
-		TicketRepository::class => EloquentTicketRepository::class,
-		NewsItemRepository::class => EloquentNewsItemRepository::class,
+	protected $bindings = [
+		UserRepository::class      => EloquentUserRepository::class,
+		ArtistRepository::class    => EloquentArtistRepository::class,
+		TicketRepository::class    => EloquentTicketRepository::class,
+		NewsItemRepository::class  => EloquentNewsItemRepository::class,
+		AuthenticateService::class => EloquentAuthenticateService::class,
 	];
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-		foreach ($this->bindings as $contract => $binding)
+	/**
+	 * Register any application services.
+	 *
+	 * @return void
+	 */
+	public function register()
+	{
+		foreach ( $this->bindings as $contract => $binding )
 			$this->app->bind($contract, $binding);
-    }
+	}
 }
