@@ -151,7 +151,7 @@ return [
         /*
          * Application Service Providers...
          */
-        Festival\Providers\AppServiceProvider::class,
+        Festival\Providers\BindingServiceProvider::class,
         Festival\Providers\AuthServiceProvider::class,
         Festival\Providers\EventServiceProvider::class,
         Festival\Providers\RouteServiceProvider::class,

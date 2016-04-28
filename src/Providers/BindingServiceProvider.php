@@ -14,7 +14,7 @@ use Festival\Contracts\Repositories\Artists\ArtistRepository;
 use Festival\Repositories\NewsItems\EloquentNewsItemRepository;
 use Festival\Contracts\Repositories\NewsItems\NewsItemRepository;
 
-class AppServiceProvider extends ServiceProvider
+class BindingServiceProvider extends ServiceProvider
 {
 	protected $bindings = [
 		UserRepository::class      => EloquentUserRepository::class,
