@@ -16,6 +16,8 @@
 	 - [ ] users need to authenticate for commenting
 	 - [ ] users need to authenticate for purchasing ticket
 	 - [X] user has first name, last name and email address
+ - [ ] document code
+ - [ ] cover (most) functionality using black box unit tests
 
 ## Requirements
  - [Laravel requirements](https://laravel.com/docs/5.2#server-requirements)
