@@ -21,28 +21,73 @@ class AuthenticationTest extends TestCase
 			->seeJson([ 'token' => $user->secret ]);
 	}
 
+	public function testInvalidCredentials()
+	{
+		$this->postJson('/api/login', [ 'email' => 'invalid@invalid.invalid', 'password' => 'invalid' ])
+			->seeStatusCode(401)
+			->seeJson([	'error' => 'Unauthorized access' ]);
+	}
+
 	public function testEmptyEmail()
 	{
-		$this->fail('Not implemented yet');
+		$user = factory(User::class)->create([ 'password' => bcrypt(12345) ]);
+
+		$credentials = [
+			'password' => 12345,
+		];
+
+		$this->postJson('/api/login', $credentials)
+			->seeStatusCode(401)
+			->seeJson([	'error' => 'Unauthorized access' ]);
 	}
 
 	public function testEmptyPassword()
 	{
-		$this->fail('Not implemented yet');
+		$user = factory(User::class)->create();
+
+		$credentials = [
+			'email' => $user->email,
+		];
+
+		$this->postJson('/api/login', $credentials)
+			->seeStatusCode(401)
+			->seeJson([	'error' => 'Unauthorized access' ]);
 	}
 
 	public function testEmptyPayload()
 	{
-		$this->fail('Not implemented yet');
+		$user = factory(User::class)->create();
+
+		$this->postJson('/api/login')
+			->seeStatusCode(401)
+			->seeJson([	'error' => 'Unauthorized access' ]);
 	}
 
 	public function testInvalidEmail()
 	{
-		$this->fail('Not implemented yet');
+		$user = factory(User::class)->create([ 'password' => bcrypt(12345) ]);
+
+		$credentials = [
+			'email'    => $user->email . 'invalid',
+			'password' => 12345,
+		];
+
+		$this->postJson('/api/login', $credentials)
+			->seeStatusCode(401)
+			->seeJson([	'error' => 'Unauthorized access' ]);
 	}
 
 	public function testInvalidPassword()
 	{
-		$this->fail('Not implemented yet');
+		$user = factory(User::class)->create();
+
+		$credentials = [
+			'email'    => $user->email,
+			'password' => 12345,
+		];
+
+		$this->postJson('/api/login', $credentials)
+			->seeStatusCode(401)
+			->seeJson([	'error' => 'Unauthorized access' ]);
 	}
 }
