@@ -8,59 +8,116 @@ class RegistrationTest extends TestCase
 {
 	use DatabaseMigrations;
 
+	const VALID_USER = [
+		'fname'                 => 'Wannes',
+		'lname'                 => 'Gennar',
+		'email'                 => 'foo@bar.com',
+		'password'              => 12345,
+		'password_confirmation' => 12345,
+	];
+
 	public function testValidRegistration()
 	{
-		$user = [
-			'fname'                 => 'Wannes',
-			'lname'                 => 'Gennar',
-			'email'                 => 'foo@bar.com',
-			'password'              => 12345,
-			'password_confirmation' => 12345,
-		];
-
-		$this->postJson('/api/register', $user)
+		$this->postJson('/api/register', RegistrationTest::VALID_USER)
 			->seeStatusCode(200)
 			->seeJson()
-			->seeInDatabase('users', array_except($user, [ 'password', 'password_confirmation' ]));
+			->seeInDatabase('users', array_except(RegistrationTest::VALID_USER, [ 'password', 'password_confirmation' ]));
 	}
 
 	public function testWithoutFname()
 	{
-		$this->fail('Not implemented yet!');
+		$user = array_except(RegistrationTest::VALID_USER, 'fname');
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "fname" => [ "The fname field is required." ] ])
+			->dontSeeInDatabase('users', $user);
 	}
 
 	public function testWithoutLname()
 	{
-		$this->fail('Not implemented yet!');
+		$user = array_except(RegistrationTest::VALID_USER, 'lname');
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "lname" => [ "The lname field is required." ] ])
+			->dontSeeInDatabase('users', $user);
 	}
 
 	public function testWithoutEmail()
 	{
-		$this->fail('Not implemented yet!');
+		$user = array_except(RegistrationTest::VALID_USER, 'email');
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "email" => [ "The email field is required." ] ])
+			->dontSeeInDatabase('users', $user);
 	}
 
 	public function testWithoutPassword()
 	{
-		$this->fail('Not implemented yet!');
+		$user = array_except(RegistrationTest::VALID_USER, 'password');
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "password" => [ "The password field is required." ] ])
+			->dontSeeInDatabase('users', $user);
 	}
 
 	public function testWithoutPasswordConfirmation()
 	{
-		$this->fail('Not implemented yet!');
+		$user = array_except(RegistrationTest::VALID_USER, 'password_confirmation');
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "password" => [ "The password confirmation does not match." ] ])
+			->dontSeeInDatabase('users', $user);
 	}
 
 	public function testInvalidEmail()
 	{
-		$this->fail('Not implemented yet!');
+		$user = RegistrationTest::VALID_USER;
+		$user[ 'email' ] = 'super duper invalid email addres!';
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "email" => [ "The email must be a valid email address." ] ])
+			->dontSeeInDatabase('users', $user);
+	}
+
+	public function testDuplicateEmail()
+	{
+		$user = factory(\Festival\Entities\Users\User::class)->create();
+
+		$duplicate = RegistrationTest::VALID_USER;
+		$duplicate[ 'email' ] = $user->email;
+
+		$this->postJson('/api/register', $duplicate)
+			->seeStatusCode(422)
+			->seeJson([ "email" => [ "The email has already been taken." ] ])
+			->dontSeeInDatabase('users', $duplicate);
 	}
 
 	public function testInvalidPasswordConfirmation()
 	{
-		$this->fail('Not implemented yet!');
+		$user = RegistrationTest::VALID_USER;
+		$user['password_confirmation'] = 54321;
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "password" => [ "The password confirmation does not match." ] ])
+			->dontSeeInDatabase('users', $user);
 	}
 
 	public function testPasswordTooShort()
 	{
-		$this->fail('Not implemented yet!');
+		$user = RegistrationTest::VALID_USER;
+		$user['password'] = 1;
+		$user['password_confirmation'] = 1;
+
+		$this->postJson('/api/register', $user)
+			->seeStatusCode(422)
+			->seeJson([ "password" => [ "The password must be at least 5 characters." ] ])
+			->dontSeeInDatabase('users', $user);
 	}
 }
