@@ -39,9 +39,15 @@ class EloquentAuthenticateService implements AuthContract
 		$this->user = $this->repository->findByMail($credentials[ 'email' ]);
 
 		if ( is_null($this->user) || ! $this->hasher->check($credentials[ 'password' ], $this->user->password) )
+		{
 			$this->user = null;
 
-		return ( ! is_null($this->user) );
+			return false;
+		}
+		
+		$this->user->secret = $this->refresh();
+
+		return true;
 	}
 
 	public function user()
@@ -65,5 +71,15 @@ class EloquentAuthenticateService implements AuthContract
 		$this->user = $this->repository->query([ 'secret' => $token ]);
 
 		return ( ! is_null($this->user) );
+	}
+
+	/**
+	 * Generate an authentication token.
+	 *
+	 * @return mixed
+	 */
+	public function refresh()
+	{
+		return md5(uniqid());
 	}
 }

@@ -18,7 +18,8 @@ class AuthenticationTest extends TestCase
 
 		$this->postJson('/api/login', $credentials)
 			->seeStatusCode(200)
-			->seeJson([ 'token' => $user->secret ]);
+			->seeJson()
+			->see('token');
 	}
 
 	public function testTokenRegenerationOnLogin()

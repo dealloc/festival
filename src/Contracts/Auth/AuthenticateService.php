@@ -24,4 +24,11 @@ interface AuthenticateService
 	 * @return boolean
 	 */
 	public function authenticate($token);
+
+	/**
+	 * Generate an authentication token.
+	 *
+	 * @return mixed
+	 */
+	public function refresh();
 }
