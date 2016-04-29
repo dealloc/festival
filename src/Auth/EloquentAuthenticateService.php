@@ -38,7 +38,7 @@ class EloquentAuthenticateService implements AuthContract
 
 		$this->user = $this->repository->findByMail($credentials[ 'email' ]);
 
-		if ( ! $this->hasher->check($credentials[ 'password' ], $this->user->password) )
+		if ( is_null($this->user) || ! $this->hasher->check($credentials[ 'password' ], $this->user->password) )
 			$this->user = null;
 
 		return ( ! is_null($this->user) );
