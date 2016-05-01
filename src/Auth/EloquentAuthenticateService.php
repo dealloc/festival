@@ -68,7 +68,7 @@ class EloquentAuthenticateService implements AuthContract
 	 */
 	public function authenticate($token)
 	{
-		$this->user = $this->repository->query([ 'secret' => $token ]);
+		$this->user = $this->repository->findBySecret($token);
 
 		return ( ! is_null($this->user) );
 	}

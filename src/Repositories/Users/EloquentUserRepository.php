@@ -37,4 +37,9 @@ class EloquentUserRepository extends EloquentEntityRepository implements UserRep
 	{
 		return $this->model->query()->where('email', $email)->first();
 	}
+
+	public function findBySecret($secret)
+	{
+		return $this->model->query()->where('secret', $secret)->first();
+	}
 }

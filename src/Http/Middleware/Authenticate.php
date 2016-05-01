@@ -3,28 +3,36 @@
 namespace Festival\Http\Middleware;
 
 use Closure;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Festival\Contracts\Auth\AuthenticateService;
+use Festival\Exceptions\Auth\InvalidCredentialsException;
 
 class Authenticate
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @param  string|null  $guard
-     * @return mixed
-     */
-    public function handle($request, Closure $next, $guard = null)
-    {
-        if (Auth::guard($guard)->guest()) {
-            if ($request->ajax() || $request->wantsJson()) {
-                return response('Unauthorized.', 401);
-            } else {
-                return redirect()->guest('login');
-            }
-        }
+	/**
+	 * @var \Festival\Contracts\Auth\AuthenticateService
+	 */
+	private $service;
 
-        return $next($request);
-    }
+	public function __construct(AuthenticateService $service)
+	{
+		$this->service = $service;
+	}
+
+	/**
+	 * Handle an incoming request.
+	 *
+	 * @param  \Illuminate\Http\Request $request
+	 * @param  \Closure $next
+	 * @param  string|null $guard
+	 * @return mixed
+	 * @throws \Festival\Exceptions\Auth\InvalidCredentialsException
+	 */
+	public function handle(Request $request, Closure $next, $guard = null)
+	{
+		if ( ! $this->service->authenticate($request->header('Authorization')) )
+			throw new InvalidCredentialsException;
+
+		return $next($request);
+	}
 }
