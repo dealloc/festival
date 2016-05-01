@@ -1,9 +1,12 @@
 <?php
 
 use Festival\Entities\Users\User;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class TestCase extends Illuminate\Foundation\Testing\TestCase
+class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
 {
+	use DatabaseMigrations;
+
 	const AJAX_HEADER = [ 'Accept' => 'application/json' ];
 
 	/**
