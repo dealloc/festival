@@ -56,9 +56,9 @@ class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
 	 */
 	public function getJson($uri, array $headers = [])
 	{
-		$headers['Accept'] = 'application/json';
+		$headers['Authorization'] = $this->user->secret;
 
-		return $this->get($uri, $headers);
+		return parent::get($uri, $headers);
 	}
 
 	/**
@@ -71,8 +71,8 @@ class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
 	 */
 	public function postJson($uri, array $data = [ ], array $headers = [ ])
 	{
-		$headers['Accept'] = 'application/json';
+		$headers['Authorization'] = $this->user->secret;
 
-		return $this->post($uri, $data, $headers);
+		return parent::post($uri, $data, $headers);
 	}
 }
