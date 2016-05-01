@@ -11,6 +11,8 @@ class CreateNewsTest extends AuthenticatedTestCase
 		$this->authenticate();
 
 		$news = [
+			'title' => 'foo article',
+			'content' => 'lorem ipsum dolor amat!'
 		];
 
 		$this->postJson('/api/news/create', $news)

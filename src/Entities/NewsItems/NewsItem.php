@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class NewsItem extends Model
 {
-	protected $fillable = [ ];
+	protected $table = 'newsitems';
+
+	protected $fillable = [ 'title', 'content', 'user_id' ];
 }

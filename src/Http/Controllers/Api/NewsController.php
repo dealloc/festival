@@ -3,11 +3,14 @@
 
 namespace Festival\Http\Controllers\Api;
 
+use Festival\Commands\News\CreateNewsCommand;
 use Festival\Http\Controllers\Controller;
+use Festival\Http\Requests\News\CreateNewsRequest;
 
 class NewsController extends Controller
 {
-	public function create()
+	public function create(CreateNewsRequest $request)
 	{
+		return $this->execute(new CreateNewsCommand($request));
 	}
 }

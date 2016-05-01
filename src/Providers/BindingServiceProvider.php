@@ -32,6 +32,6 @@ class BindingServiceProvider extends ServiceProvider
 	public function register()
 	{
 		foreach ( $this->bindings as $contract => $binding )
-			$this->app->bind($contract, $binding);
+			$this->app->singleton($contract, $binding);
 	}
 }
