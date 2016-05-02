@@ -22,3 +22,12 @@ $factory->define(Festival\Entities\Users\User::class, function (Faker\Generator 
 		'remember_token' => str_random(10),
 	];
 });
+
+$factory->define(\Festival\Entities\NewsItems\NewsItem::class, function (Faker\Generator $faker)
+{
+	return [
+		'title'   => $faker->text,
+		'content' => $faker->realText(),
+		'user_id' => function() { return factory(\Festival\Entities\Users\User::class)->create()->id; }
+	];
+});
