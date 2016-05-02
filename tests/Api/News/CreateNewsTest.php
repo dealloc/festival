@@ -8,8 +8,6 @@ class CreateNewsTest extends AuthenticatedTestCase
 {
 	public function testValidCreation()
 	{
-		$this->authenticate();
-
 		$news = [
 			'title' => 'foo article',
 			'content' => 'lorem ipsum dolor amat!'

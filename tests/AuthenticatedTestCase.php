@@ -35,6 +35,13 @@ class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
 		return $app;
 	}
 
+	public function setUp()
+	{
+		$this->afterApplicationCreated(function() { $this->authenticate(); });
+
+		parent::setUp();
+	}
+
 	/**
 	 * Authenticate a user for the unit test.
 	 */
