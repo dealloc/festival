@@ -11,5 +11,5 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Artist extends Model
 {
-	protected $fillable = [];
+	protected $fillable = [ 'name', 'description', 'start', 'end', 'image' ];
 }

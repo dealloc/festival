@@ -14,7 +14,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 			'name' => 'John lemon',
 			'description' => 'some juicy beats',
 			'start' => \Carbon\Carbon::now()->toDateTimeString(),
-			'end' => \Carbon\Carbon::now()->addHour(5)->toDateTimeString()
+			'end' => \Carbon\Carbon::now()->addHour(5)->toDateTimeString(),
+			'image' => 'http://lorempixel.com/g/400/200/'
 		];
 
 		$this->postJson('/api/lineup/create', $artist)

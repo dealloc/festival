@@ -15,10 +15,11 @@ class CreateArtistRequest extends Request
 	public function rules()
 	{
 		return [
-			'name' => 'required|string',
+			'name'        => 'required|string',
 			'description' => 'required|string',
-			'start' => 'required|date',
-			'end' => 'required|date'
+			'start'       => 'required|date',
+			'end'         => 'required|date',
+			'image'       => 'required|string',
 		];
 	}
 }
