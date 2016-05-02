@@ -46,6 +46,10 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "test": [
+            "phpunit",
+            "hhvm vendor/bin/phpunit"
         ]
     },
     "config": {
