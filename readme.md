@@ -1,6 +1,6 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/23)
+## Roadmap ![Progressbar](http://progressed.io/bar/17)
  - [X] Newsfeed
 	 - [X] Can post new items on newsfeed
 	 - [ ] users can comment on newsitems
@@ -17,6 +17,11 @@
 	 - [ ] users need to authenticate for commenting
 	 - [ ] users need to authenticate for purchasing ticket
 	 - [X] user has first name, last name and email address
+ - [ ] CRUD
+ 	 - [ ] Artist
+ 	 - [ ] NewsItem
+ 	 - [ ] Ticket
+ 	 - [ ] User
  - [ ] document code
  - [ ] cover (most) functionality using black box unit tests
 
