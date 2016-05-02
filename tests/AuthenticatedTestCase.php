@@ -7,8 +7,6 @@ class AuthenticatedTestCase extends TestCase
 {
 	use DatabaseMigrations;
 
-	const AJAX_HEADER = [ 'Accept' => 'application/json' ];
-
 	/**
 	 * @var \Festival\Entities\Users\User
 	 */
@@ -50,7 +48,7 @@ class AuthenticatedTestCase extends TestCase
 		if ( ! is_null($this->user) )
 			return;
 
-		$this->user = factory(User::class)->create([ 'password' => bcrypt(12345) ]);
+		$this->user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
 	}
 
 	public function logout()

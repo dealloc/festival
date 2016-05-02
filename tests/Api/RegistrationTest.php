@@ -8,25 +8,25 @@ class RegistrationTest extends TestCase
 {
 	use DatabaseMigrations;
 
-	const VALID_USER = [
+	public static $VALID_USER = [
 		'fname'                 => 'Wannes',
 		'lname'                 => 'Gennar',
 		'email'                 => 'foo@bar.com',
-		'password'              => 12345,
-		'password_confirmation' => 12345,
+		'password'              => 'foobar',
+		'password_confirmation' => 'foobar',
 	];
 
 	public function testValidRegistration()
 	{
-		$this->postJson('/api/register', RegistrationTest::VALID_USER)
+		$this->postJson('/api/register', RegistrationTest::$VALID_USER)
 			->seeStatusCode(200)
 			->seeJson()
-			->seeInDatabase('users', array_except(RegistrationTest::VALID_USER, [ 'password', 'password_confirmation' ]));
+			->seeInDatabase('users', array_except(RegistrationTest::$VALID_USER, [ 'password', 'password_confirmation' ]));
 	}
 
 	public function testWithoutFname()
 	{
-		$user = array_except(RegistrationTest::VALID_USER, 'fname');
+		$user = array_except(RegistrationTest::$VALID_USER, 'fname');
 
 		$this->postJson('/api/register', $user)
 			->seeStatusCode(422)
@@ -36,7 +36,7 @@ class RegistrationTest extends TestCase
 
 	public function testWithoutLname()
 	{
-		$user = array_except(RegistrationTest::VALID_USER, 'lname');
+		$user = array_except(RegistrationTest::$VALID_USER, 'lname');
 
 		$this->postJson('/api/register', $user)
 			->seeStatusCode(422)
@@ -46,7 +46,7 @@ class RegistrationTest extends TestCase
 
 	public function testWithoutEmail()
 	{
-		$user = array_except(RegistrationTest::VALID_USER, 'email');
+		$user = array_except(RegistrationTest::$VALID_USER, 'email');
 
 		$this->postJson('/api/register', $user)
 			->seeStatusCode(422)
@@ -56,7 +56,7 @@ class RegistrationTest extends TestCase
 
 	public function testWithoutPassword()
 	{
-		$user = array_except(RegistrationTest::VALID_USER, 'password');
+		$user = array_except(RegistrationTest::$VALID_USER, 'password');
 
 		$this->postJson('/api/register', $user)
 			->seeStatusCode(422)
@@ -66,7 +66,7 @@ class RegistrationTest extends TestCase
 
 	public function testWithoutPasswordConfirmation()
 	{
-		$user = array_except(RegistrationTest::VALID_USER, 'password_confirmation');
+		$user = array_except(RegistrationTest::$VALID_USER, 'password_confirmation');
 
 		$this->postJson('/api/register', $user)
 			->seeStatusCode(422)
@@ -76,7 +76,7 @@ class RegistrationTest extends TestCase
 
 	public function testInvalidEmail()
 	{
-		$user = RegistrationTest::VALID_USER;
+		$user = RegistrationTest::$VALID_USER;
 		$user[ 'email' ] = 'super duper invalid email addres!';
 
 		$this->postJson('/api/register', $user)
@@ -89,7 +89,7 @@ class RegistrationTest extends TestCase
 	{
 		$user = factory(\Festival\Entities\Users\User::class)->create();
 
-		$duplicate = RegistrationTest::VALID_USER;
+		$duplicate = RegistrationTest::$VALID_USER;
 		$duplicate[ 'email' ] = $user->email;
 
 		$this->postJson('/api/register', $duplicate)
@@ -100,7 +100,7 @@ class RegistrationTest extends TestCase
 
 	public function testInvalidPasswordConfirmation()
 	{
-		$user = RegistrationTest::VALID_USER;
+		$user = RegistrationTest::$VALID_USER;
 		$user['password_confirmation'] = 54321;
 
 		$this->postJson('/api/register', $user)
@@ -111,7 +111,7 @@ class RegistrationTest extends TestCase
 
 	public function testPasswordTooShort()
 	{
-		$user = RegistrationTest::VALID_USER;
+		$user = RegistrationTest::$VALID_USER;
 		$user['password'] = 1;
 		$user['password_confirmation'] = 1;
 

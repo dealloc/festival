@@ -9,11 +9,11 @@ class AuthenticationTest extends TestCase
 
 	public function testValidAuthentication()
 	{
-		$user = factory(User::class)->create([ 'password' => bcrypt(12345) ]);
+		$user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
 
 		$credentials = [
 			'email'    => $user->email,
-			'password' => 12345,
+			'password' => 'foobar',
 		];
 
 		$this->postJson('/api/login', $credentials)
@@ -24,11 +24,11 @@ class AuthenticationTest extends TestCase
 
 	public function testTokenRegenerationOnLogin()
 	{
-		$user = factory(User::class)->create([ 'password' => bcrypt(12345) ]);
+		$user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
 
 		$credentials = [
 			'email'    => $user->email,
-			'password' => 12345,
+			'password' => 'foobar',
 		];
 
 		$this->postJson('/api/login', $credentials);
@@ -49,10 +49,10 @@ class AuthenticationTest extends TestCase
 
 	public function testEmptyEmail()
 	{
-		factory(User::class)->create([ 'password' => bcrypt(12345) ]);
+		factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
 
 		$credentials = [
-			'password' => 12345,
+			'password' => 'foobar',
 		];
 
 		$this->postJson('/api/login', $credentials)
@@ -75,7 +75,7 @@ class AuthenticationTest extends TestCase
 
 	public function testEmptyPayload()
 	{
-		$user = factory(User::class)->create();
+		factory(User::class)->create();
 
 		$this->postJson('/api/login')
 			->seeStatusCode(401)
@@ -84,11 +84,11 @@ class AuthenticationTest extends TestCase
 
 	public function testInvalidEmail()
 	{
-		$user = factory(User::class)->create([ 'password' => bcrypt(12345) ]);
+		$user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
 
 		$credentials = [
 			'email'    => $user->email . 'invalid',
-			'password' => 12345,
+			'password' => 'foobar',
 		];
 
 		$this->postJson('/api/login', $credentials)
@@ -102,7 +102,7 @@ class AuthenticationTest extends TestCase
 
 		$credentials = [
 			'email'    => $user->email,
-			'password' => 12345,
+			'password' => 'foobar',
 		];
 
 		$this->postJson('/api/login', $credentials)

@@ -2,7 +2,7 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
-	const AJAX_HEADER = [ 'Accept' => 'application/json' ];
+	public static $AJAX_HEADER = [ 'Accept' => 'application/json' ];
 
 	/**
 	 * The base URL to use while testing the application.
