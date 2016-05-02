@@ -1,12 +1,12 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/17)
+## Roadmap ![Progressbar](http://progressed.io/bar/26)
  - [X] Newsfeed
 	 - [X] Can post new items on newsfeed
 	 - [ ] users can comment on newsitems
  - [ ] line-up page
-	 - [ ] can add new artists on lineup
-	 - [ ] each artist has a photo, name, description and a daterange they perform
+	 - [X] can add new artists on lineup
+	 - [X] each artist has a photo, name, description and a daterange they perform
 	 - [ ] lineup shows photo and name of artist, on hover shows description and hour
  - [ ] contact page
  	- [ ] contact messages are emailed to administrators
