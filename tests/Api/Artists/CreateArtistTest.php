@@ -11,6 +11,10 @@ class CreateArtistTest extends AuthenticatedTestCase
 	public function testValidCreation()
 	{
 		$artist = [
+			'name' => 'John lemon',
+			'description' => 'some juicy beats',
+			'start' => \Carbon\Carbon::now()->toDateTimeString(),
+			'end' => \Carbon\Carbon::now()->addHour(5)->toDateTimeString()
 		];
 
 		$this->postJson('/api/lineup/create', $artist)
