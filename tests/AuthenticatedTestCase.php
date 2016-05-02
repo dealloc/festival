@@ -3,7 +3,7 @@
 use Festival\Entities\Users\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 
-class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
+class AuthenticatedTestCase extends TestCase
 {
 	use DatabaseMigrations;
 
@@ -70,7 +70,7 @@ class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
 		if ( ! is_null($this->user) )
 			$headers[ 'Authorization' ] = $this->user->secret;
 
-		return parent::get($uri, $headers);
+		return parent::getJson($uri, $headers);
 	}
 
 	/**
@@ -86,6 +86,6 @@ class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
 		if ( ! is_null($this->user) )
 			$headers[ 'Authorization' ] = $this->user->secret;
 
-		return parent::post($uri, $data, $headers);
+		return parent::postJson($uri, $data, $headers);
 	}
 }
