@@ -44,13 +44,6 @@ class AuthenticatedTestCase extends Illuminate\Foundation\Testing\TestCase
 			return;
 
 		$this->user = factory(User::class)->create([ 'password' => bcrypt(12345) ]);
-
-		$credentials = [
-			'email'    => $this->user->email,
-			'password' => 12345,
-		];
-
-		$this->postJson('/api/login', $credentials);
 	}
 
 	public function logout()
