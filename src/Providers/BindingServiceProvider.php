@@ -2,6 +2,8 @@
 
 namespace Festival\Providers;
 
+use Festival\Contracts\Repositories\NewsItems\Comments\CommentRepository;
+use Festival\Repositories\NewsItems\Comments\EloquentCommentRepository;
 use Illuminate\Support\ServiceProvider;
 use Festival\Auth\EloquentAuthenticateService;
 use Festival\Contracts\Auth\AuthenticateService;
@@ -20,6 +22,7 @@ class BindingServiceProvider extends ServiceProvider
 		UserRepository::class      => EloquentUserRepository::class,
 		ArtistRepository::class    => EloquentArtistRepository::class,
 		TicketRepository::class    => EloquentTicketRepository::class,
+		CommentRepository::class   => EloquentCommentRepository::class,
 		NewsItemRepository::class  => EloquentNewsItemRepository::class,
 		AuthenticateService::class => EloquentAuthenticateService::class,
 	];
