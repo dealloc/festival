@@ -12,6 +12,7 @@
  	- [ ] contact messages are emailed to administrators
  - [ ] ticket purchase workflow
  - [ ] authentication
+	 - [ ] social authentication
 	 - [X] users can register
 	 - [ ] users need to authenticate for commenting
 	 - [ ] users need to authenticate for purchasing ticket
