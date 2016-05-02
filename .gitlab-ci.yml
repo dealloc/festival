@@ -7,9 +7,9 @@ before_script:
   - composer self-update
   - composer install --no-progress --no-interaction
   - cp .env.gitlab .env
-  - php artisan key:generate
-  - php artisan migrate:refresh
-  - php artisan db:seed
+  - hhvm artisan key:generate
+  - hhvm artisan migrate:refresh
+  - hhvm artisan db:seed
 
 # Services
 services:
@@ -17,7 +17,6 @@ services:
 
 # Variables
 variables:
-  WITH_XDEBUG: "1"
   MYSQL_ROOT_PASSWORD: secret
   MYSQL_DATABASE: homestead
   MYSQL_USER: homestead
@@ -45,12 +44,3 @@ php-7.0:
     - php -v
     - echo "Running PHPUnit Tests on PHP 7.0"
     - php vendor/bin/phpunit --colors --coverage-text
-
-#HHVM
-HHVM:
-  type: test
-  image: diegomarangoni/hhvm
-  script:
-    - hhvm --version
-    - echo "Running PHPUnit Tests on HHVM"
-    - hhvm vendor/bin/phpunit --colors --coverage-text
