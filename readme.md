@@ -1,7 +1,7 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/17)
- - [ ] Newsfeed
+## Roadmap ![Progressbar](http://progressed.io/bar/23)
+ - [X] Newsfeed
 	 - [X] Can post new items on newsfeed
 	 - [ ] users can comment on newsitems
  - [ ] line-up page
