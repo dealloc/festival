@@ -1,6 +1,6 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/23) [![build status](https://gitlab.com/dealloc/festival/badges/master/build.svg)](https://gitlab.com/dealloc/festival/commits/master)
+## Roadmap ![Progressbar](http://progressed.io/bar/23)
  - [X] Newsfeed
 	 - [X] Can post new items on newsfeed
 	 - [ ] users can comment on newsitems
