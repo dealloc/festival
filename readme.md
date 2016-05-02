@@ -1,8 +1,8 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/13)
+## Roadmap ![Progressbar](http://progressed.io/bar/17)
  - [ ] Newsfeed
-	 - [ ] Can post new items on newsfeed
+	 - [X] Can post new items on newsfeed
 	 - [ ] users can comment on newsitems
  - [ ] line-up page
 	 - [ ] can add new artists on lineup
