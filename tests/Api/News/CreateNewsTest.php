@@ -27,7 +27,7 @@ class CreateNewsTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([ 'title' => 'The title field is required.' ])
+			->seeJson([ 'title' => [ 'The title field is required.' ] ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -39,7 +39,7 @@ class CreateNewsTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([ 'title' => 'The title field is required.' ])
+			->seeJson([ 'title' => [ 'The title field is required.' ] ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -49,7 +49,7 @@ class CreateNewsTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([ 'content' => 'The content field is required.' ])
+			->seeJson([ 'content' => [ 'The content field is required.' ] ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -61,8 +61,7 @@ class CreateNewsTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([ 'content' => 'The content field is required.' ])
-			->seeJson([ 'title' => 'The title field is required.' ])
+			->seeJson([ 'content' => [ 'The content field is required.' ] ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -70,7 +69,8 @@ class CreateNewsTest extends AuthenticatedTestCase
 	{
 		$this->postJson('/api/news/create')
 			->seeStatusCode(422)
-			->seeJson([ 'content' => 'The content field is required.' ])
+			->seeJson([ 'content' => [ 'The content field is required.' ] ])
+			->seeJson([ 'title' => [ 'The title field is required.' ] ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, [ ]);
 	}
 
