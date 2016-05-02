@@ -9,8 +9,8 @@ class CreateNewsTest extends AuthenticatedTestCase
 	CONST TABLE_NAME = 'newsitems';
 
 	const VALID_NEWS = [
-		'title' => 'foo article',
-		'content' => 'lorem ipsum dolor amat!'
+		'title'   => 'foo article',
+		'content' => 'lorem ipsum dolor amat!',
 	];
 
 	public function testValidCreation()
@@ -27,7 +27,7 @@ class CreateNewsTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([])
+			->seeJson([ 'title' => 'The title field is required.' ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -35,11 +35,11 @@ class CreateNewsTest extends AuthenticatedTestCase
 	{
 		$news = CreateNewsTest::VALID_NEWS;
 
-		$news['title'] = '';
+		$news[ 'title' ] = '';
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([])
+			->seeJson([ 'title' => 'The title field is required.' ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -49,7 +49,7 @@ class CreateNewsTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([])
+			->seeJson([ 'content' => 'The content field is required.' ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -57,11 +57,12 @@ class CreateNewsTest extends AuthenticatedTestCase
 	{
 		$news = CreateNewsTest::VALID_NEWS;
 
-		$news['content'] = '';
+		$news[ 'content' ] = '';
 
 		$this->postJson('/api/news/create', $news)
 			->seeStatusCode(422)
-			->seeJson([])
+			->seeJson([ 'content' => 'The content field is required.' ])
+			->seeJson([ 'title' => 'The title field is required.' ])
 			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, $news);
 	}
 
@@ -69,8 +70,8 @@ class CreateNewsTest extends AuthenticatedTestCase
 	{
 		$this->postJson('/api/news/create')
 			->seeStatusCode(422)
-			->seeJson([])
-			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, []);
+			->seeJson([ 'content' => 'The content field is required.' ])
+			->dontSeeInDatabase(CreateNewsTest::TABLE_NAME, [ ]);
 	}
 
 	public function testNotAuthenticated()
