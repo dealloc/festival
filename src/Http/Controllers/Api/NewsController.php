@@ -13,4 +13,8 @@ class NewsController extends Controller
 	{
 		return $this->execute(new CreateNewsCommand($request));
 	}
+
+	public function all()
+	{
+	}
 }
