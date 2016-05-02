@@ -10,6 +10,6 @@ class GetNewsTest extends AuthenticatedTestCase
 	{
 		$this->getJson('/api/news')
 			->seeStatusCode(200)
-			->seeJson();
+			->seeJsonStructure(['total', 'per_page', 'last_page', 'from', 'to', 'data']);
 	}
 }
