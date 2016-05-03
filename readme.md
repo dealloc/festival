@@ -11,6 +11,7 @@
  - [ ] contact page
  	- [X] contact messages are emailed to administrators
  - [ ] ticket purchase workflow
+ 	- [ ] get all tickets of the user
  - [ ] authorization
 	 - [ ] normal users can comment
 	 - [ ] admins can add artists
