@@ -7,4 +7,6 @@ $router->post('news/{article}/comment', [ 'uses' => 'CommentController@create', 
 
 $router->post('lineup/create', [ 'uses' => 'ArtistController@create', 'as' => 'api.lineup.create' ]);
 
+$router->get('tickets', [ 'uses' => 'TicketsController@index', 'as' => 'api.tickets' ]);
+
 $router->post('tickets/purchase', [ 'uses' => 'TicketsController@create', 'as' => 'api.tickets.create' ]);
