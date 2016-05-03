@@ -33,6 +33,7 @@ class Handler extends ExceptionHandler
 		HttpException::class,
 		ModelNotFoundException::class,
 		ValidationException::class,
+		InvalidCredentialsException::class,
 	];
 
 	/**
