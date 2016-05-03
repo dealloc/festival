@@ -9,7 +9,7 @@
 	 - [X] each artist has a photo, name, description and a daterange they perform
 	 - [ ] lineup shows photo and name of artist, on hover shows description and hour
  - [ ] contact page
- 	- [ ] contact messages are emailed to administrators
+ 	- [X] contact messages are emailed to administrators
  - [ ] ticket purchase workflow
  - [ ] authorization
 	 - [ ] normal users can comment
@@ -26,8 +26,10 @@
  	 - [ ] NewsItem
  	 - [ ] Ticket
  	 - [ ] User
+ 	 	- [ ] Comments
  - [ ] document code
  - [ ] cover (most) functionality using black box unit tests
+ - [ ] design the emails
 
 ## Requirements
  - [Laravel requirements](https://laravel.com/docs/5.2#server-requirements)
