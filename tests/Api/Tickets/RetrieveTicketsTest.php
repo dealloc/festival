@@ -8,6 +8,8 @@ class RetrieveTicketsTest extends AuthenticatedTestCase
 {
 	public function testValidListing()
 	{
+		factory(\Festival\Entities\Tickets\Ticket::class, 10);
+
 		$this->getJson('/api/tickets')
 			->seeStatusCode(200)
 			->seeJsonStructure([
