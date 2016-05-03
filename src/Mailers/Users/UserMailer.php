@@ -10,6 +10,6 @@ class UserMailer extends Mailer
 {
 	public function welcome(User $user)
 	{
-		parent::send($user->email, 'Welcome to Evento!', 'emails.registration', compact('user'));
+		parent::send($user->email, 'Welcome to Evento!', 'mails.registration', compact('user'));
 	}
 }
