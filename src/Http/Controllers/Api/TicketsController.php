@@ -3,6 +3,7 @@
 
 namespace Festival\Http\Controllers\Api;
 
+use Festival\Commands\Tickets\CreateTicketCommand;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\Tickets\TicketRepository;
 use Festival\Http\Controllers\Controller;
@@ -17,5 +18,6 @@ class TicketsController extends Controller
 
 	public function create(CreateTicketRequest $request)
 	{
+		return $this->execute(new CreateTicketCommand($request));
 	}
 }
