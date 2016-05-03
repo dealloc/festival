@@ -1,8 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Festival\Events\Contacts\CreateContactEvent;
 
 class ContactTest extends TestCase
 {
@@ -12,8 +10,9 @@ class ContactTest extends TestCase
 			'content' => 'I love your website!'
 		];
 
-		$this->postJson('/api/contact', $contact)
+		$this->expectsEvents(CreateContactEvent::class)
+			->postJson('/api/contact', $contact)
 			->seeStatusCode(200)
-			->seeJson();
+			->seeJson($contact);
 	}
 }
