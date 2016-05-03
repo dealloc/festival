@@ -4,6 +4,8 @@ namespace Festival\Providers;
 
 use Festival\Events\Contacts\CreateContactEvent;
 use Festival\Events\Listeners\Contacts\SendMailOnCreateListener;
+use Festival\Events\Listeners\Users\MailUserOnCreateListener;
+use Festival\Events\Users\CreateUserEvent;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -18,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
         CreateContactEvent::class => [
             SendMailOnCreateListener::class,
         ],
+        CreateUserEvent::class => [
+            MailUserOnCreateListener::class
+        ]
     ];
 
     /**
