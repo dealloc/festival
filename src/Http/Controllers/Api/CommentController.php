@@ -10,6 +10,5 @@ class CommentController extends Controller
 {
 	public function create(News $article)
 	{
-		return $article;
 	}
 }
