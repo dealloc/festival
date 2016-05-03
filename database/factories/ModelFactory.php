@@ -32,3 +32,11 @@ $factory->define(\Festival\Entities\News\News::class, function (Faker\Generator 
 		'user_id' => function() { return factory(\Festival\Entities\Users\User::class)->create()->id; }
 	];
 });
+
+$factory->define(\Festival\Entities\Tickets\Ticket::class, function (Faker\Generator $faker)
+{
+	return [
+		'user_id' => function() { return factory(\Festival\Entities\Users\User::class)->create()->id; },
+		'token' => uniqid('evento-', true),
+	];
+});
