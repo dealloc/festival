@@ -8,6 +8,11 @@ class CreateTicketsTest extends AuthenticatedTestCase
 {
 	public function testValidPurchase()
 	{
-		$this->fail('Not implemented yet');
+		$this->postJson('/api/tickets/purchase')
+			->seeStatusCode(200)
+			->seeJsonStructure([ 'id', 'token' ]);
+
+		$ticket = json_decode($this->response->getContent(), true);
+		$this->seeInDatabase('tickets', $ticket);
 	}
 }
