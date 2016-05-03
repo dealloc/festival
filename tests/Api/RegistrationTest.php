@@ -19,6 +19,7 @@ class RegistrationTest extends TestCase
 	public function testValidRegistration()
 	{
 		$this->postJson('/api/register', RegistrationTest::$VALID_USER)
+			->expectEmail(RegistrationTest::$VALID_USER['email'])
 			->seeStatusCode(200)
 			->seeJson()
 			->seeInDatabase('users', array_except(RegistrationTest::$VALID_USER, [ 'password', 'password_confirmation' ]));
