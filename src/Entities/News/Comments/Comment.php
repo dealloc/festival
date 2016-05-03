@@ -1,7 +1,7 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Festival\Entities\Newsz\Comments;
+namespace Festival\Entities\News\Comments;
 
 use Illuminate\Database\Eloquent\Model;
 
