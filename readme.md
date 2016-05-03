@@ -1,6 +1,6 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/30)
+## Roadmap ![Progressbar](http://progressed.io/bar/33)
  - [X] Newsfeed
 	 - [X] Can post new items on newsfeed
 	 - [X] users can comment on newsitems
@@ -11,7 +11,7 @@
  - [ ] contact page
  	- [X] contact messages are emailed to administrators
  - [ ] ticket purchase workflow
- 	- [ ] get all tickets of the user
+ 	- [X] get all tickets of the user
  - [ ] authorization
 	 - [ ] normal users can comment
 	 - [ ] admins can add artists
