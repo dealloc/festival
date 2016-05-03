@@ -71,8 +71,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 		$this->app->singleton(MailerContract::class, function() use($mock) { return $mock; });
 
 		$mock->shouldReceive('send')
-			->times($times)
-			->withArgs([ \Mockery::on(function (Illuminate\Mail\Message $message) use ($recipient, $subject, $content)
+			->with(\Mockery::any(), \Mockery::any(), \Mockery::on(function ($message) use ($recipient, $subject, $content)
 			{
 				if ( ! is_null($subject) )
 					$this->assertEquals($subject, $message->getSubject());
@@ -82,7 +81,10 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
 				if ( ! is_null($content) )
 					$this->assertContains($content, $message->getBody());
-			}), \Mockery::any() ]);
+
+				return true;
+			}))
+			->times($times);
 
 		return $this;
 	}

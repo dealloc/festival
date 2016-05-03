@@ -15,8 +15,7 @@ class ContactTest extends TestCase
 			'content' => 'I love your website!'
 		];
 
-		$this->expectsEvents(CreateContactEvent::class)
-			->expectEmail()
+		$this->expectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(200)
 			->seeJson($contact);
