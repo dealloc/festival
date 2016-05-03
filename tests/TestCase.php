@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Contracts\Mail\Mailer as MailerContract;
+
 class TestCase extends Illuminate\Foundation\Testing\TestCase
 {
 	public static $AJAX_HEADER = [ 'Accept' => 'application/json' ];
@@ -65,8 +67,9 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 	 */
 	protected function expectEmail($recipient = null, $subject = null, $content = null, $times = 1)
 	{
-		$mock = \Mockery::mock(app(\Illuminate\Contracts\Mail\Mailer::class));
-		$this->app->bind(\Illuminate\Contracts\Mail\Mailer::class, $mock);
+		$mock = \Mockery::mock(app(MailerContract::class));
+		$this->app->singleton(MailerContract::class, function() use($mock) { return $mock; });
+
 		$mock->shouldReceive('send')
 			->times($times)
 			->withArgs([ \Mockery::on(function (Illuminate\Mail\Message $message) use ($recipient, $subject, $content)
