@@ -12,6 +12,7 @@
  	- [X] contact messages are emailed to administrators
  - [ ] ticket purchase workflow
  	- [X] get all tickets of the user
+ 	- [ ] payment
  - [ ] authorization
 	 - [ ] normal users can comment
 	 - [ ] admins can add artists

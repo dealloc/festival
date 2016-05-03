@@ -6,6 +6,7 @@ namespace Festival\Http\Controllers\Api;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\Tickets\TicketRepository;
 use Festival\Http\Controllers\Controller;
+use Festival\Http\Requests\Tickets\CreateTicketRequest;
 
 class TicketsController extends Controller
 {
@@ -14,7 +15,7 @@ class TicketsController extends Controller
 		return $repository->allForUser($service->user());
 	}
 
-	public function create()
+	public function create(CreateTicketRequest $request)
 	{
 	}
 }
