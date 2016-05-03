@@ -59,12 +59,13 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 	 *
 	 * @return $this
 	 */
-	protected function expectEmail()
+	protected function expectEmail($times = 1)
 	{
 		$mock = \Mockery::mock(app(\Illuminate\Contracts\Mail\Mailer::class));
 		$this->app->bind(\Illuminate\Contracts\Mail\Mailer::class, $mock);
 		$mock->shouldReceive('send')
-			->withAnyArgs();
+			->withAnyArgs()
+			->times($times);
 
 		return $this;
 	}
