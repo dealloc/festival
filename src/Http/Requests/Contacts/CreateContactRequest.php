@@ -15,7 +15,7 @@ class CreateContactRequest extends Request
 	public function rules()
 	{
 		return [
-			'sender'  => 'required|mail',
+			'sender'  => 'required|email',
 			'subject' => 'required|string',
 			'content' => 'required|string',
 		];

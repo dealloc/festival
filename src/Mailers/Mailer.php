@@ -25,7 +25,7 @@ abstract class Mailer
 	 * @param array $data
 	 * @param array|null $sender
 	 */
-	public function send($recipient, $subject, $view, array $data = [], array $sender = null)
+	public function send($recipient, $subject, $view, array $data = [ ], array $sender = null)
 	{
 		if ( is_null($sender) )
 			$sender = $this->getFrom();
@@ -34,7 +34,7 @@ abstract class Mailer
 		{
 			$message->to($recipient);
 			$message->subject($subject);
-			$message->from($sender);
+			$message->from($sender[ 'address' ], array_get($sender, 'from'));
 		});
 	}
 
@@ -45,6 +45,6 @@ abstract class Mailer
 	 */
 	protected function getFrom()
 	{
-		return env('mail.from');
+		return config('mail.from');
 	}
 }

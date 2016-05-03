@@ -20,6 +20,6 @@ class SendMailOnCreateListener
 
 	public function handle(CreateContactEvent $event)
 	{
-		$this->mailer->send($event->getSender(), $event->getSubject(), $event->getContent());
+		$this->mailer->contact($event->getSender(), $event->getSubject(), $event->getContent());
 	}
 }

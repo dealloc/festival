@@ -10,10 +10,10 @@ class ContactMailer extends Mailer
 	/**
 	 * @param string $recipient
 	 */
-	public function send($sender, $subject, $content)
+	public function contact($sender, $subject, $content)
 	{
-		$recipient = env('mail.from.address');
+		$recipient = config('mail.from.address');
 
-		parent::send($recipient, $subject, 'mails.contact', compact('content'), $sender);
+		parent::send($recipient, $subject, 'mails.contact', compact('content'), [ 'address' => $sender ]);
 	}
 }
