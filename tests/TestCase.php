@@ -57,15 +57,29 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 	/**
 	 * Assert that an email was send.
 	 *
+	 * @param string|null $recipient
+	 * @param string|null $subject
+	 * @param string|null $content
+	 * @param int $times
 	 * @return $this
 	 */
-	protected function expectEmail($times = 1)
+	protected function expectEmail($recipient = null, $subject = null, $content = null, $times = 1)
 	{
 		$mock = \Mockery::mock(app(\Illuminate\Contracts\Mail\Mailer::class));
 		$this->app->bind(\Illuminate\Contracts\Mail\Mailer::class, $mock);
 		$mock->shouldReceive('send')
-			->withAnyArgs()
-			->times($times);
+			->times($times)
+			->withArgs([ \Mockery::on(function (Illuminate\Mail\Message $message) use ($recipient, $subject, $content)
+			{
+				if ( ! is_null($subject) )
+					$this->assertEquals($subject, $message->getSubject());
+
+				if ( ! is_null($recipient) )
+					$this->assertSame([ $recipient => null ], $message->getTo());
+
+				if ( ! is_null($content) )
+					$this->assertContains($content, $message->getBody());
+			}), \Mockery::any() ]);
 
 		return $this;
 	}
