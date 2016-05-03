@@ -32,6 +32,7 @@ class CreateNewsHandler
 	public function handle()
 	{
 		$news = $this->repository->create([
+			'identifier' => md5(uniqid()),
 			'title' => $this->command->getTitle(),
 			'content' => $this->command->getContent(),
 			'user_id' => $this->auth->user()->id

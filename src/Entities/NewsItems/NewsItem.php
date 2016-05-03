@@ -9,5 +9,15 @@ class NewsItem extends Model
 {
 	protected $table = 'newsitems';
 
-	protected $fillable = [ 'title', 'content', 'user_id' ];
+	protected $fillable = [ 'title', 'content', 'user_id', 'identifier' ];
+
+	/**
+	 * Get the route key for the model.
+	 *
+	 * @return string
+	 */
+	public function getRouteKeyName()
+	{
+		return 'identifier';
+	}
 }

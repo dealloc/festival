@@ -15,6 +15,7 @@ class CreateNewsitemsTable extends Migration
 		Schema::create('newsitems', function (Blueprint $table)
 		{
 			$table->increments('id');
+			$table->string('identifier')->unique();
 			$table->string('title');
 			$table->longText('content');
 			$table->integer('user_id')->unsigned(); // author ID

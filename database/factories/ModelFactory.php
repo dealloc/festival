@@ -26,6 +26,7 @@ $factory->define(Festival\Entities\Users\User::class, function (Faker\Generator 
 $factory->define(\Festival\Entities\NewsItems\NewsItem::class, function (Faker\Generator $faker)
 {
 	return [
+		'identifier' => md5(uniqid()),
 		'title'   => $faker->text,
 		'content' => $faker->realText(),
 		'user_id' => function() { return factory(\Festival\Entities\Users\User::class)->create()->id; }
