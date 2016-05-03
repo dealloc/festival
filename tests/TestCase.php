@@ -54,11 +54,18 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 		return $this->post($uri, $data, $headers);
 	}
 
-	protected function mockEmails()
+	/**
+	 * Assert that an email was send.
+	 *
+	 * @return $this
+	 */
+	protected function expectEmail()
 	{
 		$mock = \Mockery::mock(app(\Illuminate\Contracts\Mail\Mailer::class));
 		$this->app->bind(\Illuminate\Contracts\Mail\Mailer::class, $mock);
+		$mock->shouldReceive('send')
+			->withAnyArgs();
 
-		return $mock;
+		return $this;
 	}
 }
