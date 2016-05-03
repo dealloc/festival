@@ -5,7 +5,7 @@ namespace Festival\Commands\Handlers\News;
 
 use Festival\Commands\News\CreateNewsCommand;
 use Festival\Contracts\Auth\AuthenticateService;
-use Festival\Contracts\Repositories\NewsItems\NewsItemRepository;
+use Festival\Contracts\Repositories\News\NewsRepository;
 
 class CreateNewsHandler
 {
@@ -14,7 +14,7 @@ class CreateNewsHandler
 	 */
 	private $command;
 	/**
-	 * @var \Festival\Contracts\Repositories\NewsItems\NewsItemRepository
+	 * @var \Festival\Contracts\Repositories\News\NewsRepository
 	 */
 	private $repository;
 	/**
@@ -22,7 +22,7 @@ class CreateNewsHandler
 	 */
 	private $auth;
 
-	public function __construct(CreateNewsCommand $command, NewsItemRepository $repository, AuthenticateService $auth)
+	public function __construct(CreateNewsCommand $command, NewsRepository $repository, AuthenticateService $auth)
 	{
 		$this->command = $command;
 		$this->repository = $repository;

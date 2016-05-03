@@ -3,12 +3,12 @@
 
 namespace Festival\Http\Controllers\Api;
 
-use Festival\Entities\NewsItems\NewsItem;
+use Festival\Entities\News\News;
 use Festival\Http\Controllers\Controller;
 
 class CommentController extends Controller
 {
-	public function create(NewsItem $article)
+	public function create(News $article)
 	{
 		return $article;
 	}

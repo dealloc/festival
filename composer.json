@@ -48,6 +48,7 @@
             "php artisan optimize"
         ],
         "test": [
+            "composer dump-autoload",
             "phpunit",
             "hhvm vendor/bin/phpunit"
         ]

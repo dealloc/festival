@@ -1,11 +1,11 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Festival\Contracts\Repositories\NewsItems;
+namespace Festival\Contracts\Repositories\News;
 
 use Festival\Contracts\Repositories\EntityRepository;
 
-interface NewsItemRepository extends EntityRepository
+interface NewsRepository extends EntityRepository
 {
 	
 }

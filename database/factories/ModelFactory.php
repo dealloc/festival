@@ -23,7 +23,7 @@ $factory->define(Festival\Entities\Users\User::class, function (Faker\Generator 
 	];
 });
 
-$factory->define(\Festival\Entities\NewsItems\NewsItem::class, function (Faker\Generator $faker)
+$factory->define(\Festival\Entities\News\News::class, function (Faker\Generator $faker)
 {
 	return [
 		'identifier' => md5(uniqid()),

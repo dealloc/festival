@@ -2,7 +2,7 @@
 
 namespace Festival\Providers;
 
-use Festival\Contracts\Repositories\NewsItems\Comments\CommentRepository;
+use Festival\Contracts\Repositories\News\Comments\CommentRepository;
 use Festival\Repositories\NewsItems\Comments\EloquentCommentRepository;
 use Illuminate\Support\ServiceProvider;
 use Festival\Auth\EloquentAuthenticateService;
@@ -13,8 +13,8 @@ use Festival\Repositories\Tickets\EloquentTicketRepository;
 use Festival\Repositories\Artists\EloquentArtistRepository;
 use Festival\Contracts\Repositories\Tickets\TicketRepository;
 use Festival\Contracts\Repositories\Artists\ArtistRepository;
-use Festival\Repositories\NewsItems\EloquentNewsItemRepository;
-use Festival\Contracts\Repositories\NewsItems\NewsItemRepository;
+use Festival\Repositories\News\EloquentNewsRepository;
+use Festival\Contracts\Repositories\News\NewsRepository;
 
 class BindingServiceProvider extends ServiceProvider
 {
@@ -23,7 +23,7 @@ class BindingServiceProvider extends ServiceProvider
 		ArtistRepository::class    => EloquentArtistRepository::class,
 		TicketRepository::class    => EloquentTicketRepository::class,
 		CommentRepository::class   => EloquentCommentRepository::class,
-		NewsItemRepository::class  => EloquentNewsItemRepository::class,
+		NewsRepository::class      => EloquentNewsRepository::class,
 		AuthenticateService::class => EloquentAuthenticateService::class,
 	];
 

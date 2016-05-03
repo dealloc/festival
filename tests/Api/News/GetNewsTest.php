@@ -8,7 +8,7 @@ class GetNewsTest extends AuthenticatedTestCase
 {
 	private function generateNews($amount = 1)
 	{
-		factory(\Festival\Entities\NewsItems\NewsItem::class, $amount)->create();
+		factory(\Festival\Entities\News\News::class, $amount)->create();
 	}
 
 	public function testRetrieveAll()

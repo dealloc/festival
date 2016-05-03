@@ -1,7 +1,7 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-namespace Festival\Contracts\Repositories\NewsItems\Comments;
+namespace Festival\Contracts\Repositories\News\Comments;
 
 use Festival\Contracts\Repositories\EntityRepository;
 

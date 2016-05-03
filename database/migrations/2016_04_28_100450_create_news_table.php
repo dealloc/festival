@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNewsitemsTable extends Migration
+class CreateNewsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -12,7 +12,7 @@ class CreateNewsitemsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('newsitems', function (Blueprint $table)
+		Schema::create('news', function (Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('identifier')->unique();
@@ -30,6 +30,6 @@ class CreateNewsitemsTable extends Migration
 	 */
 	public function down()
 	{
-		Schema::drop('newsitems');
+		Schema::drop('news');
 	}
 }

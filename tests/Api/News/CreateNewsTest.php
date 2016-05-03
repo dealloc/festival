@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class CreateNewsTest extends AuthenticatedTestCase
 {
-	public static $TABLE_NAME = 'newsitems';
+	public static $TABLE_NAME = 'news';
 
 	public static $VALID_NEWS = [
 		'title'   => 'foo article',
