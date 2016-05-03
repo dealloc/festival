@@ -2,6 +2,8 @@
 
 namespace Festival\Providers;
 
+use Festival\Events\Contacts\CreateContactEvent;
+use Festival\Events\Listeners\Contacts\SendMailOnCreateListener;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,8 +15,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'Festival\Events\SomeEvent' => [
-            'Festival\Listeners\EventListener',
+        CreateContactEvent::class => [
+            SendMailOnCreateListener::class,
         ],
     ];
 
