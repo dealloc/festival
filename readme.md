@@ -1,9 +1,9 @@
 # Festival
 
-## Roadmap ![Progressbar](http://progressed.io/bar/22)
+## Roadmap ![Progressbar](http://progressed.io/bar/30)
  - [X] Newsfeed
 	 - [X] Can post new items on newsfeed
-	 - [ ] users can comment on newsitems
+	 - [X] users can comment on newsitems
  - [ ] line-up page
 	 - [X] can add new artists on lineup
 	 - [X] each artist has a photo, name, description and a daterange they perform
@@ -18,7 +18,7 @@
  - [ ] authentication
 	 - [ ] social authentication
 	 - [X] users can register
-	 - [ ] users need to authenticate for commenting
+	 - [X] users need to authenticate for commenting
 	 - [ ] users need to authenticate for purchasing ticket
 	 - [X] user has first name, last name and email address
  - [ ] CRUD
