@@ -17,6 +17,28 @@ class GetNewsTest extends AuthenticatedTestCase
 
 		$this->getJson('/api/news')
 			->seeStatusCode(200)
-			->seeJsonStructure(['total', 'per_page', 'last_page', 'from', 'to', 'data']);
+			->seeJsonStructure([ 'total', 'current_page', 'per_page', 'last_page', 'from', 'to', 'data' ])
+			->seeJson([ 'current_page' => 1 ])
+			->seeJson([ 'total' => 5 ]);
+	}
+
+	public function testRetrieveNothing()
+	{
+		$this->getJson('/api/news')
+			->seeStatusCode(200)
+			->seeJsonStructure([ 'total', 'current_page', 'per_page', 'last_page', 'from', 'to', 'data' ])
+			->seeJson([ 'current_page' => 1 ])
+			->seeJson([ 'total' => 0 ]);
+	}
+
+	public function retrieveSecondPage()
+	{
+		$this->generateNews(50);
+
+		$this->getJson('/api/news?page=2')
+			->seeStatusCode(200)
+			->seeJsonStructure([ 'total', 'current_page', 'per_page', 'last_page', 'from', 'to', 'data' ])
+			->seeJson([ 'current_page' => 2 ])
+			->seeJson([ 'total' => 50 ]);
 	}
 }
