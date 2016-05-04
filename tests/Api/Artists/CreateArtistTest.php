@@ -93,6 +93,17 @@ class CreateArtistTest extends AuthenticatedTestCase
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
 	}
 
+	public function testStartBeforeNow()
+	{
+		$artist = $this->getValidArtist();
+		$artist[ 'start' ] = \Carbon\Carbon::now()->subDay()->toDateTimeString();
+
+		$this->postJson('/api/lineup/create', $artist)
+			->seeStatusCode(422)
+			->seeJson()
+			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
+	}
+
 	public function testEmptyStartDate()
 	{
 		$artist = $this->getValidArtist();
