@@ -154,7 +154,7 @@ class CreateArtistTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/lineup/create', $artist)
 			->seeStatusCode(422)
-			->seeJson([ 'end' => [ 'The end is not a valid date.' ] ])
+			->seeJson([ 'end' => [ 'The end is not a valid date.', 'The end must be a date after start.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
 	}
 
