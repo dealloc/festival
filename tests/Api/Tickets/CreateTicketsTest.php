@@ -8,7 +8,7 @@ class CreateTicketsTest extends AuthenticatedTestCase
 {
 	public function testValidPurchase()
 	{
-		$this->postJson('/api/tickets/purchase')
+		$this->postJson('/api/tickets')
 			->seeStatusCode(200)
 			->seeJsonStructure([ 'id', 'token' ]);
 
