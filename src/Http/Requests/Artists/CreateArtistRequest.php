@@ -19,7 +19,7 @@ class CreateArtistRequest extends Request
 			'description' => 'required|string',
 			'start'       => 'required|date',
 			'end'         => 'required|date',
-			'image'       => 'required|string',
+			'image'       => 'required|string|url',
 		];
 	}
 }
