@@ -10,9 +10,9 @@ class ContactTest extends TestCase
 		$user = factory(User::class)->make();
 
 		return [
-			'sender' => $user->email,
+			'sender'  => $user->email,
 			'subject' => 'My opinion',
-			'content' => 'I love your website!'
+			'content' => 'I love your website!',
 		];
 	}
 
@@ -33,29 +33,29 @@ class ContactTest extends TestCase
 		$this->dontExpectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
-			->seeJson();
+			->seeJson([ 'sender' => [ 'The sender field is required.' ] ]);
 	}
 
 	public function testEmptySender()
 	{
 		$contact = $this->getvalidContact();
-		$contact['sender'] = '';
+		$contact[ 'sender' ] = '';
 
 		$this->dontExpectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
-			->seeJson();
+			->seeJson([ 'sender' => [ 'The sender field is required.' ] ]);
 	}
 
 	public function testInvalidSender()
 	{
 		$contact = $this->getvalidContact();
-		$contact['sender'] = 'invalid';
+		$contact[ 'sender' ] = 'invalid';
 
 		$this->dontExpectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
-			->seeJson();
+			->seeJson([ 'sender' => [ 'The sender must be a valid email address.' ] ]);
 	}
 
 	public function testNoSubject()
@@ -65,18 +65,18 @@ class ContactTest extends TestCase
 		$this->dontExpectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
-			->seeJson();
+			->seeJson([ 'subject' => [ 'The subject field is required.' ] ]);
 	}
 
 	public function testEmptySubject()
 	{
 		$contact = $this->getvalidContact();
-		$contact['subject'] = '';
+		$contact[ 'subject' ] = '';
 
 		$this->dontExpectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
-			->seeJson();
+			->seeJson([ 'subject' => [ 'The subject field is required.' ] ]);
 	}
 
 	public function testNoContent()
@@ -86,17 +86,17 @@ class ContactTest extends TestCase
 		$this->dontExpectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
-			->seeJson();
+			->seeJson([ 'content' => [ 'The content field is required.' ] ]);
 	}
 
 	public function testEmptyContent()
 	{
 		$contact = $this->getvalidContact();
-		$contact['content'] = '';
+		$contact[ 'content' ] = '';
 
 		$this->dontExpectEmail()
 			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
-			->seeJson();
+			->seeJson([ 'content' => [ 'The content field is required.' ] ]);
 	}
 }
