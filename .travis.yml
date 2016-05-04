@@ -6,7 +6,7 @@ php:
   - hhvm
 
 before_script:
-  - cp .env.gitlab .env
+  - cp .env.testing .env
   - composer self-update
   - composer install --no-interaction
 

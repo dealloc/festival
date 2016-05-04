@@ -6,7 +6,7 @@ before_script:
   - ping -c 3 mysql
   - composer self-update
   - composer install --no-progress --no-interaction
-  - cp .env.gitlab .env
+  - cp .env.testing .env
   - php artisan key:generate
   - php artisan migrate:refresh
   - php artisan db:seed
