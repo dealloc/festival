@@ -52,7 +52,8 @@ class ContactTest extends TestCase
 		$contact = $this->getvalidContact();
 		$contact['sender'] = 'invalid';
 
-		$this->postJson('/api/contact', $contact)
+		$this->dontExpectEmail()
+			->postJson('/api/contact', $contact)
 			->seeStatusCode(422)
 			->seeJson();
 	}
