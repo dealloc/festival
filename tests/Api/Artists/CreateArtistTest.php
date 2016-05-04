@@ -13,7 +13,7 @@ class CreateArtistTest extends AuthenticatedTestCase
 		return [
 			'name'        => 'John lemon',
 			'description' => 'some juicy beats',
-			'start'       => \Carbon\Carbon::now()->toDateTimeString(),
+			'start'       => \Carbon\Carbon::now()->addHour(1)->toDateTimeString(),
 			'end'         => \Carbon\Carbon::now()->addHour(5)->toDateTimeString(),
 			'image'       => 'http://lorempixel.com/g/400/200/',
 		];
@@ -122,7 +122,7 @@ class CreateArtistTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/lineup/create', $artist)
 			->seeStatusCode(422)
-			->seeJson([ 'start' => [ 'The start is not a valid date.' ] ])
+			->seeJson([ 'start' => [ 'The start is not a valid date.', 'The start must be a date after now.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
 	}
 

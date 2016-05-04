@@ -17,8 +17,8 @@ class CreateArtistRequest extends Request
 		return [
 			'name'        => 'required|string',
 			'description' => 'required|string',
-			'start'       => 'required|date',
-			'end'         => 'required|date',
+			'start'       => 'required|date|before:end|after:now',
+			'end'         => 'required|date|after:start',
 			'image'       => 'required|string|url',
 		];
 	}
