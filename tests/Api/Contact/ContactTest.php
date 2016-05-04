@@ -28,36 +28,74 @@ class ContactTest extends TestCase
 
 	public function testNoSender()
 	{
-		$this->fail('Not implemented.');
+		$contact = array_except($this->getvalidContact(), 'sender');
+
+		$this->dontExpectEmail()
+			->postJson('/api/contact', $contact)
+			->seeStatusCode(422)
+			->seeJson();
 	}
 
 	public function testEmptySender()
 	{
-		$this->fail('Not implemented.');
+		$contact = $this->getvalidContact();
+		$contact['sender'] = '';
+
+		$this->dontExpectEmail()
+			->postJson('/api/contact', $contact)
+			->seeStatusCode(422)
+			->seeJson();
 	}
 
 	public function testInvalidSender()
 	{
-		$this->fail('Not implemented.');
+		$contact = $this->getvalidContact();
+		$contact['sender'] = 'invalid';
+
+		$this->postJson('/api/contact', $contact)
+			->seeStatusCode(422)
+			->seeJson();
 	}
 
 	public function testNoSubject()
 	{
-		$this->fail('Not implemented.');
+		$contact = array_except($this->getvalidContact(), 'subject');
+
+		$this->dontExpectEmail()
+			->postJson('/api/contact', $contact)
+			->seeStatusCode(422)
+			->seeJson();
 	}
 
 	public function testEmptySubject()
 	{
-		$this->fail('Not implemented.');
+		$contact = $this->getvalidContact();
+		$contact['subject'] = '';
+
+		$this->dontExpectEmail()
+			->postJson('/api/contact', $contact)
+			->seeStatusCode(422)
+			->seeJson();
 	}
 
 	public function testNoContent()
 	{
-		$this->fail('Not implemented.');
+		$contact = array_except($this->getvalidContact(), 'content');
+
+		$this->dontExpectEmail()
+			->postJson('/api/contact', $contact)
+			->seeStatusCode(422)
+			->seeJson();
 	}
 
 	public function testEmptyContent()
 	{
-		$this->fail('Not implemented.');
+		$contact = $this->getvalidContact();
+		$contact['content'] = '';
+
+		$this->dontExpectEmail()
+			->postJson('/api/contact', $contact)
+			->seeStatusCode(422)
+			->seeJson();
 	}
 }
