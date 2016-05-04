@@ -81,4 +81,9 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
 		return $this;
 	}
+
+	protected function dontExpectEmail()
+	{
+		return $this->expectEmail(null, null, null, 0);
+	}
 }
