@@ -22,4 +22,29 @@ class CreateCommentTest extends AuthenticatedTestCase
 			->seeJson()
 			->seeInDatabase(CreateCommentTest::$TABLE_NAME, $comment);
 	}
+
+	public function testNoNews()
+	{
+		$this->fail('Not implemented yet.');
+	}
+
+	public function testEmptyNews()
+	{
+		$this->fail('Not implemented yet.');
+	}
+
+	public function testInvalidNews()
+	{
+		$this->fail('Not implemented yet.');
+	}
+
+	public function testNoContent()
+	{
+		$this->fail('Not implemented yet.');
+	}
+
+	public function testEmptyContent()
+	{
+		$this->fail('Not implemented yet.');
+	}
 }
