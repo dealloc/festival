@@ -13,7 +13,6 @@ class CreateCommentTest extends AuthenticatedTestCase
 		$news = factory(\Festival\Entities\News\News::class)->create();
 
 		$comment = [
-			'news_id' => $news->id,
 			'content' => 'Lorem ipsum dolor amat!',
 		];
 
@@ -30,35 +29,6 @@ class CreateCommentTest extends AuthenticatedTestCase
 		$this->postJson('/api/news/' . $news->identifier . '/comment')
 			->seeStatusCode(422)
 			->seeJson([ 'content' => [ 'The content field is required.' ] ])
-			->seeJson([ 'news_id' => [ 'The news id field is required.' ] ])
-			->dontSeeInDatabase(CreateCommentTest::$TABLE_NAME, [ ]);
-	}
-
-	public function testNoNews()
-	{
-		$news = factory(\Festival\Entities\News\News::class)->create();
-
-		$comment = [
-			'content' => 'Lorem ipsum dolor amat!',
-		];
-
-		$this->postJson('/api/news/' . $news->identifier . '/comment', $comment)
-			->seeStatusCode(422)
-			->seeJson([ 'news_id' => [ 'The news id field is required.' ] ])
-			->dontSeeInDatabase(CreateCommentTest::$TABLE_NAME, [ ]);
-	}
-
-	public function testEmptyNews()
-	{
-		$news = factory(\Festival\Entities\News\News::class)->create();
-
-		$comment = [
-			'content' => 'Lorem ipsum dolor amat!',
-		];
-
-		$this->postJson('/api/news/' . $news->identifier . '/comment', $comment)
-			->seeStatusCode(422)
-			->seeJson([ 'news_id' => [ 'The news id field is required.' ] ])
 			->dontSeeInDatabase(CreateCommentTest::$TABLE_NAME, [ ]);
 	}
 
