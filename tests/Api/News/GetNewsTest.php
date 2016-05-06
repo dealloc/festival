@@ -17,7 +17,7 @@ class GetNewsTest extends AuthenticatedTestCase
 
 		$this->getJson('/api/news')
 			->seeStatusCode(200)
-			->seeJsonStructure([ 'total', 'current_page', 'per_page', 'last_page', 'from', 'to', 'data' ])
+			->seePaginated()
 			->seeJson([ 'current_page' => 1 ])
 			->seeJson([ 'total' => 5 ]);
 	}
@@ -26,7 +26,7 @@ class GetNewsTest extends AuthenticatedTestCase
 	{
 		$this->getJson('/api/news')
 			->seeStatusCode(200)
-			->seeJsonStructure([ 'total', 'current_page', 'per_page', 'last_page', 'from', 'to', 'data' ])
+			->seePaginated()
 			->seeJson([ 'current_page' => 1 ])
 			->seeJson([ 'total' => 0 ]);
 	}
@@ -37,7 +37,7 @@ class GetNewsTest extends AuthenticatedTestCase
 
 		$this->getJson('/api/news?page=2')
 			->seeStatusCode(200)
-			->seeJsonStructure([ 'total', 'current_page', 'per_page', 'last_page', 'from', 'to', 'data' ])
+			->seePaginated()
 			->seeJson([ 'current_page' => 2 ])
 			->seeJson([ 'total' => 50 ]);
 	}

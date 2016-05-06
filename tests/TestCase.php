@@ -104,7 +104,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 		$this->seeJsonStructure(['total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url', 'from', 'to']);
 
 		if (is_null($data))
-			$this->seeJsonStructure(['data' => '*']);
+			$this->seeJsonStructure(['data']);
 		else
 			$this->seeJsonStructure(compact('data'));
 
