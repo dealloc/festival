@@ -6,10 +6,11 @@ use Exception;
 use Festival\Exceptions\Auth\InvalidCredentialsException;
 use Festival\Exceptions\Handlers\Auth\InvalidCredentialsHandler;
 use Festival\Exceptions\Handlers\HttpExceptionHandler;
+use Festival\Exceptions\Handlers\ModelNotFoundHandler;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Exception\HttpResponseException;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Auth\Access\AuthorizationException;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Ichtus\Exceptions\Dispatchers\Dispatcher as DispatchesExceptions;
@@ -21,6 +22,7 @@ class Handler extends ExceptionHandler
 	protected $handlers = [
 		HttpResponseException::class       => HttpExceptionHandler::class,
 		InvalidCredentialsException::class => InvalidCredentialsHandler::class,
+		ModelNotFoundException::class      => ModelNotFoundHandler::class,
 	];
 
 	/**
