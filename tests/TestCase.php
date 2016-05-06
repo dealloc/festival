@@ -82,8 +82,32 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 		return $this;
 	}
 
+	/**
+	 * Verify that no mails were send.
+	 *
+	 * @return $this
+	 */
 	protected function dontExpectEmail()
 	{
 		return $this->expectEmail(null, null, null, 0);
+	}
+
+	/**
+	 * Verify that the response was a correctly formatted paginated response.
+	 * @link https://laravel.com/docs/5.2/pagination
+	 *
+	 * @param array|null $data
+	 * @return $this
+	 */
+	protected function seePaginated(array $data = null)
+	{
+		$this->seeJsonStructure(['total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url', 'from', 'to']);
+
+		if (is_null($data))
+			$this->seeJsonStructure(['data' => '*']);
+		else
+			$this->seeJsonStructure(compact('data'));
+
+		return $this;
 	}
 }
