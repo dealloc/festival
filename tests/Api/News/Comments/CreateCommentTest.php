@@ -22,7 +22,15 @@ class CreateCommentTest extends AuthenticatedTestCase
 			->seeInDatabase(CreateCommentTest::$TABLE_NAME, $comment);
 	}
 
-	public function testEmptyPayload()
+	public function testInvalidNews()
+	{
+		$this->postJson('/api/news/invalid/comment')
+			->seeStatusCode(404)
+			->seeJson()
+			->dontSeeInDatabase(CreateCommentTest::$TABLE_NAME, [ ]);
+	}
+
+	public function testNoContent()
 	{
 		$news = factory(\Festival\Entities\News\News::class)->create();
 
@@ -32,18 +40,15 @@ class CreateCommentTest extends AuthenticatedTestCase
 			->dontSeeInDatabase(CreateCommentTest::$TABLE_NAME, [ ]);
 	}
 
-	public function testInvalidNews()
-	{
-		$this->fail('Not implemented yet.');
-	}
-
-	public function testNoContent()
-	{
-		$this->fail('Not implemented yet.');
-	}
-
 	public function testEmptyContent()
 	{
-		$this->fail('Not implemented yet.');
+		$news = factory(\Festival\Entities\News\News::class)->create();
+
+		$comment = [ 'content' => '' ];
+
+		$this->postJson('/api/news/' . $news->identifier . '/comment', $comment)
+			->seeStatusCode(422)
+			->seeJson([ 'content' => [ 'The content field is required.' ] ])
+			->dontSeeInDatabase(CreateCommentTest::$TABLE_NAME, [ ]);
 	}
 }
