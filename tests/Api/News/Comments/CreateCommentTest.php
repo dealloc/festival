@@ -19,7 +19,7 @@ class CreateCommentTest extends AuthenticatedTestCase
 
 		$this->postJson('/api/news/' . $news->identifier . '/comment', $comment)
 			->seeStatusCode(200)
-			->seeJson()
+			->seeJson($comment)
 			->seeInDatabase(CreateCommentTest::$TABLE_NAME, $comment);
 	}
 
