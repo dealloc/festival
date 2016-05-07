@@ -4,9 +4,15 @@
 namespace Festival\Http\Requests\Artists;
 
 use Festival\Http\Requests\Request;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class CreateArtistRequest extends Request
 {
+	public function authorize(Gate $gate)
+	{
+		return $gate->allows('create-artist');
+	}
+
 	/**
 	 * Define the rules for validating this request.
 	 *

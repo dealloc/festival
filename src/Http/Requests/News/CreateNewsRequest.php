@@ -10,7 +10,7 @@ class CreateNewsRequest extends Request
 {
 	public function authorize(Gate $gate)
 	{
-		return $gate->check('news.create');
+		return $gate->allows('news.create');
 	}
 
 	/**

@@ -15,7 +15,7 @@
  	- [ ] payment
  - [ ] authorization
 	 - [X] normal users can comment
-	 - [ ] admins can add artists
+	 - [X] admins can add artists
 	 - [X] admins can add news items
  - [ ] authentication
 	 - [ ] social authentication
