@@ -14,14 +14,14 @@
  	- [X] get all tickets of the user
  	- [ ] payment
  - [ ] authorization
-	 - [ ] normal users can comment
+	 - [X] normal users can comment
 	 - [ ] admins can add artists
 	 - [ ] admins can add news items
  - [ ] authentication
 	 - [ ] social authentication
 	 - [X] users can register
 	 - [X] users need to authenticate for commenting
-	 - [ ] users need to authenticate for purchasing ticket
+	 - [X] users need to authenticate for purchasing ticket
 	 - [X] user has first name, last name and email address
  - [ ] CRUD
  	 - [ ] Artist
