@@ -10,6 +10,8 @@ class Comment extends Model
 {
 	protected $fillable = [ 'news_id', 'content', 'user_id' ];
 
+	protected $hidden = [ 'user_id', 'news_id' ];
+
 	public function article()
 	{
 		return $this->belongsTo(News::class, null, null, 'news');

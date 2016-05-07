@@ -13,8 +13,10 @@ class News extends Model
 
 	protected $fillable = [ 'title', 'content', 'user_id', 'identifier' ];
 
-	protected $with = ['comments', 'author'];
+	protected $with = [ 'comments', 'author' ];
 
+	protected $hidden = [ 'user_id' ];
+	
 	/**
 	 * Get the route key for the model.
 	 *

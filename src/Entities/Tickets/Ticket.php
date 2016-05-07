@@ -10,7 +10,9 @@ class Ticket extends Model
 {
 	protected $fillable = [ 'user_id', 'token' ];
 
-	protected $with = ['owner'];
+	protected $with = [ 'owner' ];
+
+	protected $hidden = [ 'user_id' ];
 
 	public function owner()
 	{
