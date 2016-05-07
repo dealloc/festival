@@ -14,7 +14,7 @@ class RetrieveTicketsTest extends AuthenticatedTestCase
 			->seeStatusCode(200)
 			->seeJsonStructure([
 				'*' => [
-					'id', 'token', 'created_at'
+					'id', 'token', 'created_at', 'owner'
 				]
 			]);
 	}
