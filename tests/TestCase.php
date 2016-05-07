@@ -68,7 +68,7 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 	protected function expectEmail($recipient = null, $subject = null, $content = null, $times = 1)
 	{
 		$mock = \Mockery::mock(app(MailerContract::class));
-		$this->app->singleton(MailerContract::class, function() use($mock) { return $mock; });
+		$this->app->singleton(MailerContract::class, function () use ($mock) { return $mock; });
 
 		$mock->shouldReceive('send')
 			->with(\Mockery::any(), \Mockery::any(), \Mockery::on(function (\Closure $closure) use ($recipient, $subject, $content)
@@ -101,12 +101,12 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 	 */
 	protected function seePaginated(array $data = null)
 	{
-		$this->seeJsonStructure(['total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url', 'from', 'to']);
+		$this->seeJsonStructure([ 'total', 'per_page', 'current_page', 'last_page', 'next_page_url', 'prev_page_url', 'from', 'to' ]);
 
-		if (is_null($data))
-			$this->seeJsonStructure(['data']);
+		if ( is_null($data) )
+			$this->seeJsonStructure([ 'data' ]);
 		else
-			$this->seeJsonStructure(compact('data'));
+			$this->seeJsonStructure([ 'data' => [ '*' => $data ] ]);
 
 		return $this;
 	}
