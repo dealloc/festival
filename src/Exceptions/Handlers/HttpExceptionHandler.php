@@ -17,12 +17,30 @@ class HttpExceptionHandler implements Handler
 	 */
 	public function handle($exception)
 	{
+		$code = $exception->getResponse()->getStatusCode();
+
+		if ($code == 422)
+			return $this->failedValidation($exception);
+		else if ($code == 403)
+			return $this->failedAuthorization($exception);
+	}
+
+	private function failedValidation(HttpResponseException $exception)
+	{
 		$reason = json_decode($exception->getResponse()->getContent(), true);
 
 		return response()->json([
-			'error' => 'validation failed',
+			'error' => 'Validation failed',
 			'error_code' => $exception->getResponse()->getStatusCode(),
 			'reason' => $reason
 		], 422);
+	}
+
+	private function failedAuthorization(HttpResponseException $exception)
+	{
+		return response()->json([
+			'error' => 'Authorization failed',
+			'error_code' => $exception->getResponse()->getStatusCode(),
+		], 403);
 	}
 }

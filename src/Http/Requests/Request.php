@@ -2,6 +2,7 @@
 
 namespace Festival\Http\Requests;
 
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Foundation\Http\FormRequest;
 
 abstract class Request extends FormRequest
@@ -11,7 +12,7 @@ abstract class Request extends FormRequest
 	 *
 	 * @return bool
 	 */
-	public function authorize()
+	public function authorize(Gate $gate)
 	{
 		return true;
     }
