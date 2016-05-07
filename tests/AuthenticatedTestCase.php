@@ -46,7 +46,7 @@ class AuthenticatedTestCase extends TestCase
 	public function authenticate()
 	{
 		if ( ! is_null($this->user) )
-			return;
+			return $this;
 
 		$this->user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
 
@@ -56,6 +56,17 @@ class AuthenticatedTestCase extends TestCase
 	public function logout()
 	{
 		$this->user = null;
+
+		return $this;
+	}
+
+	public function asAdmin()
+	{
+		if (is_null($this->user))
+			$this->authenticate();
+
+		$this->user->admin = true;
+		$this->user->save();
 
 		return $this;
 	}
