@@ -4,9 +4,15 @@
 namespace Festival\Http\Requests\News;
 
 use Festival\Http\Requests\Request;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class CreateNewsRequest extends Request
 {
+	public function authorize(Gate $gate)
+	{
+		return $gate->check('news.create');
+	}
+
 	/**
 	 * Define the rules for validating this request.
 	 *
