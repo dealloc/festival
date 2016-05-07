@@ -49,11 +49,15 @@ class AuthenticatedTestCase extends TestCase
 			return;
 
 		$this->user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
+
+		return $this;
 	}
 
 	public function logout()
 	{
 		$this->user = null;
+
+		return $this;
 	}
 
 	/**
