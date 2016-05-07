@@ -206,4 +206,25 @@ class CreateArtistTest extends AuthenticatedTestCase
 			->seeJson([ 'image' => [ 'The image field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
 	}
+
+	public function testUnAuthorized()
+	{
+		$artist = $this->getValidArtist();
+		$this->logout();
+
+		$this->postJson('/api/lineup', $artist)
+			->seeStatusCode(401)
+			->dontSeeJson($artist)
+			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
+	}
+
+	public function testRegularUser()
+	{
+		$artist = $this->getValidArtist();
+
+		$this->postJson('/api/lineup', $artist)
+			->seeStatusCode(403)
+			->dontSeeJson($artist)
+			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
+	}
 }
