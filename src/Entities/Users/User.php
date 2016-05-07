@@ -2,6 +2,8 @@
 
 namespace Festival\Entities\Users;
 
+use Festival\Entities\News\News;
+use Festival\Entities\Tickets\Ticket;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -23,4 +25,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token', 'secret'
     ];
+
+    public function articles()
+    {
+        return $this->hasMany(News::class);
+    }
+
+	public function tickets()
+	{
+		return $this->hasMany(Ticket::class);
+	}
 }
