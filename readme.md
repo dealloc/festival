@@ -16,7 +16,7 @@
  - [ ] authorization
 	 - [X] normal users can comment
 	 - [ ] admins can add artists
-	 - [ ] admins can add news items
+	 - [X] admins can add news items
  - [ ] authentication
 	 - [ ] social authentication
 	 - [X] users can register
