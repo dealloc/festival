@@ -23,7 +23,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 	{
 		$artist = $this->getValidArtist();
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(200)
 			->seeJson()
 			->seeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -31,7 +32,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 
 	public function testEmptyPayload()
 	{
-		$this->postJson('/api/lineup')
+		$this->asAdmin()
+			->postJson('/api/lineup')
 			->seeStatusCode(422)
 			->seeJson([ 'name' => [ 'The name field is required.' ] ])
 			->seeJson([ 'description' => [ 'The description field is required.' ] ])
@@ -45,7 +47,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 	{
 		$artist = array_except($this->getValidArtist(), 'name');
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'name' => [ 'The name field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -56,7 +59,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'name' ] = '';
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'name' => [ 'The name field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -66,7 +70,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 	{
 		$artist = array_except($this->getValidArtist(), 'description');
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'description' => [ 'The description field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -77,7 +82,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'description' ] = '';
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'description' => [ 'The description field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -87,7 +93,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 	{
 		$artist = array_except($this->getValidArtist(), 'start');
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'start' => [ 'The start field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -98,7 +105,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'start' ] = \Carbon\Carbon::now()->subDay()->toDateTimeString();
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson()
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -109,7 +117,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'start' ] = '';
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'start' => [ 'The start field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -120,7 +129,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'start' ] = 'invalid';
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'start' => [ 'The start is not a valid date.', 'The start must be a date after now.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -130,7 +140,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 	{
 		$artist = array_except($this->getValidArtist(), 'end');
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'end' => [ 'The end field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -141,7 +152,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'end' ] = '';
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'end' => [ 'The end field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -152,7 +164,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'end' ] = 'invalid';
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'end' => [ 'The end is not a valid date.', 'The end must be a date after start.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -164,7 +177,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist[ 'start' ] = \Carbon\Carbon::now()->subDay()->toDateTimeString();
 		$artist[ 'end' ] = \Carbon\Carbon::now()->toDateTimeString();
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson()
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -174,7 +188,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 	{
 		$artist = array_except($this->getValidArtist(), 'image');
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'image' => [ 'The image field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
@@ -185,7 +200,8 @@ class CreateArtistTest extends AuthenticatedTestCase
 		$artist = $this->getValidArtist();
 		$artist[ 'image' ] = '';
 
-		$this->postJson('/api/lineup', $artist)
+		$this->asAdmin()
+			->postJson('/api/lineup', $artist)
 			->seeStatusCode(422)
 			->seeJson([ 'image' => [ 'The image field is required.' ] ])
 			->dontSeeInDatabase(CreateArtistTest::$TABLE_NAME, $artist);
