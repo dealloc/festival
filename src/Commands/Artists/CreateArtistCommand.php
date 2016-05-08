@@ -6,6 +6,12 @@ namespace Festival\Commands\Artists;
 use Carbon\Carbon;
 use Festival\Http\Requests\Artists\CreateArtistRequest;
 
+/**
+ * Command for creating a new artist.
+ *
+ * Class CreateArtistCommand
+ * @package Festival\Commands\Artists
+ */
 class CreateArtistCommand
 {
 	private $name;
@@ -13,7 +19,12 @@ class CreateArtistCommand
 	private $start;
 	private $end;
 	private $image;
-	
+
+	/**
+	 * CreateArtistCommand constructor.
+	 * 
+	 * @param \Festival\Http\Requests\Artists\CreateArtistRequest $request
+	 */
 	public function __construct(CreateArtistRequest $request)
 	{
 		$this->name = $request->get('name');

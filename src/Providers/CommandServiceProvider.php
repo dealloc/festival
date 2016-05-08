@@ -15,6 +15,12 @@ use Festival\Commands\Tickets\CreateTicketCommand;
 use Festival\Commands\Users\CreateUserCommand;
 use Ichtus\Commands\Providers\CommandServiceProvider as ServiceProvider;
 
+/**
+ * Register commands in the dispatcher runtime.
+ *
+ * Class CommandServiceProvider
+ * @package Festival\Providers
+ */
 class CommandServiceProvider extends ServiceProvider
 {
 	protected $mappings = [

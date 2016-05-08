@@ -7,6 +7,12 @@ use Festival\Commands\News\Comments\CreateCommentCommand;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\News\Comments\CommentRepository;
 
+/**
+ * Handler for the CreateCommentCommand.
+ *
+ * Class CreateCommentHandler
+ * @package Festival\Commands\Handlers\News\Comments
+ */
 class CreateCommentHandler
 {
 	/**
@@ -18,12 +24,24 @@ class CreateCommentHandler
 	 */
 	private $service;
 
+	/**
+	 * CreateCommentHandler constructor.
+	 * 
+	 * @param \Festival\Contracts\Repositories\News\Comments\CommentRepository $repository
+	 * @param \Festival\Contracts\Auth\AuthenticateService $service
+	 */
 	public function __construct(CommentRepository $repository, AuthenticateService $service)
 	{
 		$this->repository = $repository;
 		$this->service = $service;
 	}
 
+	/**
+	 * Handle the CreateCommentCommand.
+	 *
+	 * @param \Festival\Commands\News\Comments\CreateCommentCommand $command
+	 * @return \Festival\Entities\News\Comments\Comment|null
+	 */
 	public function handle(CreateCommentCommand $command)
 	{
 		return $this->repository->create([

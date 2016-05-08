@@ -7,6 +7,12 @@ namespace Festival\Exceptions\Handlers;
 use Ichtus\Exceptions\Contracts\Handlers\Handler;
 use Illuminate\Http\Exception\HttpResponseException;
 
+/**
+ * Handler for the HttpResponseException.
+ *
+ * Class HttpExceptionHandler
+ * @package Festival\Exceptions\Handlers
+ */
 class HttpExceptionHandler implements Handler
 {
 	/**
@@ -25,6 +31,12 @@ class HttpExceptionHandler implements Handler
 			return $this->failedAuthorization($exception);
 	}
 
+	/**
+	 * Handle the exception as a validation failed exception.
+	 *
+	 * @param \Illuminate\Http\Exception\HttpResponseException $exception
+	 * @return \Illuminate\Http\Response
+	 */
 	private function failedValidation(HttpResponseException $exception)
 	{
 		$reason = json_decode($exception->getResponse()->getContent(), true);
@@ -36,6 +48,12 @@ class HttpExceptionHandler implements Handler
 		], 422);
 	}
 
+	/**
+	 * Handl the exception as an authorization failed exception.
+	 *
+	 * @param \Illuminate\Http\Exception\HttpResponseException $exception
+	 * @return \Illuminate\Http\Response
+	 */
 	private function failedAuthorization(HttpResponseException $exception)
 	{
 		return response()->json([

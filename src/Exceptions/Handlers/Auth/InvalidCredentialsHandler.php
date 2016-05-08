@@ -6,6 +6,12 @@ namespace Festival\Exceptions\Handlers\Auth;
 use Ichtus\Exceptions\Contracts\Handlers\Handler;
 use Festival\Exceptions\Auth\InvalidCredentialsException;
 
+/**
+ * Handler for the InvalidCredentialsException.
+ *
+ * Class InvalidCredentialsHandler
+ * @package Festival\Exceptions\Handlers\Auth
+ */
 class InvalidCredentialsHandler implements Handler
 {
 	/**

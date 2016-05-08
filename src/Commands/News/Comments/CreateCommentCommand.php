@@ -6,6 +6,12 @@ namespace Festival\Commands\News\Comments;
 use Festival\Entities\News\News;
 use Festival\Http\Requests\News\Comments\CreateCommentRequest;
 
+/**
+ * Command for creating a new comment.
+ *
+ * Class CreateCommentCommand
+ * @package Festival\Commands\News\Comments
+ */
 class CreateCommentCommand
 {
 	private $content;
@@ -14,6 +20,12 @@ class CreateCommentCommand
 	 */
 	private $article;
 
+	/**
+	 * CreateCommentCommand constructor.
+	 * 
+	 * @param \Festival\Http\Requests\News\Comments\CreateCommentRequest $request
+	 * @param \Festival\Entities\News\News $article
+	 */
 	public function __construct(CreateCommentRequest $request, News $article)
 	{
 		$this->content = $request->get('content');

@@ -7,6 +7,12 @@ namespace Festival\Exceptions\Handlers;
 use Ichtus\Exceptions\Contracts\Handlers\Handler;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
+/**
+ * Handler for the ModelNotFoundException.
+ *
+ * Class ModelNotFoundHandler
+ * @package Festival\Exceptions\Handlers
+ */
 class ModelNotFoundHandler implements Handler
 {
 	/**

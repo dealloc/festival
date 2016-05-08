@@ -8,6 +8,12 @@ use Festival\Contracts\Repositories\Users\UserRepository;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Hashing\Hasher;
 
+/**
+ * Provides an Eloquent implementation of the Authentication service.
+ *
+ * Class EloquentAuthenticateService
+ * @package Festival\Auth
+ */
 class EloquentAuthenticateService implements AuthContract
 {
 	/**
@@ -24,6 +30,13 @@ class EloquentAuthenticateService implements AuthContract
 	 */
 	private $guard;
 
+	/**
+	 * EloquentAuthenticateService constructor.
+	 * 
+	 * @param \Festival\Contracts\Repositories\Users\UserRepository $repository
+	 * @param \Illuminate\Contracts\Hashing\Hasher $hasher
+	 * @param \Illuminate\Contracts\Auth\Guard $guard
+	 */
 	public function __construct(UserRepository $repository, Hasher $hasher, Guard $guard)
 	{
 		$this->repository = $repository;
@@ -57,11 +70,21 @@ class EloquentAuthenticateService implements AuthContract
 		return true;
 	}
 
+	/**
+	 * Get the currently authenticated user.
+	 *
+	 * @return \Festival\Entities\Users\User|null
+	 */
 	public function user()
 	{
 		return $this->user;
 	}
 
+	/**
+	 * Check if no user is currently authenticated.
+	 *
+	 * @return boolean Returns true if no user is authenticated, false if there's an authenticated user.
+	 */
 	public function guest()
 	{
 		return ( is_null($this->user()) );
@@ -70,7 +93,7 @@ class EloquentAuthenticateService implements AuthContract
 	/**
 	 * Check if the token is a valid user token.
 	 *
-	 * @param $token
+	 * @param string $token
 	 * @return boolean
 	 */
 	public function authenticate($token)
@@ -85,7 +108,7 @@ class EloquentAuthenticateService implements AuthContract
 	/**
 	 * Generate an authentication token.
 	 *
-	 * @return mixed
+	 * @return string
 	 */
 	public function refresh()
 	{

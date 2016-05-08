@@ -8,6 +8,12 @@ use Festival\Contracts\Repositories\Users\UserRepository;
 use Festival\Events\Users\CreateUserEvent;
 use Illuminate\Contracts\Events\Dispatcher;
 
+/**
+ * Handler for the CreateUserCommand.
+ *
+ * Class CreateUserHandler
+ * @package Festival\Commands\Handlers\Users
+ */
 class CreateUserHandler
 {
 	/**
@@ -19,12 +25,24 @@ class CreateUserHandler
 	 */
 	private $dispatcher;
 
+	/**
+	 * CreateUserHandler constructor.
+	 * 
+	 * @param \Festival\Contracts\Repositories\Users\UserRepository $repository
+	 * @param \Illuminate\Contracts\Events\Dispatcher $dispatcher
+	 */
 	public function __construct(UserRepository $repository, Dispatcher $dispatcher)
 	{
 		$this->repository = $repository;
 		$this->dispatcher = $dispatcher;
 	}
 
+	/**
+	 * Handle the CreateUserCommand.
+	 *
+	 * @param \Festival\Commands\Users\CreateUserCommand $command
+	 * @return array
+	 */
 	public function handle(CreateUserCommand $command)
 	{
 		$user = $this->repository->create([

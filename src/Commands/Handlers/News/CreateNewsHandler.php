@@ -7,6 +7,12 @@ use Festival\Commands\News\CreateNewsCommand;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\News\NewsRepository;
 
+/**
+ * Handler for the CreateNewsCommand.
+ *
+ * Class CreateNewsHandler
+ * @package Festival\Commands\Handlers\News
+ */
 class CreateNewsHandler
 {
 	/**
@@ -22,6 +28,13 @@ class CreateNewsHandler
 	 */
 	private $auth;
 
+	/**
+	 * CreateNewsHandler constructor.
+	 * 
+	 * @param \Festival\Commands\News\CreateNewsCommand $command
+	 * @param \Festival\Contracts\Repositories\News\NewsRepository $repository
+	 * @param \Festival\Contracts\Auth\AuthenticateService $auth
+	 */
 	public function __construct(CreateNewsCommand $command, NewsRepository $repository, AuthenticateService $auth)
 	{
 		$this->command = $command;
@@ -29,6 +42,11 @@ class CreateNewsHandler
 		$this->auth = $auth;
 	}
 
+	/**
+	 * Handle the CreateNewsCommand.
+	 *
+	 * @return \Festival\Entities\News\News|null
+	 */
 	public function handle()
 	{
 		$news = $this->repository->create([

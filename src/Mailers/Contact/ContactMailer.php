@@ -5,10 +5,21 @@ namespace Festival\Mailers\Contact;
 
 use Festival\Mailers\Mailer;
 
+/**
+ * Mailer for mails to administrators from contact form.
+ *
+ * Class ContactMailer
+ * @package Festival\Mailers\Contact
+ */
 class ContactMailer extends Mailer
 {
 	/**
-	 * @param string $recipient
+	 * Send a contact email to the administrator.
+	 *
+	 * @param string $sender
+	 * @param string $subject
+	 * @param string $content
+	 * @internal param string $recipient
 	 */
 	public function contact($sender, $subject, $content)
 	{

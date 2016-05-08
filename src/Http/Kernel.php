@@ -4,6 +4,12 @@ namespace Festival\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
+/**
+ * The Laravel HTTP kernel.
+ *
+ * Class Kernel
+ * @package Festival\Http
+ */
 class Kernel extends HttpKernel
 {
     /**

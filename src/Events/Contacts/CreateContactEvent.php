@@ -6,12 +6,23 @@ namespace Festival\Events\Contacts;
 use Festival\Events\Event;
 use Festival\Http\Requests\Contacts\CreateContactRequest;
 
+/**
+ * Event fired when a new message was send to contact the site administrators.
+ *
+ * Class CreateContactEvent
+ * @package Festival\Events\Contacts
+ */
 class CreateContactEvent extends Event
 {
 	private $subject;
 	private $content;
 	private $sender;
 
+	/**
+	 * CreateContactEvent constructor.
+	 * 
+	 * @param \Festival\Http\Requests\Contacts\CreateContactRequest $request
+	 */
 	public function __construct(CreateContactRequest $request)
 	{
 		$this->sender = $request->get('sender');

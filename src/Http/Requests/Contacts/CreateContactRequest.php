@@ -5,6 +5,12 @@ namespace Festival\Http\Requests\Contacts;
 
 use Festival\Http\Requests\Request;
 
+/**
+ * Request for validating and authorizing request to contact the administrators.
+ *
+ * Class CreateContactRequest
+ * @package Festival\Http\Requests\Contacts
+ */
 class CreateContactRequest extends Request
 {
 	/**

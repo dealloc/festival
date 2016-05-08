@@ -3,9 +3,14 @@
 
 namespace Festival\Http\Requests\Users;
 
-
 use Festival\Http\Requests\Request;
 
+/**
+ * Request for validating and authorizing request to register a new user.
+ *
+ * Class CreateUserRequest
+ * @package Festival\Http\Requests\Users
+ */
 class CreateUserRequest extends Request
 {
 	public function rules()

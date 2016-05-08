@@ -6,6 +6,12 @@ namespace Festival\Events\Users;
 use Festival\Entities\Users\User;
 use Festival\Events\Event;
 
+/**
+ * Event fired when a new user is created.
+ *
+ * Class CreateUserEvent
+ * @package Festival\Events\Users
+ */
 class CreateUserEvent extends Event
 {
 	/**
@@ -13,6 +19,11 @@ class CreateUserEvent extends Event
 	 */
 	private $user;
 
+	/**
+	 * CreateUserEvent constructor.
+	 * 
+	 * @param \Festival\Entities\Users\User $user
+	 */
 	public function __construct(User $user)
 	{
 		$this->user = $user;

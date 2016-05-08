@@ -5,6 +5,12 @@ namespace Festival\Http\Requests\Tickets;
 
 use Festival\Http\Requests\Request;
 
+/**
+ * Request for validating and authorizing request to purchase a ticket.
+ *
+ * Class CreateTicketRequest
+ * @package Festival\Http\Requests\Tickets
+ */
 class CreateTicketRequest extends Request
 {
 	/**

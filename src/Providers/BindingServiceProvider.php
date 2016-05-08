@@ -16,8 +16,19 @@ use Festival\Contracts\Repositories\Artists\ArtistRepository;
 use Festival\Repositories\News\EloquentNewsRepository;
 use Festival\Contracts\Repositories\News\NewsRepository;
 
+/**
+ * Bind the interfaces to their bindings in the container.
+ *
+ * Class BindingServiceProvider
+ * @package Festival\Providers
+ */
 class BindingServiceProvider extends ServiceProvider
 {
+	/**
+	 * The mapping between contract and implementation.
+	 *
+	 * @var array
+	 */
 	protected $bindings = [
 		UserRepository::class      => EloquentUserRepository::class,
 		ArtistRepository::class    => EloquentArtistRepository::class,

@@ -5,6 +5,12 @@ namespace Festival\Http\Requests\News\Comments;
 
 use Festival\Http\Requests\Request;
 
+/**
+ * Request for validating and authorizing request to create a new comment.
+ *
+ * Class CreateCommentRequest
+ * @package Festival\Http\Requests\News\Comments
+ */
 class CreateCommentRequest extends Request
 {
 	/**

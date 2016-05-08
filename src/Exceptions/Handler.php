@@ -15,10 +15,21 @@ use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Ichtus\Exceptions\Dispatchers\Dispatcher as DispatchesExceptions;
 
+/**
+ * The laravel exception handler extended with the Ichtus catcher pattern.
+ *
+ * Class Handler
+ * @package Festival\Exceptions
+ */
 class Handler extends ExceptionHandler
 {
 	use DispatchesExceptions;
 
+	/**
+	 * The mappings for exceptions and their handlers.
+	 *
+	 * @var array
+	 */
 	protected $handlers = [
 		HttpResponseException::class       => HttpExceptionHandler::class,
 		InvalidCredentialsException::class => InvalidCredentialsHandler::class,

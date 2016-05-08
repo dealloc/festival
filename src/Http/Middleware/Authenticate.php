@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Exceptions\Auth\InvalidCredentialsException;
 
+/**
+ * HTTP middleware responsible for filtering unauthenticated requests.
+ *
+ * Class Authenticate
+ * @package Festival\Http\Middleware
+ */
 class Authenticate
 {
 	/**
@@ -14,6 +20,11 @@ class Authenticate
 	 */
 	private $service;
 
+	/**
+	 * Authenticate constructor.
+	 * 
+	 * @param \Festival\Contracts\Auth\AuthenticateService $service
+	 */
 	public function __construct(AuthenticateService $service)
 	{
 		$this->service = $service;

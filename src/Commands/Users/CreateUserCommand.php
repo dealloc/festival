@@ -5,6 +5,12 @@ namespace Festival\Commands\Users;
 
 use Festival\Http\Requests\Users\CreateUserRequest;
 
+/**
+ * Command for registering a new user.
+ *
+ * Class CreateUserCommand
+ * @package Festival\Commands\Users
+ */
 class CreateUserCommand
 {
 	private $fname;
@@ -12,6 +18,11 @@ class CreateUserCommand
 	private $email;
 	private $password;
 
+	/**
+	 * CreateUserCommand constructor.
+	 * 
+	 * @param \Festival\Http\Requests\Users\CreateUserRequest $request
+	 */
 	public function __construct(CreateUserRequest $request)
 	{
 		$this->fname = $request->get('fname');

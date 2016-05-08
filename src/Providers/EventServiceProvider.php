@@ -9,6 +9,12 @@ use Festival\Events\Users\CreateUserEvent;
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
+/**
+ * Map events to their listeners.
+ *
+ * Class EventServiceProvider
+ * @package Festival\Providers
+ */
 class EventServiceProvider extends ServiceProvider
 {
     /**

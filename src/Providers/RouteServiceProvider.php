@@ -5,6 +5,12 @@ namespace Festival\Providers;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
+/**
+ * Register the HTTP routes for this application.
+ *
+ * Class RouteServiceProvider
+ * @package Festival\Providers
+ */
 class RouteServiceProvider extends ServiceProvider
 {
 	/**

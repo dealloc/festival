@@ -5,6 +5,12 @@ namespace Festival\Commands\News;
 
 use Festival\Http\Requests\News\CreateNewsRequest;
 
+/**
+ * Command for creating a new news article.
+ *
+ * Class CreateNewsCommand
+ * @package Festival\Commands\News
+ */
 class CreateNewsCommand
 {
 	private $title;
@@ -12,6 +18,7 @@ class CreateNewsCommand
 
 	/**
 	 * CreateNewsCommand constructor.
+	 * 
 	 * @param \Festival\Http\Requests\News\CreateNewsRequest $request
 	 */
 	public function __construct(CreateNewsRequest $request)

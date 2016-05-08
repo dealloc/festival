@@ -6,19 +6,32 @@ namespace Festival\Mailers;
 use Illuminate\Contracts\Mail\Mailer as MailerContract;
 use Illuminate\Mail\Message;
 
+/**
+ * Provides a convenient interface to send emails.
+ *
+ * Class Mailer
+ * @package Festival\Mailers
+ */
 abstract class Mailer
 {
 	/**
 	 * @var \Illuminate\Contracts\Mail\Mailer
 	 */
 	private $mailer;
-	
+
+	/**
+	 * Mailer constructor.
+	 *
+	 * @param \Illuminate\Contracts\Mail\Mailer $mailer
+	 */
 	public function __construct(MailerContract $mailer)
 	{
 		$this->mailer = $mailer;
 	}
 
 	/**
+	 * Send an email.
+	 *
 	 * @param string $recipient
 	 * @param string $subject
 	 * @param string $view

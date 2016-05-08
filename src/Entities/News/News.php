@@ -7,6 +7,12 @@ use Festival\Entities\News\Comments\Comment;
 use Festival\Entities\Users\User;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * The news model.
+ *
+ * Class News
+ * @package Festival\Entities\News
+ */
 class News extends Model
 {
 	protected $table = 'news';
@@ -27,11 +33,21 @@ class News extends Model
 		return 'identifier';
 	}
 
+	/**
+	 * The comments this news article owns.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
 	public function comments()
 	{
 		return $this->hasMany(Comment::class);
 	}
 
+	/**
+	 * The user that created this article.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function author()
 	{
 		return $this->belongsTo(User::class, null, null, 'user');

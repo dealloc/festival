@@ -6,6 +6,8 @@ namespace Festival\Entities\Artists;
 use Illuminate\Database\Eloquent\Model;
 
 /**
+ * Artist model.
+ *
  * Class Artist
  * @package Entities\Artists
  */
