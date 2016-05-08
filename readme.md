@@ -17,7 +17,6 @@
 	 - [X] admins can add artists
 	 - [X] admins can add news items
  - [ ] authentication
-	 - [ ] social authentication
 	 - [X] users can register
 	 - [X] users need to authenticate for commenting
 	 - [X] users need to authenticate for purchasing ticket
