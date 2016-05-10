@@ -65,6 +65,7 @@ class EloquentAuthenticateService implements AuthContract
 		}
 		
 		$this->user->secret = $this->refresh();
+		$this->user->save();
 		$this->guard->setUser($this->user);
 
 		return true;
