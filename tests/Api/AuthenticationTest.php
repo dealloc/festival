@@ -25,19 +25,25 @@ class AuthenticationTest extends TestCase
 	public function testTokenRegenerationOnLogin()
 	{
 		$user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
+		$old = $user->secret;
 
 		$credentials = [
 			'email'    => $user->email,
 			'password' => 'foobar',
 		];
 
-		$this->postJson('/api/login', $credentials);
-
-		$token = json_decode($this->response->content())->token;
-
+		// perform a login to refresh the token.
 		$this->postJson('/api/login', $credentials)
 			->seeStatusCode(200)
-			->dontSeeJson([ 'token' => $token ]);
+			->seeJson();
+
+		$token = json_decode($this->response->content())->token;
+		$this->assertNotEquals($old, $token, 'Token should be refreshed after login.');
+
+		$this->seeInDatabase('users', [ 'secret' => $token ])
+			->getJson('/api/user', [ 'Authorization' => $token ])
+			->seeStatusCode(200)
+			->seeJson();
 	}
 
 	public function testInvalidCredentials()
