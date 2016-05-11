@@ -46,6 +46,18 @@ class AuthenticationTest extends TestCase
 			->seeJson();
 	}
 
+	public function testManualTokenRegeneration()
+	{
+		$user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
+		$old = $user->secret;
+
+		$this->put('/api/token', [ ], [ 'Accept' => 'application/json', 'Authorization' => $user->secret ])
+			->seeStatusCode(200)
+			->seeJsonStructure([ 'token' ])
+			->dontSeeInDatabase('users', [ 'secret' => $user->secret ])
+			->assertNotEquals(json_decode($this->response->getContent())->token, $old);
+	}
+
 	public function testInvalidCredentials()
 	{
 		$this->postJson('/api/login', [ 'email' => 'invalid@invalid.invalid', 'password' => 'invalid' ])
