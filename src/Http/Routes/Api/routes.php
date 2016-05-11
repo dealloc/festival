@@ -3,6 +3,8 @@
 
 $router->get('user', [ 'uses' => 'UserController@get', 'as' => 'api.users.me' ]);
 
+$router->put('token', [ 'uses' => 'AuthController@refresh', 'as' => 'api.token.refresh' ]);
+
 $router->post('news', [ 'uses' => 'NewsController@create', 'as' => 'api.news.create' ]);
 
 $router->post('news/{article}/comment', [ 'uses' => 'CommentController@create', 'as' => 'api.comments.create' ]);

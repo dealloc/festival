@@ -64,8 +64,7 @@ class EloquentAuthenticateService implements AuthContract
 			return false;
 		}
 		
-		$this->user->secret = $this->refresh();
-		$this->user->save();
+		$this->refresh();
 		$this->guard->setUser($this->user);
 
 		return true;
@@ -107,12 +106,11 @@ class EloquentAuthenticateService implements AuthContract
 	}
 
 	/**
-	 * Generate an authentication token.
-	 *
-	 * @return string
+	 * Refresh the current users authentication token.
 	 */
 	public function refresh()
 	{
-		return md5(uniqid());
+		$this->user->secret = md5(uniqid());
+		$this->user->save();
 	}
 }

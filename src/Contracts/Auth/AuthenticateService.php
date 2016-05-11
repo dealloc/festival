@@ -42,9 +42,7 @@ interface AuthenticateService
 	public function authenticate($token);
 
 	/**
-	 * Generate an authentication token.
-	 *
-	 * @return string
+	 * Refresh the current users authentication token.
 	 */
 	public function refresh();
 }
