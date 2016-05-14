@@ -3,8 +3,8 @@
 namespace Festival\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
-use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Exceptions\Auth\InvalidCredentialsException;
 
 /**
@@ -16,18 +16,18 @@ use Festival\Exceptions\Auth\InvalidCredentialsException;
 class Authenticate
 {
 	/**
-	 * @var \Festival\Contracts\Auth\AuthenticateService
+	 * @var \Illuminate\Contracts\Auth\Guard
 	 */
-	private $service;
+	private $guard;
 
 	/**
 	 * Authenticate constructor.
-	 * 
-	 * @param \Festival\Contracts\Auth\AuthenticateService $service
+	 *
+	 * @param \Illuminate\Contracts\Auth\Guard $guard
 	 */
-	public function __construct(AuthenticateService $service)
+	public function __construct(Guard $guard)
 	{
-		$this->service = $service;
+		$this->guard = $guard;
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Authenticate
 	 */
 	public function handle(Request $request, Closure $next, $guard = null)
 	{
-		if ( ! $this->service->authenticate($request->header('Authorization')) )
+		if ( $this->guard->guest() )
 			throw new InvalidCredentialsException;
 
 		return $next($request);

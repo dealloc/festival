@@ -6,6 +6,7 @@ namespace Festival\Commands\Handlers\News\Comments;
 use Festival\Commands\News\Comments\CreateCommentCommand;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\News\Comments\CommentRepository;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Handler for the CreateCommentCommand.
@@ -20,20 +21,20 @@ class CreateCommentHandler
 	 */
 	private $repository;
 	/**
-	 * @var \Festival\Contracts\Auth\AuthenticateService
+	 * @var \Illuminate\Contracts\Auth\Guard
 	 */
-	private $service;
+	private $guard;
 
 	/**
 	 * CreateCommentHandler constructor.
-	 * 
+	 *
 	 * @param \Festival\Contracts\Repositories\News\Comments\CommentRepository $repository
-	 * @param \Festival\Contracts\Auth\AuthenticateService $service
+	 * @param \Illuminate\Contracts\Auth\Guard $guard
 	 */
-	public function __construct(CommentRepository $repository, AuthenticateService $service)
+	public function __construct(CommentRepository $repository, Guard $guard)
 	{
 		$this->repository = $repository;
-		$this->service = $service;
+		$this->guard = $guard;
 	}
 
 	/**
@@ -45,7 +46,7 @@ class CreateCommentHandler
 	public function handle(CreateCommentCommand $command)
 	{
 		return $this->repository->create([
-			'user_id' => $this->service->user()->id,
+			'user_id' => $this->guard->user()->id,
 			'news_id' => $command->getArticle()->id,
 			'content' => $command->getContent()
 		]);

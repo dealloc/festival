@@ -6,6 +6,7 @@ namespace Festival\Commands\Handlers\News;
 use Festival\Commands\News\CreateNewsCommand;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\News\NewsRepository;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Handler for the CreateNewsCommand.
@@ -24,22 +25,22 @@ class CreateNewsHandler
 	 */
 	private $repository;
 	/**
-	 * @var \Festival\Contracts\Auth\AuthenticateService
+	 * @var \Illuminate\Contracts\Auth\Guard
 	 */
-	private $auth;
+	private $guard;
 
 	/**
 	 * CreateNewsHandler constructor.
-	 * 
+	 *
 	 * @param \Festival\Commands\News\CreateNewsCommand $command
 	 * @param \Festival\Contracts\Repositories\News\NewsRepository $repository
-	 * @param \Festival\Contracts\Auth\AuthenticateService $auth
+	 * @param \Illuminate\Contracts\Auth\Guard $guard
 	 */
-	public function __construct(CreateNewsCommand $command, NewsRepository $repository, AuthenticateService $auth)
+	public function __construct(CreateNewsCommand $command, NewsRepository $repository, Guard $guard)
 	{
 		$this->command = $command;
 		$this->repository = $repository;
-		$this->auth = $auth;
+		$this->guard = $guard;
 	}
 
 	/**
@@ -53,7 +54,7 @@ class CreateNewsHandler
 			'identifier' => md5(uniqid()),
 			'title' => $this->command->getTitle(),
 			'content' => $this->command->getContent(),
-			'user_id' => $this->auth->user()->id
+			'user_id' => $this->guard->user()->id
 		]);
 
 		return $news;

@@ -4,10 +4,10 @@
 namespace Festival\Http\Controllers\Api;
 
 use Festival\Commands\Tickets\CreateTicketCommand;
-use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\Tickets\TicketRepository;
 use Festival\Http\Controllers\Controller;
 use Festival\Http\Requests\Tickets\CreateTicketRequest;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Controller for all ticket related API calls.
@@ -20,13 +20,12 @@ class TicketsController extends Controller
 	/**
 	 * Retrieve all tickets for the authenticated user.
 	 *
-	 * @param \Festival\Contracts\Auth\AuthenticateService $service
 	 * @param \Festival\Contracts\Repositories\Tickets\TicketRepository $repository
 	 * @return \Illuminate\Support\Collection
 	 */
-	public function index(AuthenticateService $service, TicketRepository $repository)
+	public function index(Guard $guard, TicketRepository $repository)
 	{
-		return $repository->allForUser($service->user());
+		return $repository->allForUser($guard->user());
 	}
 
 	/**

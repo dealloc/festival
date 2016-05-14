@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Festival\User::class,
+            'model' => \Festival\Entities\Users\User::class,
         ],
 
         // 'users' => [

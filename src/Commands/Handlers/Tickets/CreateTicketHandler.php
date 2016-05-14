@@ -6,6 +6,7 @@ namespace Festival\Commands\Handlers\Tickets;
 use Festival\Commands\Tickets\CreateTicketCommand;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Contracts\Repositories\Tickets\TicketRepository;
+use Illuminate\Contracts\Auth\Guard;
 
 /**
  * Handler for the CreateTicketCommand.
@@ -20,20 +21,19 @@ class CreateTicketHandler
 	 */
 	private $repository;
 	/**
-	 * @var \Festival\Contracts\Auth\AuthenticateService
+	 * @var \Illuminate\Contracts\Auth\Guard
 	 */
-	private $service;
+	private $guard;
 
 	/**
 	 * CreateTicketHandler constructor.
 	 * 
 	 * @param \Festival\Contracts\Repositories\Tickets\TicketRepository $repository
-	 * @param \Festival\Contracts\Auth\AuthenticateService $service
 	 */
-	public function __construct(TicketRepository $repository, AuthenticateService $service)
+	public function __construct(TicketRepository $repository, Guard $guard)
 	{
 		$this->repository = $repository;
-		$this->service = $service;
+		$this->guard = $guard;
 	}
 
 	/**
@@ -45,7 +45,7 @@ class CreateTicketHandler
 	public function handle(CreateTicketCommand $command)
 	{
 		return $this->repository->create([
-			'user_id' => $this->service->user()->id,
+			'user_id' => $this->guard->user()->id,
 			'token' => uniqid('evento-', true)
 		]);
 	}

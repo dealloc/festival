@@ -17,45 +17,7 @@ class AuthenticationTest extends TestCase
 		];
 
 		$this->postJson('/api/login', $credentials)
-			->seeStatusCode(200)
-			->seeJson()
-			->see('token');
-	}
-
-	public function testTokenRegenerationOnLogin()
-	{
-		$user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
-		$old = $user->secret;
-
-		$credentials = [
-			'email'    => $user->email,
-			'password' => 'foobar',
-		];
-
-		// perform a login to refresh the token.
-		$this->postJson('/api/login', $credentials)
-			->seeStatusCode(200)
-			->seeJson();
-
-		$token = json_decode($this->response->content())->token;
-		$this->assertNotEquals($old, $token, 'Token should be refreshed after login.');
-
-		$this->seeInDatabase('users', [ 'secret' => $token ])
-			->getJson('/api/user', [ 'Authorization' => $token ])
-			->seeStatusCode(200)
-			->seeJson();
-	}
-
-	public function testManualTokenRegeneration()
-	{
-		$user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
-		$old = $user->secret;
-
-		$this->put('/api/token', [ ], [ 'Accept' => 'application/json', 'Authorization' => $user->secret ])
-			->seeStatusCode(200)
-			->seeJsonStructure([ 'token' ])
-			->dontSeeInDatabase('users', [ 'secret' => $user->secret ])
-			->assertNotEquals(json_decode($this->response->getContent())->token, $old);
+			->seeStatusCode(200);
 	}
 
 	public function testInvalidCredentials()

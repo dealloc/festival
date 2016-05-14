@@ -49,6 +49,7 @@ class AuthenticatedTestCase extends TestCase
 			return $this;
 
 		$this->user = factory(User::class)->create([ 'password' => bcrypt('foobar') ]);
+		$this->actingAs($this->user);
 
 		return $this;
 	}
@@ -56,6 +57,7 @@ class AuthenticatedTestCase extends TestCase
 	public function logout()
 	{
 		$this->user = null;
+		$this->app['auth']->guard()->logout();
 
 		return $this;
 	}
@@ -69,36 +71,5 @@ class AuthenticatedTestCase extends TestCase
 		$this->user->save();
 
 		return $this;
-	}
-
-	/**
-	 * Visit the given URI with a JSON GET request.
-	 *
-	 * @param  string $uri
-	 * @param  array $headers
-	 * @return $this
-	 */
-	public function getJson($uri, array $headers = [ ])
-	{
-		if ( ! is_null($this->user) )
-			$headers[ 'Authorization' ] = $this->user->secret;
-
-		return parent::getJson($uri, $headers);
-	}
-
-	/**
-	 * Visit the given URI with a POST request.
-	 *
-	 * @param  string $uri
-	 * @param  array $data
-	 * @param  array $headers
-	 * @return $this
-	 */
-	public function postJson($uri, array $data = [ ], array $headers = [ ])
-	{
-		if ( ! is_null($this->user) )
-			$headers[ 'Authorization' ] = $this->user->secret;
-
-		return parent::postJson($uri, $data, $headers);
 	}
 }
