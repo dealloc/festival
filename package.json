@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "prod": "gulp --production",
-    "dev": "gulp watch",
+    "dev": "NODE_ENV=dev gulp",
     "webpack": "NODE_ENV=dev webpack"
   },
   "devDependencies": {
