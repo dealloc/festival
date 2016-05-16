@@ -1,6 +1,8 @@
 var path = require( 'path' );
+var webpack = require( 'webpack' );
+var env = process.env.NODE_ENV || 'production';
 
-module.exports = {
+let config = {
 	entry  : [ path.resolve( 'resources/assets/js/app.js' ) ],
 	output : {
 		path    : path.resolve( 'public/js' ),
@@ -31,3 +33,25 @@ module.exports = {
 		extensions: [ '', '.js' ]
 	}
 };
+
+if (env !== 'dev')
+{
+	config['plugins'] = [
+		// short-circuits all Vue.js warning code
+		new webpack.DefinePlugin( {
+			'process.env': {
+				NODE_ENV: '"production"'
+			}
+		} ),
+		// minify with dead-code elimination
+		new webpack.optimize.UglifyJsPlugin( {
+			compress: {
+				warnings: false
+			}
+		} ),
+		// optimize module ids by occurence count
+		new webpack.optimize.OccurenceOrderPlugin()
+	];
+}
+
+module.exports = config;
