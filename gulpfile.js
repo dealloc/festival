@@ -6,5 +6,5 @@ gulp.task( 'default', function ()
 {
 	return gulp.src( 'src/entry.js' )
 		.pipe( webpack( webpack_config ) )
-		.pipe( gulp.dest( 'dist/' ) );
+		.pipe( gulp.dest( webpack_config.output.path ) );
 } );
