@@ -1,7 +1,4 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-$router->get('/', function ()
-{
-	return view('welcome');
-});
+$router->get('/', [ 'uses' => 'ViewController@home', 'as' => 'home' ]);
