@@ -31,7 +31,10 @@ let config = {
 			vue: path.resolve( 'resources/assets/vue' )
 		},
 		extensions: [ '', '.js' ]
-	}
+	},
+	plugins: [
+		new webpack.SourceMapDevToolPlugin({ })
+	]
 };
 
 if (env !== 'dev')
