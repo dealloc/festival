@@ -11,25 +11,26 @@ let config = {
 	module : {
 		loaders: [
 			{
-				test   : /\.jsx?$/,
-				loader : 'babel',
-				query  : {
+				test  : /\.jsx?$/,
+				loader: 'babel',
+				query : {
 					presets: [ 'es2015' ]
 				}
 			},
 			{
-				test   : /\.vue$/,
-				loader : 'vue'
+				test  : /\.vue$/,
+				loader: 'vue'
 			}
 		]
 	},
 	resolve: {
 		root      : [ path.resolve( 'resources/assets/js' ) ],
 		alias     : {
-			pages     : path.resolve( 'resources/assets/vue/pages' ),
-			components: path.resolve( 'resources/assets/vue/ui' ),
-			vue       : path.resolve( 'node_modules/vue/src' ),
-			vuex      : path.resolve( 'node_modules/vuex/src' )
+			pages       : path.resolve( 'resources/assets/vue/pages' ),
+			components  : path.resolve( 'resources/assets/vue/ui' ),
+			vue         : path.resolve( 'node_modules/vue/src' ),
+			vuex        : path.resolve( 'node_modules/vuex/src' ),
+			'vue-router': path.resolve( 'node_modules/vue-router/src' )
 		},
 		extensions: [ '', '.js' ]
 	},
