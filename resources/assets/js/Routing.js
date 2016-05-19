@@ -2,10 +2,15 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
+import Home from 'pages/Home.vue';
 
 Vue.use( Router );
 let router = new Router( { history: true } );
 
-// TODO add router mappings..
+router.map({
+	'/': {
+		component: Home
+	}
+});
 
 export default router;
