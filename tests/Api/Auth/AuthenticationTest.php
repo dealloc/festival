@@ -36,8 +36,8 @@ class AuthenticationTest extends TestCase
 		];
 
 		$this->postJson('/api/login', $credentials)
-			->seeStatusCode(401)
-			->seeJson([ 'error' => 'Unauthorized access' ]);
+			->seeStatusCode(422)
+			->seeJson([ 'email' => [ 'The email field is required.' ] ]);
 	}
 
 	public function testEmptyPassword()
@@ -49,8 +49,8 @@ class AuthenticationTest extends TestCase
 		];
 
 		$this->postJson('/api/login', $credentials)
-			->seeStatusCode(401)
-			->seeJson([ 'error' => 'Unauthorized access' ]);
+			->seeStatusCode(422)
+			->seeJson([ 'password' => [ 'The password field is required.' ] ]);
 	}
 
 	public function testEmptyPayload()
@@ -58,8 +58,9 @@ class AuthenticationTest extends TestCase
 		factory(User::class)->create();
 
 		$this->postJson('/api/login')
-			->seeStatusCode(401)
-			->seeJson([ 'error' => 'Unauthorized access' ]);
+			->seeStatusCode(422)
+			->seeJson([ 'email' => [ 'The email field is required.' ] ])
+			->seeJson([ 'password' => [ 'The password field is required.' ] ]);
 	}
 
 	public function testInvalidEmail()

@@ -3,6 +3,7 @@
 
 namespace Festival\Http\Controllers\Api;
 
+use Festival\Http\Requests\Auth\AuthenticateRequest;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
 use Festival\Http\Controllers\Controller;
@@ -32,11 +33,12 @@ class AuthController extends Controller
 	/**
 	 * Authenticate a user.
 	 *
-	 * @param \Illuminate\Http\Request $request
+	 * @param \Festival\Http\Requests\Auth\AuthenticateRequest $request
+	 * @param \Illuminate\Contracts\Auth\Guard $guard
 	 * @return array
 	 * @throws \Festival\Exceptions\Auth\InvalidCredentialsException
 	 */
-	public function login(Request $request, Guard $guard)
+	public function login(AuthenticateRequest $request, Guard $guard)
 	{
 		if ( ! $guard->attempt($request->only('email', 'password')) )
 			throw new InvalidCredentialsException;
