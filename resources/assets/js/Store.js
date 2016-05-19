@@ -1,5 +1,7 @@
 // Created by dealloc. All rights reserved.
 
+let Vuex = require('vuex');
+
 const state = {};
 
 const mutations = {};

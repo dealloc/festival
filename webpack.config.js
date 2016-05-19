@@ -6,13 +6,12 @@ let config = {
 	entry  : [ path.resolve( 'resources/assets/js/app.js' ) ],
 	output : {
 		path    : path.resolve( 'public/js' ),
-		filename: "app.js"
+		filename: "app.min.js"
 	},
 	module : {
 		loaders: [
 			{
 				test   : /\.jsx?$/,
-				exclude: /(node_modules|bower_components)/,
 				loader : 'babel',
 				query  : {
 					presets: [ 'es2015' ]
@@ -20,7 +19,6 @@ let config = {
 			},
 			{
 				test   : /\.vue$/,
-				exclude: /(node_modules|bower_components)/,
 				loader : 'vue'
 			}
 		]
@@ -28,18 +26,21 @@ let config = {
 	resolve: {
 		root      : [ path.resolve( 'resources/assets/js' ) ],
 		alias     : {
-			vue: path.resolve( 'resources/assets/vue' )
+			pages     : path.resolve( 'resources/assets/vue/pages' ),
+			components: path.resolve( 'resources/assets/vue/ui' ),
+			vue       : path.resolve( 'node_modules/vue/src' ),
+			vuex      : path.resolve( 'node_modules/vuex/src' )
 		},
 		extensions: [ '', '.js' ]
 	},
 	plugins: [
-		new webpack.SourceMapDevToolPlugin({ })
+		new webpack.SourceMapDevToolPlugin( {} )
 	]
 };
 
-if (env !== 'dev')
+if ( env !== 'dev' )
 {
-	config['plugins'] = [
+	config[ 'plugins' ] = [
 		// short-circuits all Vue.js warning code
 		new webpack.DefinePlugin( {
 			'process.env': {

@@ -1,6 +1,7 @@
 // Created by dealloc. All rights reserved.
 
-let App = require('vue/App.vue');
+let Vue = require('vue');
+let App = require('pages/App.vue');
 let Store = require('Store');
 
 new Vue({
