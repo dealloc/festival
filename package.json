@@ -1,9 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "prod": "gulp --production",
-    "dev": "NODE_ENV=dev gulp",
-    "webpack": "NODE_ENV=dev webpack"
+    "prod": "gulp",
+    "dev": "gulp watch --dev"
   },
   "devDependencies": {
     "babel-core": "^6.8.0",
