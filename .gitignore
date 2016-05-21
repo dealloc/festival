@@ -9,3 +9,4 @@ database/database.sqlite
 public/css/
 public/js/
 docs/
+public/vendor/
