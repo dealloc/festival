@@ -1,11 +1,10 @@
 var path = require( 'path' );
 var webpack = require( 'webpack' );
-var env = process.env.NODE_ENV || 'production';
+var env = (process.argv.indexOf( '--dev' ) !== -1) ? 'dev' : 'production';
 
 let config = {
 	entry  : {
-		app   : path.resolve( 'resources/assets/js/app.js' ),
-		vendor: [ path.resolve( 'node_modules/semantic-ui/dist/semantic.min.js' ), path.resolve( 'node_modules/jquery/src/jquery.js' ) ]
+		app   : path.resolve( 'resources/assets/js/app.js' )
 	},
 	output : {
 		path    : path.resolve( 'public/js' ),

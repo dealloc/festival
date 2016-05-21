@@ -4,7 +4,6 @@ var webpack_config = require( './webpack.config.js' );
 
 if ( (process.argv.indexOf( '--dev' ) !== -1) )
 {
-	process.env.NODE_ENV = 'dev';
 	console.log('[GULP]: running in development mode!');
 }
 
