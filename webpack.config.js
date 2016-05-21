@@ -3,10 +3,13 @@ var webpack = require( 'webpack' );
 var env = process.env.NODE_ENV || 'production';
 
 let config = {
-	entry  : [ path.resolve( 'resources/assets/js/app.js' ) ],
+	entry  : {
+		app   : path.resolve( 'resources/assets/js/app.js' ),
+		vendor: [ path.resolve( 'node_modules/semantic-ui/dist/semantic.min.js' ), path.resolve( 'node_modules/jquery/src/jquery.js' ) ]
+	},
 	output : {
 		path    : path.resolve( 'public/js' ),
-		filename: "app.min.js"
+		filename: "[name].min.js"
 	},
 	module : {
 		loaders: [
