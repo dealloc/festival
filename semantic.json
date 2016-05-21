@@ -8,10 +8,10 @@
       "themes": "src/themes/"
     },
     "output": {
-      "packaged": "public/vendor/semantic/dist/",
-      "uncompressed": "public/vendor/semantic/dist/components/",
-      "compressed": "public/vendor/semantic/dist/components/",
-      "themes": "public/vendor/semantic/dist/themes/"
+      "packaged": "../../../public/vendor/semantic/dist/",
+      "uncompressed": "../../../public/vendor/semantic/dist/components/",
+      "compressed": "../../../public/vendor/semantic/dist/components/",
+      "themes": "../../../public/vendor/semantic/dist/themes/"
     },
     "clean": "dist/"
   },
