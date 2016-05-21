@@ -7,6 +7,12 @@ if ( (process.argv.indexOf( '--dev' ) !== -1) )
 	console.log('[GULP]: running in development mode!');
 }
 
+gulp.task('vendor', function()
+{
+	gulp.src('node_modules/jquery/dist/jquery.min.js')
+		.pipe(gulp.dest('public/vendor/jquery/dist/jquery.min.js'));
+});
+
 gulp.task( 'webpack', function ()
 {
 	return gulp.src( 'src/entry.js' )
@@ -25,11 +31,7 @@ gulp.task( 'webpack-watch', [ 'build' ], function ()
 } );
 
 gulp.task( 'semantic', require( './node_modules/semantic-ui/tasks/build/css' ) );
-
 gulp.task( 'semantic-watch', [ 'build' ], require( './node_modules/semantic-ui/tasks/watch' ) );
-
-gulp.task( 'build', [ 'webpack', 'semantic' ] );
-
+gulp.task( 'build', [ 'webpack', 'semantic', 'vendor' ] );
 gulp.task( 'watch', [ 'webpack-watch', 'semantic-watch' ] );
-
 gulp.task( 'default', [ 'build' ] );
