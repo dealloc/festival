@@ -25,7 +25,7 @@ gulp.task( 'webpack-watch', [ 'build' ], function ()
 		.pipe( gulp.dest( webpack_config.output.path ) );
 } );
 
-gulp.task( 'semantic', require( './node_modules/semantic-ui/tasks/build' ) );
+gulp.task( 'semantic', require( './node_modules/semantic-ui/tasks/build/css' ) );
 
 gulp.task( 'semantic-watch', [ 'build' ], require( './node_modules/semantic-ui/tasks/watch' ) );
 
