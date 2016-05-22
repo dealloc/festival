@@ -10,7 +10,7 @@ if ( (process.argv.indexOf( '--dev' ) !== -1) )
 gulp.task('vendor', function()
 {
 	gulp.src('node_modules/jquery/dist/jquery.min.js')
-		.pipe(gulp.dest('public/vendor/jquery/dist/jquery.min.js'));
+		.pipe(gulp.dest('public/vendor/jquery/dist'));
 });
 
 gulp.task( 'webpack', function ()
