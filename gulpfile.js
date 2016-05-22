@@ -11,6 +11,8 @@ gulp.task('vendor', function()
 {
 	gulp.src('node_modules/jquery/dist/jquery.min.js')
 		.pipe(gulp.dest('public/vendor/jquery/dist'));
+	gulp.src('node_modules/semantic-ui/dist/semantic.min.js')
+		.pipe(gulp.dest('public/vendor/semantic/dist'));
 });
 
 gulp.task( 'webpack', function ()
@@ -31,7 +33,8 @@ gulp.task( 'webpack-watch', [ 'build' ], function ()
 } );
 
 gulp.task( 'semantic', require( './node_modules/semantic-ui/tasks/build/css' ) );
+gulp.task('semantic-assets', require('./node_modules/semantic-ui/tasks/build/assets'));
 gulp.task( 'semantic-watch', [ 'build' ], require( './node_modules/semantic-ui/tasks/watch' ) );
-gulp.task( 'build', [ 'webpack', 'semantic', 'vendor' ] );
+gulp.task( 'build', [ 'webpack', 'semantic', 'semantic-assets', 'vendor' ] );
 gulp.task( 'watch', [ 'webpack-watch', 'semantic-watch' ] );
 gulp.task( 'default', [ 'build' ] );
