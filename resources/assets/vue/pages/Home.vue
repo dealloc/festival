@@ -1,29 +1,18 @@
 <template>
 	<div class="ui container">
 		<div class="ui special stackable cards">
-			<div class="card" v-for="card in cards" track-by="identifier">
-				<div class="blurring dimmable image">
-					<div class="ui dimmer">
-						<div class="content">
-							<div class="center">
-								<i class="big icon wait"></i> 11PM saturday
-							</div>
-						</div>
-					</div>
-					<img src="http://semantic-ui.com/images/avatar/large/elliot.jpg">
+			<news-item :title="card.title" :when="card.created_at" v-for="card in cards" track-by="identifier">
+				<div class="center">
+					<i class="big icon wait"></i> 11PM saturday
 				</div>
-				<div class="content">
-					<a class="header">{{ card.title }}</a>
-					<div class="meta">
-						<span class="date">{{ card.created_at }}</span>
-					</div>
-				</div>
-			</div>
+			</news-item>
 		</div>
 	</div>
 </template>
 
 <script>
+	import NewsItem from 'ui/NewsItem.vue';
+
 	export default {
 		name: 'Home',
 		created() {
@@ -33,6 +22,9 @@
 		},
 		data() {
 			return { cards: [] }
+		},
+		components: {
+			NewsItem
 		}
 	}
 </script>
