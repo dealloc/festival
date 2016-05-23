@@ -1,0 +1,27 @@
+{
+	"name": "EHB rock",
+	"short_name": "EHB rock",
+	"display": "standalone",
+	"orientation": "portrait",
+	"theme_color": "#A90D16",
+	"background_color": "aliceblue",
+	"icons": [
+		{
+			"src": "icons/logo-128.png",
+			"type": "image/png",
+			"sizes": "128x128"
+		}, {
+			"src": "icons/logo-152.png",
+			"type": "image/png",
+			"sizes": "152x152"
+		}, {
+			"src": "icons/logo-144.png",
+			"type": "image/png",
+			"sizes": "144x144"
+		}, {
+			"src": "icons/logo-192.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}
+	]
+}
