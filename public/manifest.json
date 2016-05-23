@@ -1,6 +1,7 @@
 {
 	"name": "EHB rock",
 	"short_name": "EHB rock",
+	"start_url": "/",
 	"display": "standalone",
 	"orientation": "portrait",
 	"theme_color": "#A90D16",
