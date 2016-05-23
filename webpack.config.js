@@ -30,7 +30,7 @@ let config = {
 		root      : [path.resolve('resources/assets/js')],
 		alias     : {
 			pages       : path.resolve('resources/assets/vue/pages'),
-			components  : path.resolve('resources/assets/vue/ui'),
+			ui          : path.resolve('resources/assets/vue/ui'),
 			vue         : path.resolve('node_modules/vue/src'),
 			vuex        : path.resolve('node_modules/vuex/src'),
 			'vue-router': path.resolve('node_modules/vue-router/src'),
