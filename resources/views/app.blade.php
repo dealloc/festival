@@ -21,6 +21,7 @@
 			</div>
 
 			<router-view></router-view>
+			<ui-snackbar-container></ui-snackbar-container>
 		</div>
 		<link rel="stylesheet" href="{{ asset('/vendor/semantic/dist/semantic.min.css') }}" property="stylesheet">
 		<script type="text/javascript" src="{{ asset('/vendor/jquery/dist/jquery.min.js') }}"></script>

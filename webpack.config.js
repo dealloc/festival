@@ -34,7 +34,8 @@ let config = {
 			vue         : path.resolve('node_modules/vue/src'),
 			vuex        : path.resolve('node_modules/vuex/src'),
 			'vue-router': path.resolve('node_modules/vue-router/src'),
-			workers     : path.resolve('resources/assets/js/workers')
+			workers     : path.resolve('resources/assets/js/workers'),
+			keen        : path.resolve('node_modules/keen-ui/src')
 		},
 		extensions: ['', '.js']
 	},
