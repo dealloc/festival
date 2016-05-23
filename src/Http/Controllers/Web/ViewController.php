@@ -7,8 +7,8 @@ use Festival\Http\Controllers\Controller;
 
 class ViewController extends Controller
 {
-	public function home()
+	public function app()
 	{
-		return view('welcome');
+		return view('app');
 	}
 }
