@@ -50,12 +50,12 @@ gulp.task('webpack-watch', ['build'], function ()
 		.pipe(gulp.dest(webpack_config.output.path));
 });
 
-gulp.task('build', ['webpack', 'semantic', 'semantic-assets', 'vendor'], function()
+gulp.task('build', ['webpack', 'build-css', 'semantic-assets', 'vendor'], function()
 {
 	gulp.start('manifest', 'worker');
 });
 
-gulp.task('semantic', require('./node_modules/semantic-ui/tasks/build/css'));
+gulp.task('build-css', require('./node_modules/semantic-ui/tasks/build/css'));
 gulp.task('semantic-assets', require('./node_modules/semantic-ui/tasks/build/assets'));
 gulp.task('semantic-watch', ['build'], require('./node_modules/semantic-ui/tasks/watch'));
 gulp.task('watch', ['webpack-watch', 'semantic-watch']);
