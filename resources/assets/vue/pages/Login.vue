@@ -21,7 +21,10 @@
 							<input type="password" name="password" placeholder="Password">
 						</div>
 					</div>
-					<div class="ui fluid large teal submit button">Login</div>
+					<div class="ui fluid large teal submit button" v-el:button>
+						login
+						<ui-ripple-ink :trigger="$els.button"></ui-ripple-ink>
+					</div>
 				</div>
 
 				<div class="ui error message"></div>
@@ -36,8 +39,13 @@
 </template>
 
 <script>
+	import UiRippleInk from 'keen/UiRippleInk.vue';
+
 	export default {
-		name: 'login'
+		name: 'login',
+		components: {
+			UiRippleInk
+		}
 	}
 </script>
 
@@ -50,5 +58,11 @@
 	}
 	.column {
 		max-width: 450px;
+	}
+	@media only screen and (max-width: 991px) and (min-width: 768px)
+	{
+		.column {
+			transform: translateY(-50%);
+		}
 	}
 </style>
