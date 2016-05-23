@@ -11,3 +11,4 @@ public/js/
 docs/
 public/vendor/
 public/application.manifest
+public/worker.min.js
