@@ -12,3 +12,4 @@ docs/
 public/vendor/
 public/application.manifest
 public/worker.min.js
+npm-debug.log
