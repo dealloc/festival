@@ -1,10 +1,9 @@
 <template>
 	<div class="ui container">
 		<div class="ui special stackable cards">
-			<news-item :title="card.title" :when="card.created_at" v-for="card in cards" track-by="identifier">
-				<div class="center">
-					<i class="big icon wait"></i> 11PM saturday
-				</div>
+			<news-item v-for="card in cards" track-by="identifier"
+					:title="card.title"
+					:when="card.created_at">
 			</news-item>
 		</div>
 	</div>
