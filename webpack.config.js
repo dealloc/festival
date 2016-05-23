@@ -35,7 +35,8 @@ let config = {
 			vuex        : path.resolve('node_modules/vuex/src'),
 			'vue-router': path.resolve('node_modules/vue-router/src'),
 			workers     : path.resolve('resources/assets/js/workers'),
-			keen        : path.resolve('node_modules/keen-ui/src')
+			keen        : path.resolve('node_modules/keen-ui/src'),
+			moment      : path.resolve('node_modules/moment/min/moment.min.js')
 		},
 		extensions: ['', '.js']
 	},

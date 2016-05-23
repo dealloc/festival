@@ -17,9 +17,12 @@
 </template>
 
 <script>
+	import moment from 'moment';
+
 	export default {
 		props: ['title', 'when'],
 		ready() {
+			this.when = moment(this.when).fromNow();
 			$(this.$els.image).dimmer({ on: 'hover' });
 		}
 	}
