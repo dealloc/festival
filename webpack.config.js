@@ -36,12 +36,13 @@ let config = {
 			'vue-router': path.resolve('node_modules/vue-router/src'),
 			workers     : path.resolve('resources/assets/js/workers'),
 			keen        : path.resolve('node_modules/keen-ui/src'),
-			moment      : path.resolve('node_modules/moment/min/moment.min.js')
+			moment      : path.resolve('node_modules/moment/src/moment.js')
 		},
 		extensions: ['', '.js']
 	},
 	plugins: [
-		new webpack.SourceMapDevToolPlugin({})
+		new webpack.SourceMapDevToolPlugin({}),
+		new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/) // moment warning fix
 	]
 };
 
@@ -61,7 +62,10 @@ if (env !== 'dev')
 			}
 		}),
 		// optimize module ids by occurence count
-		new webpack.optimize.OccurenceOrderPlugin()
+		new webpack.optimize.OccurenceOrderPlugin(),
+		new webpack.ContextReplacementPlugin(/\.\/locale$/, 'empty-module', false, /js$/)
+
+		// moment warning fix
 	];
 }
 
