@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<side-menu></side-menu>
-		<div class="pusher">
+		<div class="pusher" style="height: 100%">
 			<div class="ui top attached demo menu">
 				<a class="item" data-menu-toggle>
 					<i class="sidebar icon"></i>
