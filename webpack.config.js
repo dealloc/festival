@@ -4,7 +4,7 @@ var env = (process.argv.indexOf( '--dev' ) !== -1) ? 'dev' : 'production';
 
 let config = {
 	entry  : {
-		app   : path.resolve( 'resources/assets/js/app.js' )
+		app   : path.resolve( 'resources/assets/js/index.js' )
 	},
 	output : {
 		path    : path.resolve( 'public/js' ),
