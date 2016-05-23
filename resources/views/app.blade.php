@@ -3,17 +3,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <body>
-	<div class="ui sidebar inverted vertical menu">
-		<a class="item" v-link="{ name: 'home' }">
-			1
-		</a>
-		<a class="item" v-link="{ name: 'home' }">
-			2
-		</a>
-		<a class="item" v-link="{ name: 'home' }">
-			3
-		</a>
-	</div>
+	<side-menu></side-menu>
 	<div class="pusher">
 		<div class="ui top attached demo menu">
 			<a class="item" data-menu-toggle>
