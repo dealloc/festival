@@ -4,13 +4,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <body>
 	<div class="ui sidebar inverted vertical menu">
-		<a class="item" v-link="{ path: '/' }">
+		<a class="item" v-link="{ name: 'home' }">
 			1
 		</a>
-		<a class="item" v-link="{ path: '/' }">
+		<a class="item" v-link="{ name: 'home' }">
 			2
 		</a>
-		<a class="item" v-link="{ path: '/' }">
+		<a class="item" v-link="{ name: 'home' }">
 			3
 		</a>
 	</div>

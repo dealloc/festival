@@ -9,6 +9,7 @@ let router = new Router( { history: true } );
 
 router.map({
 	'/': {
+		name: 'home',
 		component: Home
 	}
 });
