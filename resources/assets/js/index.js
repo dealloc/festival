@@ -1,13 +1,9 @@
 // Created by dealloc. All rights reserved.
 
 import Router from 'Routing';
-import SideMenu from 'components/Menu.vue';
+import App from 'App';
 
-Router.start({
-	components: {
-		SideMenu
-	}
-}, 'body', () =>
+Router.start(App, 'body', () =>
 {
 	$('.ui.sidebar').sidebar('attach events', 'a[data-menu-toggle]');
 });
