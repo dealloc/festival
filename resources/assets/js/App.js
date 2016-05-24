@@ -1,6 +1,6 @@
 // Created by dealloc. All rights reserved.
 
-import SideMenu from 'ui/Menu.vue';
+import SideMenu from 'ui/SideMenu.vue';
 import UiSnackbarContainer from 'keen/UiSnackbarContainer.vue';
 import Store from 'Store';
 
