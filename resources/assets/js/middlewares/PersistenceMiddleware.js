@@ -2,10 +2,15 @@
 
 export default {
 	onInit (state, store) {
-		// record initial state
+		let stored = JSON.parse(localStorage.getItem("state"));
+		if (stored !== null)
+		{
+			Object.keys(stored).forEach((key) => {
+				state[key] = stored[key];
+			});
+		}
 	},
 	onMutation (mutation, state, store) {
-		// called after every mutation.
-		// The mutation comes in the format of { type, payload }
+		localStorage.setItem('state', JSON.stringify(state));
 	}
 }
