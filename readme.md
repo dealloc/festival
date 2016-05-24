@@ -1,4 +1,5 @@
 # Festival
+## [![build status](https://gitlab.com/dealloc/festival/badges/master/build.svg)](https://gitlab.com/dealloc/festival/commits/master) [![Build Status](https://travis-ci.com/dealloc/festival.svg?token=xoXJiPAQifRB12iswoW2&branch=master)](https://travis-ci.com/dealloc/festival) [![HHVM tested](https://img.shields.io/badge/HHVM-tested-brightgreen.svg)]()  ![license](https://img.shields.io/badge/license-BSD--4-blue.svg)
 
 ## Roadmap ![Progressbar](http://progressed.io/bar/46)
  - [X] Newsfeed
