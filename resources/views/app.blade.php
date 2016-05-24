@@ -7,6 +7,10 @@
 		<meta name="author" content="Wannes Gennar">
 		<link rel="manifest" href="{{ asset('/manifest.json') }}">
 		<meta name="theme-color" content="#A90D16">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="apple-touch-startup-image" href="{{ asset('/icons/icon.png') }}">
+		<link rel="apple-touch-icon" href="{{ asset('/icons/icon.png') }}">
 		<link rel="icon" sizes="192x192" href="{{ asset('/icons/logo-192.png') }}">
 		<title>EHB rock</title>
 	</head>
