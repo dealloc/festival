@@ -7,7 +7,7 @@
 					Log-in to your account
 				</div>
 			</h2>
-			<form class="ui large form">
+			<section class="ui large form">
 				<div class="ui stacked segment">
 					<div class="field">
 						<div class="ui left icon input">
@@ -21,15 +21,12 @@
 							<input type="password" name="password" placeholder="Password">
 						</div>
 					</div>
-					<div class="ui fluid large teal submit button" v-el:button>
-						login
-						<ui-ripple-ink :trigger="$els.button"></ui-ripple-ink>
-					</div>
+					<ui-button class="ui fluid large teal button" @click="login()">login</ui-button>
 				</div>
 
 				<div class="ui error message"></div>
 
-			</form>
+			</section>
 
 			<div class="ui message">
 				New to us? <a href="#">Sign Up</a>
@@ -39,12 +36,17 @@
 </template>
 
 <script>
-	import UiRippleInk from 'keen/UiRippleInk.vue';
+	import UiButton from 'keen/UiButton.vue';
 
 	export default {
 		name: 'login',
+		methods: {
+			login() {
+				alert('logging in!');
+			}
+		},
 		components: {
-			UiRippleInk
+			UiButton
 		}
 	}
 </script>
