@@ -1,33 +1,36 @@
 <template>
-	<div class="card">
-		<div class="blurring dimmable image" v-el:image>
-			<div class="ui dimmer">
-				<div class="content">
-					<div class="center">
-						<i class="big icon wait"></i> {{ when }}
-					</div>
-				</div>
-			</div>
-			<img src="http://semantic-ui.com/images/avatar/large/elliot.jpg">
-		</div>
+	<div class="ui card center-aligned">
 		<div class="content">
-			<a class="center-aligned header">{{ title }}</a>
+			<div class="header">{{ title }}</div>
+			<div class="meta">{{ when }}</div>
+			<div class="description">
+				{{ content }}
+			</div>
+		</div>
+		<div class="ui bottom blue basic attached button" v-if="comment">
+			<i class="large comments outline icon"></i>
 		</div>
 	</div>
 </template>
 
 <script>
+	import store from 'Store';
 	import moment from 'moment';
 
 	export default {
-		props: ['title', 'when'],
+		props: ['title', 'when', 'identifier', 'content'],
 		ready() {
 			this.when = moment(this.when).fromNow();
-			$(this.$els.image).dimmer({ on: 'hover' });
-		}
+		},
+		vuex: {
+			getters: {
+				comment: (state) => (state.authenticated)
+			}
+		},
+		store
 	}
 </script>
 
 <style scoped>
-	.center-aligned.header { text-align: center; }
+	.center-aligned { text-align: center; }
 </style>

@@ -3,7 +3,8 @@
 		<div class="ui special stackable cards">
 			<news-item v-for="card in cards" track-by="identifier"
 					:title="card.title"
-					:when="card.created_at">
+					:when="card.created_at"
+					:content="card.content">
 			</news-item>
 		</div>
 	</div>
