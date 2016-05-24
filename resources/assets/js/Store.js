@@ -5,7 +5,7 @@ import Vuex from 'vuex';
 
 const state = {
 	authenticated: false,
-	user: null
+	user: (void 0)
 };
 
 const mutations = {
@@ -15,7 +15,6 @@ const mutations = {
 	},
 	LOGOUT(state) {
 		state.authenticated = false;
-		state.user = false;
 	}
 };
 
