@@ -2,6 +2,7 @@
 
 import Vue from 'vue';
 import Vuex from 'vuex';
+import PersistenceMiddleware from 'middlewares/PersistenceMiddleware';
 
 const state = {
 	authenticated: false,
@@ -19,4 +20,4 @@ const mutations = {
 };
 
 Vue.use( Vuex );
-export default new Vuex.Store( { state, mutations } );
+export default new Vuex.Store( { state, mutations, middlewares: [PersistenceMiddleware] } );
