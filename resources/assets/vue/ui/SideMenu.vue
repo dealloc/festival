@@ -6,6 +6,9 @@
 		<a @click="close()" v-if="login" class="item" v-link="{ name: 'login' }">
 			Login
 		</a>
+		<a @click="logout()" v-if="!login" class="item">
+			Logout
+		</a>
 	</div>
 </template>
 
@@ -23,6 +26,14 @@
 				login: function(state) {
 					return (!state.authenticated);
 				}
+			},
+			actions: {
+				logout({dispatch}) {
+					dispatch('LOGOUT');
+					this.close();
+					this.$router.go({ name: 'login' });
+				}
+
 			}
 		},
 		store
