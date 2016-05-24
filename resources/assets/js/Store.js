@@ -4,15 +4,18 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 const state = {
-	authenticated: false
+	authenticated: false,
+	user: null
 };
 
 const mutations = {
-	LOGIN(state) {
+	LOGIN(state, user) {
 		state.authenticated = true;
+		state.user = user;
 	},
 	LOGOUT(state) {
 		state.authenticated = false;
+		state.user = false;
 	}
 };
 

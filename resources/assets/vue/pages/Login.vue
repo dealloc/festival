@@ -12,19 +12,21 @@
 					<div class="field">
 						<div class="ui left icon input">
 							<i class="user icon"></i>
-							<input type="text" name="email" placeholder="E-mail address">
+							<input v-model="email" type="text" name="email" placeholder="E-mail address">
 						</div>
 					</div>
 					<div class="field">
 						<div class="ui left icon input">
 							<i class="lock icon"></i>
-							<input type="password" name="password" placeholder="Password">
+							<input v-model="password" type="password" name="password" placeholder="Password">
 						</div>
 					</div>
-					<ui-button class="ui fluid large teal button" @click="login()">login</ui-button>
+					<ui-button :loading="loading" class="ui fluid large teal button" @click="login()">login</ui-button>
 				</div>
 
-				<div class="ui error message"></div>
+				<div :class="{ 'visible': error }" class="ui error message">
+					Invalid username or password
+				</div>
 
 			</section>
 
@@ -37,17 +39,39 @@
 
 <script>
 	import UiButton from 'keen/UiButton.vue';
+	import store from 'Store';
 
 	export default {
 		name: 'login',
+		data() {
+			return {
+				email: '',
+				password: '',
+				loading: false,
+				error: false
+			}
+		},
 		methods: {
 			login() {
-				alert('logging in!');
+				this.loading = true;
+				this.error = false;
+				$.post('/api/login', { email: this.email, password: this.password })
+					.done(this.authenticated.bind(this))
+					.fail(this.failure.bind(this))
+					.always(() => { this.loading = false; });
+			},
+			failure(res) {
+				this.error = true;
+			},
+			authenticated(user) {
+				this.$store.dispatch('LOGIN', user);
+				alert(`Welcome ${user.fname} ${user.lname}`);
 			}
 		},
 		components: {
 			UiButton
-		}
+		},
+		store
 	}
 </script>
 
