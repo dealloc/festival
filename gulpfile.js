@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var manifest = require('gulp-manifest');
 var webpack = require('webpack-stream');
 var webpack_config = require('./webpack.config.js');
+var plumber = require('gulp-plumber');
 
 if ((process.argv.indexOf('--dev') !== -1))
 {
@@ -36,6 +37,7 @@ gulp.task('worker', function()
 gulp.task('webpack', function ()
 {
 	return gulp.src('src/entry.js')
+		.pipe(plumber())
 		.pipe(webpack(webpack_config))
 		.pipe(gulp.dest(webpack_config.output.path));
 });
@@ -46,6 +48,7 @@ gulp.task('webpack-watch', ['build'], function ()
 	watch_config.watch = true;
 
 	return gulp.src('src/entry.js')
+		.pipe(plumber())
 		.pipe(webpack(watch_config))
 		.pipe(gulp.dest(webpack_config.output.path));
 });

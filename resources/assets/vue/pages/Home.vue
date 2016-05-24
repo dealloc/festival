@@ -4,7 +4,8 @@
 			<news-item v-for="card in cards" track-by="identifier"
 					:title="card.title"
 					:when="card.created_at"
-					:content="card.content">
+					:content="card.content"
+					:identifier="card.identifier">
 			</news-item>
 		</div>
 	</div>
