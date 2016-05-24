@@ -60,6 +60,7 @@
 			authenticated(user) {
 				this.$store.dispatch('LOGIN', user);
 				this.$dispatch('toast', { message: `Welcome ${user.fname} ${user.lname}` });
+				this.$router.go({ name: 'home' });
 			}
 		},
 		components: {
