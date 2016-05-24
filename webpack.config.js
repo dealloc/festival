@@ -4,8 +4,7 @@ var env = (process.argv.indexOf('--dev') !== -1) ? 'dev' : 'production';
 
 let config = {
 	entry  : {
-		app   : path.resolve('resources/assets/js/index.js'),
-		worker: path.resolve('resources/assets/js/workers/index.worker.js')
+		app   : path.resolve('resources/assets/js/index.js')
 	},
 	output : {
 		path    : path.resolve('public/js'),
@@ -34,7 +33,6 @@ let config = {
 			vue         : path.resolve('node_modules/vue/src'),
 			vuex        : path.resolve('node_modules/vuex/src'),
 			'vue-router': path.resolve('node_modules/vue-router/src'),
-			workers     : path.resolve('resources/assets/js/workers'),
 			keen        : path.resolve('node_modules/keen-ui/src'),
 			moment      : path.resolve('node_modules/moment/src/moment.js')
 		},

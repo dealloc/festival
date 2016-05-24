@@ -10,7 +10,7 @@ Router.start(App, 'body', () =>
 
 if ('serviceWorker' in navigator)
 {
-	navigator.serviceWorker.register('/worker.min.js').then(function (registration)
+	navigator.serviceWorker.register('/cacher.min.js').then(function (registration)
 	{
 		// Registration was successful
 		console.log('ServiceWorker registration successful with scope: ', registration.scope);

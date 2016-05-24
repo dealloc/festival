@@ -11,5 +11,5 @@ public/js/
 docs/
 public/vendor/
 public/application.manifest
-public/worker.min.js
+public/cacher.min.js
 npm-debug.log

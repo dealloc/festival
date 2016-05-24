@@ -3,21 +3,21 @@ var manifest = require('gulp-manifest');
 var webpack = require('webpack-stream');
 var webpack_config = require('./webpack.config.js');
 var plumber = require('gulp-plumber');
+var swPrecache = require('sw-precache');
+var path = require('path');
 
 if ((process.argv.indexOf('--dev') !== -1))
 {
 	console.log('[GULP]: running in development mode!');
 }
 
-gulp.task('manifest', function ()
-{
-	let sources = ((process.argv.indexOf('--dev') !== -1) ? '' : 'public/**/+(*.min.*|*.woff2)');
-	gulp.src(sources)
-		.pipe(manifest({
-			hash: true,
-			filename: 'application.manifest'
-		}))
-		.pipe(gulp.dest('public/'));
+gulp.task('manifest', function(callback) {
+	var root = 'public';
+
+	swPrecache.write(path.join(root, 'cacher.min.js'), {
+		staticFileGlobs: [root + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
+		stripPrefix: root
+	}, callback);
 });
 
 gulp.task('vendor', function ()
@@ -26,12 +26,6 @@ gulp.task('vendor', function ()
 		.pipe(gulp.dest('public/vendor/jquery/dist'));
 	gulp.src('node_modules/semantic-ui/dist/semantic.min.js')
 		.pipe(gulp.dest('public/vendor/semantic/dist'));
-});
-
-gulp.task('worker', function()
-{
-	gulp.src('public/js/worker.min.js')
-		.pipe(gulp.dest('public/'));
 });
 
 gulp.task('webpack', function ()
@@ -55,7 +49,7 @@ gulp.task('webpack-watch', ['build'], function ()
 
 gulp.task('build', ['webpack', 'build-css', 'semantic-assets', 'vendor'], function()
 {
-	gulp.start('manifest', 'worker');
+	gulp.start('manifest');
 });
 
 gulp.task('build-css', require('./node_modules/semantic-ui/tasks/build/css'));
