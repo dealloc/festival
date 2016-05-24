@@ -24,10 +24,6 @@
 					<ui-button :loading="loading" class="ui fluid large teal button" @click="login()">login</ui-button>
 				</div>
 
-				<div :class="{ 'visible': error }" class="ui error message">
-					Invalid username or password
-				</div>
-
 			</section>
 
 			<div class="ui message">
@@ -47,21 +43,19 @@
 			return {
 				email: '',
 				password: '',
-				loading: false,
-				error: false
+				loading: false
 			}
 		},
 		methods: {
 			login() {
 				this.loading = true;
-				this.error = false;
 				$.post('/api/login', { email: this.email, password: this.password })
 					.done(this.authenticated.bind(this))
 					.fail(this.failure.bind(this))
 					.always(() => { this.loading = false; });
 			},
 			failure(res) {
-				this.error = true;
+				this.$dispatch('toast', { message: 'Invalid username or password' });
 			},
 			authenticated(user) {
 				this.$store.dispatch('LOGIN', user);
