@@ -53,7 +53,7 @@
 
 <style lang="sass" scoped>
 	.grid {
-		height: 100%;
+		min-height: 100vh;
 	}
 	.image {
 		margin-top: -100px;

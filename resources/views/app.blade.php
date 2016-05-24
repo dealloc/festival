@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" manifest="{{ asset('/application.manifest') }}" style="height: 100%!important">
+<html lang="en" manifest="{{ asset('/application.manifest') }}">
 	<head>
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +10,9 @@
 		<link rel="icon" sizes="192x192" href="{{ asset('/icons/logo-192.png') }}">
 		<title>EHB rock</title>
 	</head>
-	<body style="height: 100%!important">
+	<body>
 		<side-menu></side-menu>
-		<div class="pusher" style="height: 100%">
+		<div class="pusher">
 			<div class="ui top attached demo menu">
 				<a class="item" data-menu-toggle>
 					<i class="sidebar icon"></i>
