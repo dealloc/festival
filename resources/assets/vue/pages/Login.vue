@@ -65,7 +65,7 @@
 			},
 			authenticated(user) {
 				this.$store.dispatch('LOGIN', user);
-				alert(`Welcome ${user.fname} ${user.lname}`);
+				this.$dispatch('toast', { message: `Welcome ${user.fname} ${user.lname}` });
 			}
 		},
 		components: {
