@@ -6,7 +6,7 @@ import PersistenceMiddleware from 'middlewares/PersistenceMiddleware';
 
 const state = {
 	authenticated: false,
-	user: (void 0)
+	user: null
 };
 
 const mutations = {
@@ -16,6 +16,7 @@ const mutations = {
 	},
 	LOGOUT(state) {
 		state.authenticated = false;
+		state.user = null;
 	}
 };
 
