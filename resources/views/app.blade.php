@@ -25,8 +25,8 @@
 			</div>
 
 			<router-view></router-view>
-			<ui-snackbar-container position="center"></ui-snackbar-container>
 		</div>
+		<ui-snackbar-container style="z-index: 999" position="center" :queue-snackbars="true"></ui-snackbar-container>
 		<link rel="stylesheet" href="{{ asset('/vendor/semantic/dist/semantic.min.css') }}" property="stylesheet">
 		<script type="text/javascript" src="{{ asset('/vendor/jquery/dist/jquery.min.js') }}"></script>
 		<script type="text/javascript" src="{{ asset('/vendor/semantic/dist/semantic.min.js') }}"></script>
