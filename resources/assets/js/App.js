@@ -2,12 +2,17 @@
 
 import SideMenu from 'ui/SideMenu.vue';
 import UiSnackbarContainer from 'keen/UiSnackbarContainer.vue';
-import Store from 'Store';
+import store from 'Store';
 
 export default {
 	components: {
 		SideMenu,
 		UiSnackbarContainer
 	},
-	Store
+	events: {
+		toast(prop) {
+			this.$broadcast('ui-snackbar::create', prop);
+		}
+	},
+	store
 }
