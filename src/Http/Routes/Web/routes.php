@@ -1,4 +1,4 @@
 <?php
 // Created by dealloc. All rights reserved.
 
-$router->get('/{route?}', [ 'uses' => 'ViewController@app', 'as' => 'app' ]);
+$router->get('/{route?}/{param?}', [ 'uses' => 'ViewController@app', 'as' => 'app' ]);
