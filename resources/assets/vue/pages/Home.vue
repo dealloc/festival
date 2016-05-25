@@ -12,7 +12,7 @@
 </template>
 
 <script>
-	import NewsItem from 'ui/NewsItem.vue';
+	import { NewsItem } from 'ui';
 
 	export default {
 		name: 'Home',
