@@ -3,8 +3,8 @@
 		<div class="ui inverted active dimmer" v-if="!loaded">
 			<div class="ui text loader">Loading article</div>
 		</div>
-		<div class="ui grid segment" v-if="loaded">
-			<div class="four wide column">
+		<div class="ui doubling grid segment" v-if="loaded">
+			<div class="computer only tablet only four wide column">
 				<div class="ui fluid card">
 					<div class="image">
 						<img src="http://semantic-ui.com/images/avatar2/large/kristy.png">
