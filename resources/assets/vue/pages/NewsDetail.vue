@@ -1,5 +1,5 @@
 <template>
-	<h1>{{ $route.params.article }}</h1>
+	<h1>{{ $route.params | json }}</h1>
 </template>
 
 <script>

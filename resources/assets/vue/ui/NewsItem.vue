@@ -7,7 +7,9 @@
 				{{ content }}
 			</div>
 		</div>
-		<div class="ui bottom blue basic attached button" v-if="auth">
+		<div class="ui bottom blue basic attached button"
+			 v-if="auth"
+			 v-link="{ name: 'news', params: { id: identifier } }">
 			<i class="large comments outline icon"></i>
 		</div>
 	</div>
