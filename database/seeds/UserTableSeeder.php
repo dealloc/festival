@@ -9,7 +9,7 @@ class UserTableSeeder extends Seeder
     {
         factory(\Festival\Entities\Users\User::class)->create([
             'email'    => 'foo@bar.com',
-            'password' => 'foobar',
+            'password' => bcrypt('foobar'),
             'admin'    => 1,
         ]);
 
