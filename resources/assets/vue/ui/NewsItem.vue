@@ -7,14 +7,14 @@
 				{{ content }}
 			</div>
 		</div>
-		<div class="ui bottom blue basic attached button" v-if="comment">
+		<div class="ui bottom blue basic attached button" v-if="auth">
 			<i class="large comments outline icon"></i>
 		</div>
 	</div>
 </template>
 
 <script>
-	import store from 'Store';
+	import { store, vuex } from 'Store';
 	import moment from 'moment';
 
 	export default {
@@ -22,12 +22,8 @@
 		ready() {
 			this.when = moment(this.when).fromNow();
 		},
-		vuex: {
-			getters: {
-				comment: (state) => (state.authenticated)
-			}
-		},
-		store
+		store,
+		vuex
 	}
 </script>
 

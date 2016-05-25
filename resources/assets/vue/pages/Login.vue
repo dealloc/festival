@@ -21,7 +21,7 @@
 							<input v-model="password" type="password" name="password" placeholder="Password">
 						</div>
 					</div>
-					<ui-button :loading="loading" class="ui fluid large teal button" @click="login()">login</ui-button>
+					<ui-button :loading="loading" class="ui fluid large teal button" @click="authenticate()">login</ui-button>
 				</div>
 
 			</section>
@@ -35,7 +35,7 @@
 
 <script>
 	import UiButton from 'keen/UiButton.vue';
-	import store from 'Store';
+	import { store } from 'Store';
 
 	export default {
 		name: 'login',
@@ -47,7 +47,7 @@
 			}
 		},
 		methods: {
-			login() {
+			authenticate() {
 				this.loading = true;
 				$.post('/api/login', { email: this.email, password: this.password })
 					.done(this.authenticated.bind(this))

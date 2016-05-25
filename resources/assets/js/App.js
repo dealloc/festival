@@ -2,7 +2,7 @@
 
 import SideMenu from 'ui/SideMenu.vue';
 import UiSnackbarContainer from 'keen/UiSnackbarContainer.vue';
-import store from 'Store';
+import { store } from 'Store';
 
 export default {
 	components: {

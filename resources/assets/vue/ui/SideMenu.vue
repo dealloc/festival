@@ -3,17 +3,17 @@
 		<a @click="close()" class="item" v-link="{ name: 'home' }">
 			Home
 		</a>
-		<a @click="close()" v-if="login" class="item" v-link="{ name: 'login' }">
+		<a @click="close()" v-if="!auth" class="item" v-link="{ name: 'login' }">
 			Login
 		</a>
-		<a @click="logout()" v-if="!login" class="item">
+		<a @click="logout()" v-if="auth" class="item">
 			Logout
 		</a>
 	</div>
 </template>
 
 <script>
-	import store from 'Store';
+	import { store, vuex } from 'Store';
 
 	export default {
 		methods: {
@@ -21,21 +21,7 @@
 				$(this.$el).sidebar('hide');
 			}
 		},
-		vuex: {
-			getters: {
-				login: function(state) {
-					return (!state.authenticated);
-				}
-			},
-			actions: {
-				logout({dispatch}) {
-					dispatch('LOGOUT');
-					this.close();
-					this.$router.go({ name: 'login' });
-				}
-
-			}
-		},
+		vuex,
 		store
 	}
 </script>
