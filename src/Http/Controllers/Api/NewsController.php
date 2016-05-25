@@ -37,4 +37,9 @@ class NewsController extends Controller
 	{
 		return $repository->paginated();
 	}
+
+	public function get(NewsRepository $repository, $article)
+	{
+		return $repository->findByIdentifier($article);
+	}
 }
