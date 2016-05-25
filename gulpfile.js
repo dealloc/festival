@@ -6,7 +6,8 @@ var plumber = require('gulp-plumber');
 var swPrecache = require('sw-precache');
 var path = require('path');
 
-if ((process.argv.indexOf('--dev') !== -1))
+let dev_mode = (process.argv.indexOf('--dev') !== -1);
+if (dev_mode)
 {
 	console.log('[GULP]: running in development mode!');
 }
@@ -15,7 +16,7 @@ gulp.task('manifest', function(callback) {
 	var root = 'public';
 
 	swPrecache.write(path.join(root, 'cacher.min.js'), {
-		staticFileGlobs: [root + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
+		staticFileGlobs: dev_mode ? [] : [root + '/**/*.{js,html,css,png,jpg,gif,svg,eot,ttf,woff}'],
 		stripPrefix: root
 	}, callback);
 });
