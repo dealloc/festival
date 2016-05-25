@@ -2,7 +2,7 @@
 	<div class="ui card center-aligned">
 		<div class="content">
 			<div class="header">{{ title }}</div>
-			<div class="meta">{{ when }}</div>
+			<div class="meta">{{ written }}</div>
 			<div class="description">
 				{{ content }}
 			</div>
@@ -19,8 +19,13 @@
 
 	export default {
 		props: ['title', 'when', 'identifier', 'content'],
+		data() { return { timer: null, written: null } },
 		ready() {
-			this.when = moment(this.when).fromNow();
+			this.written = moment(this.when).fromNow();
+			this.timer = setInterval(() => {this.written = moment(this.when).fromNow()}, 10000);
+		},
+		beforeDestroy() {
+			clearInterval(this.timer);
 		},
 		store,
 		vuex
