@@ -14,5 +14,6 @@ $router->post('register', [ 'uses' => 'AuthController@register', 'as' => 'api.re
 $router->post('login', [ 'uses' => 'AuthController@login', 'as' => 'api.login' ]);
 
 $router->get('news', [ 'uses' => 'NewsController@all', 'as' => 'api.news' ]);
+$router->get('news/{article}', [ 'uses' => 'NewsController@get', 'as' => 'api.news.article' ]);
 
 $router->post('contact', [ 'uses' => 'ContactController@create', 'as' => 'api.contact' ]);

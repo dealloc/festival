@@ -13,5 +13,5 @@ use Festival\Contracts\Repositories\EntityRepository;
  */
 interface NewsRepository extends EntityRepository
 {
-	
+	public function findByIdentifier($identifier);
 }
