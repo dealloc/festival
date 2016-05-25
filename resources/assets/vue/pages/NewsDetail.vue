@@ -20,25 +20,18 @@
 		</div>
 		<div class="ui centered grid" v-if="loaded">
 			<div class="doubling eight column row">
-				<div class="ui feed">
-					<div class="event" v-for="comment in comments">
-						<div class="label">
-							<img src="http://semantic-ui.com/images/avatar/small/joe.jpg">
-						</div>
+				<div class="ui comments">
+					<div class="comment" v-for="comment in comments">
+						<a class="avatar">
+							<img src="http://semantic-ui.com/images/avatar/small/stevie.jpg">
+						</a>
 						<div class="content">
-							<div class="summary">
-								<a>Joe Henderson</a> posted on his page
-								<div class="date">
-									3 days ago
-								</div>
+							<a class="author">Stevie Feliciano</a>
+							<div class="metadata">
+								<div class="date">2 days ago</div>
 							</div>
-							<div class="extra text">
-								Ours is a life of constant reruns. We're always circling back to where we'd we started, then starting all over again. Even if we don't run extra laps that day, we surely will come back for more of the same another day soon.
-							</div>
-							<div class="meta">
-								<a class="like">
-									<i class="like icon"></i> 5 Likes
-								</a>
+							<div class="text">
+								Hey guys, I hope this example comment is helping you read this documentation.
 							</div>
 						</div>
 					</div>
@@ -63,5 +56,8 @@
 <style lang="sass" scoped>
 	.header {
 		text-align: center;
+	}
+	.comment {
+		text-align: left;
 	}
 </style>
