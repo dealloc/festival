@@ -135,7 +135,7 @@
 </script>
 
 <style lang="sass" scoped>
-	.header {
+	.content {
 		text-align: center;
 	}
 	.ui.form {
