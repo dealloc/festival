@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			<div class="twelve wide column">
-				{{ content }}
+				{{{ content | markdown }}}
 			</div>
 		</div>
 		<div class="ui centered grid" v-if="loaded">
@@ -49,6 +49,7 @@
 	import { Memory } from 'Store';
 	import { Comment } from 'ui';
 	import moment from 'moment';
+	import 'filters/markdown';
 
 	export default {
 		name: 'news-detail',
