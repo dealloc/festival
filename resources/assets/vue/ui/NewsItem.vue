@@ -9,14 +9,14 @@
 		</div>
 		<div class="ui bottom blue basic attached button"
 			 v-if="auth"
-			 v-link="{ name: 'news', params: { id: card.identifier } }">
+			 @click="open()">
 			<i class="large comments outline icon"></i>
 		</div>
 	</div>
 </template>
 
 <script>
-	import { store, vuex } from 'Store';
+	import { store, vuex, Memory } from 'Store';
 	import moment from 'moment';
 
 	export default {
@@ -28,6 +28,12 @@
 		},
 		beforeDestroy() {
 			clearInterval(this.timer);
+		},
+		methods: {
+			open() {
+				Memory.card = this.card;
+				this.$router.go({ name: 'news', params: { id: this.card.identifier } });
+			}
 		},
 		store,
 		vuex

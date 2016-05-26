@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="twelve wide column">
-				article content goes here
+				{{ article | json }}
 			</div>
 		</div>
 		<div class="ui centered grid" v-if="loaded">
@@ -42,13 +42,16 @@
 </template>
 
 <script>
+	import { Memory } from 'Store';
+
 	export default {
 		name: 'news-detail',
 		data() {
-			return { loaded: false, comments: [0, 1, 2, 3] }
+			return { loaded: false, comments: [0, 1, 2, 3], article: null }
 		},
 		ready() {
 			setTimeout(() => { this.loaded = true; }, 3000);
+			this.article = Memory.card;
 		}
 	}
 </script>
