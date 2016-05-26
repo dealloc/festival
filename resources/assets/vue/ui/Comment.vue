@@ -50,4 +50,7 @@
 </script>
 
 <style lang="sass" scoped>
+	.comment {
+		text-align: left;
+	}
 </style>

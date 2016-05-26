@@ -11,11 +11,14 @@
 					</div>
 					<div class="content">
 						<a class="header">{{ author }}</a>
+						<div class="meta">
+							<span class="date">{{ written }}</span>
+						</div>
 					</div>
 				</div>
 			</div>
 			<div class="twelve wide column">
-				{{ article | json }}
+				{{ content }}
 			</div>
 		</div>
 		<div class="ui centered grid" v-if="loaded">
@@ -31,16 +34,21 @@
 <script>
 	import { Memory } from 'Store';
 	import { Comment } from 'ui';
+	import moment from 'moment';
 
 	export default {
 		name: 'news-detail',
 		data() {
-			return { article: null, loaded: false }
+			return { article: null, loaded: false, timer: null, written: '' }
 		},
 		computed: {
 			author() {
 				if (this.article === (void 0) || this.article.author === (void 0)) return '';
 				return `${this.article.author.fname} ${this.article.author.lname}`;
+			},
+			content() {
+				if (this.article === (void 0) || this.article.content === (void 0)) return '';
+				return this.article.content;
 			},
 			comments() {
 				if (this.article === (void 0) || this.article.comments === (void 0)) return [];
@@ -57,11 +65,26 @@
 			{
 				$.get(`/api/news/${this.$route.params.id}`).done((res) => {
 					this.article = res;
+					this.update();
+					this.timer = setInterval(this.update.bind(this), 15000);
 				}).always(() => this.loaded = true );
 			}
+			else {
+				this.update();
+				this.timer = setInterval(this.update.bind(this), 15000);
+			}
+		},
+		beforeDestroy() {
+			clearInterval(this.timer);
 		},
 		components: {
 			Comment
+		},
+		methods: {
+			update() {
+				if (this.article === (void 0)) return '';
+				this.written = moment(this.article.created_at).fromNow();
+			}
 		}
 	}
 </script>
@@ -69,8 +92,5 @@
 <style lang="sass" scoped>
 	.header {
 		text-align: center;
-	}
-	.comment {
-		text-align: left;
 	}
 </style>
