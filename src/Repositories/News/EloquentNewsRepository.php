@@ -27,6 +27,6 @@ class EloquentNewsRepository extends EloquentEntityRepository implements NewsRep
 
 	public function findByIdentifier($identifier)
 	{
-		return $this->model->where('identifier', $identifier)->first();
+		return $this->model->where('identifier', $identifier)->firstOrFail();
 	}
 }
