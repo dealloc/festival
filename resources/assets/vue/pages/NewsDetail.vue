@@ -7,10 +7,10 @@
 			<div class="computer only tablet only four wide column">
 				<div class="ui fluid card">
 					<div class="image">
-						<img src="http://semantic-ui.com/images/avatar2/large/kristy.png">
+						<img :src="image">
 					</div>
 					<div class="content">
-						<a class="header">Kristy</a>
+						<a class="header">{{ author }}</a>
 					</div>
 				</div>
 			</div>
@@ -47,11 +47,30 @@
 	export default {
 		name: 'news-detail',
 		data() {
-			return { loaded: false, comments: [0, 1, 2, 3], article: null }
+			return { article: null, loaded: false }
+		},
+		computed: {
+			author() {
+				if (this.article === (void 0) || this.article.author === (void 0)) return '';
+				return `${this.article.author.fname} ${this.article.author.lname}`;
+			},
+			comments() {
+				if (this.article === (void 0) || this.article.comments === (void 0)) return [];
+				return this.article.comments;
+			},
+			image() { // TODO fetch gravatars
+				return "http://semantic-ui.com/images/avatar2/large/kristy.png";
+			}
 		},
 		ready() {
-			setTimeout(() => { this.loaded = true; }, 3000);
 			this.article = Memory.card;
+			this.loaded = (this.article !== (void 0));
+			if (this.article === (void 0))
+			{
+				$.get(`/api/news/${this.$route.params.id}`).done((res) => {
+					this.article = res;
+				}).always(() => this.loaded = true );
+			}
 		}
 	}
 </script>
