@@ -4,7 +4,7 @@
 			<div class="header">{{ card.title }}</div>
 			<div class="meta">{{ written }}</div>
 			<div class="description">
-				{{ card.content }}
+				{{{ card.content | markdown }}}
 			</div>
 		</div>
 		<div class="ui bottom blue basic attached button"
@@ -16,6 +16,7 @@
 </template>
 
 <script>
+	import 'filters/markdown';
 	import { store, vuex, Memory } from 'Store';
 	import moment from 'moment';
 
