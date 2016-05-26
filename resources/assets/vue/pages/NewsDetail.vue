@@ -21,20 +21,7 @@
 		<div class="ui centered grid" v-if="loaded">
 			<div class="doubling eight column row">
 				<div class="ui comments">
-					<div class="comment" v-for="comment in comments">
-						<a class="avatar">
-							<img src="http://semantic-ui.com/images/avatar/small/stevie.jpg">
-						</a>
-						<div class="content">
-							<a class="author">Stevie Feliciano</a>
-							<div class="metadata">
-								<div class="date">2 days ago</div>
-							</div>
-							<div class="text">
-								Hey guys, I hope this example comment is helping you read this documentation.
-							</div>
-						</div>
-					</div>
+					<comment v-for="comment in comments" :comment="comment" track-by="id"></comment>
 				</div>
 			</div>
 		</div>
@@ -43,6 +30,7 @@
 
 <script>
 	import { Memory } from 'Store';
+	import { Comment } from 'ui';
 
 	export default {
 		name: 'news-detail',
@@ -71,6 +59,9 @@
 					this.article = res;
 				}).always(() => this.loaded = true );
 			}
+		},
+		components: {
+			Comment
 		}
 	}
 </script>
