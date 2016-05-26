@@ -1,15 +1,15 @@
 <template>
 	<div class="ui card center-aligned">
 		<div class="content">
-			<div class="header">{{ title }}</div>
+			<div class="header">{{ card.title }}</div>
 			<div class="meta">{{ written }}</div>
 			<div class="description">
-				{{ content }}
+				{{ card.content }}
 			</div>
 		</div>
 		<div class="ui bottom blue basic attached button"
 			 v-if="auth"
-			 v-link="{ name: 'news', params: { id: identifier } }">
+			 v-link="{ name: 'news', params: { id: card.identifier } }">
 			<i class="large comments outline icon"></i>
 		</div>
 	</div>
@@ -20,7 +20,7 @@
 	import moment from 'moment';
 
 	export default {
-		props: ['title', 'when', 'identifier', 'content'],
+		props: ['card'],
 		data() { return { timer: null, written: null } },
 		ready() {
 			this.written = moment(this.when).fromNow();
