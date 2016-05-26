@@ -9,13 +9,14 @@
 				<div class="date">{{ written }}</div>
 			</div>
 			<div class="text">
-				{{ content }}
+				{{{ content | markdown }}}
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+	import 'filters/markdown';
 	import moment from 'moment';
 
 	export default {
