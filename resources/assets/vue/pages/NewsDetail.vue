@@ -23,12 +23,16 @@
 		</div>
 		<div class="ui centered grid" v-if="loaded">
 			<div class="doubling sixteen wide row">
-				<div class="ui form">
-					<div class="field">
-						<textarea rows=3 placeholder="Enter your comment"></textarea>
+				<div class="ui form" v-el:form>
+					<div class="ui error message">
+						<div class="header">Couldn't post your comment</div>
+						<p>{{ error }}</p>
 					</div>
 					<div class="field">
-						<button class="ui primary button">submit</button>
+						<textarea v-model="text" rows=3 placeholder="Enter your comment"></textarea>
+					</div>
+					<div class="field">
+						<button @click="comment()" class="ui primary button">submit</button>
 					</div>
 				</div>
 			</div>
@@ -49,7 +53,14 @@
 	export default {
 		name: 'news-detail',
 		data() {
-			return { article: null, loaded: false, timer: null, written: '' }
+			return {
+				article: null,
+				loaded: false,
+				error: '',
+				timer: null,
+				written: '',
+				text: ''
+			}
 		},
 		computed: {
 			author() {
@@ -94,6 +105,30 @@
 			update() {
 				if (this.article === (void 0)) return '';
 				this.written = moment(this.article.created_at).fromNow();
+			},
+			comment() {
+				if (this.text.trim().length === 0) return;
+				$(this.$els.form).addClass('loading').removeClass('error');
+				$.post(`/api/news/${this.article.identifier}/comment`, {content:this.text})
+					.done(this.comment_success.bind(this))
+					.fail(this.comment_error.bind(this))
+					.always(() => { this.text = ''; $(this.$els.form).removeClass('loading'); });
+			},
+			comment_error(res) {
+				$(this.$els.form).addClass('error');
+				console.log(res);
+				if (res.status === 401)
+					this.error = 'You need to login to place comments.';
+				else if (res.status === 422)
+					this.error = 'Whoops, something went wrong. Try reloading the page?';
+				else if (res.status === 403)
+					this.error = 'Looks like your account was not allowed to do this.';
+				else
+					this.error = res.responseJSON.reason;
+			},
+			comment_success(res) {
+				this.comments.push(res);
+				this.$dispatch('toast', { message: `Your comment was posted` });
 			}
 		}
 	}
