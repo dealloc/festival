@@ -23,7 +23,13 @@
 		</div>
 		<div class="ui centered grid" v-if="loaded">
 			<div class="doubling sixteen wide row">
-				<div class="ui form" v-el:form>
+				<div class="preview" v-if="preview">
+					<div class="ui segment">
+						{{{ text | markdown }}}
+					</div>
+					<button @click="togglePreview()" class="ui positive button">toggle preview</button>
+				</div>
+				<div class="ui form" v-el:form v-if="!preview">
 					<div class="ui error message">
 						<div class="header">Couldn't post your comment</div>
 						<p>{{ error }}</p>
@@ -32,6 +38,7 @@
 						<textarea v-model="text" rows=3 placeholder="Enter your comment"></textarea>
 					</div>
 					<div class="field">
+						<button @click="togglePreview()" class="ui positive button">toggle preview</button>
 						<button @click="comment()" class="ui primary button">submit</button>
 					</div>
 				</div>
@@ -60,7 +67,8 @@
 				error: '',
 				timer: null,
 				written: '',
-				text: ''
+				text: '',
+				preview: false
 			}
 		},
 		computed: {
@@ -130,6 +138,9 @@
 			comment_success(res) {
 				this.comments.push(res);
 				this.$dispatch('toast', { message: `Your comment was posted` });
+			},
+			togglePreview() {
+				this.preview = !this.preview;
 			}
 		}
 	}
@@ -139,7 +150,7 @@
 	.content {
 		text-align: center;
 	}
-	.ui.form {
+	.ui.form, .preview {
 		width: 100%!important;
 		margin: 1.5em 0;
 		max-width: 650px;
