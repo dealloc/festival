@@ -2,7 +2,7 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
-import { Home, Login, NewsDetail } from 'pages';
+import { Home, Login, NewsDetail, PurchaseTicket } from 'pages';
 
 Vue.use( Router );
 let router = new Router( { history: true } );
@@ -19,6 +19,10 @@ router.map({
 	'/news/:id': {
 		name: 'news',
 		component: NewsDetail
+	},
+	'/tickets': {
+		name: 'tickets',
+		component: PurchaseTicket
 	}
 });
 

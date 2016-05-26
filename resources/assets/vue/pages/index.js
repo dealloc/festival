@@ -3,9 +3,11 @@
 import Home from 'pages/Home.vue';
 import Login from 'pages/Login.vue';
 import NewsDetail from 'pages/NewsDetail.vue';
+import PurchaseTicket from 'pages/PurchaseTicket.vue';
 
 export {
 	Home,
 	Login,
-	NewsDetail
+	NewsDetail,
+	PurchaseTicket
 }
