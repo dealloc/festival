@@ -22,6 +22,16 @@
 			</div>
 		</div>
 		<div class="ui centered grid" v-if="loaded">
+			<div class="doubling sixteen wide row">
+				<div class="ui form">
+					<div class="field">
+						<textarea rows=3 placeholder="Enter your comment"></textarea>
+					</div>
+					<div class="field">
+						<button class="ui primary button">submit</button>
+					</div>
+				</div>
+			</div>
 			<div class="doubling eight column row">
 				<div class="ui comments">
 					<comment v-for="comment in comments" :comment="comment" track-by="id"></comment>
@@ -92,5 +102,10 @@
 <style lang="sass" scoped>
 	.header {
 		text-align: center;
+	}
+	.ui.form {
+		width: 100%!important;
+		margin: 1.5em 0;
+		max-width: 650px;
 	}
 </style>
