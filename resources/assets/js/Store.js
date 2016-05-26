@@ -38,7 +38,10 @@ let vuex = {
 	}
 };
 
+let Memory = {};
+
 export {
 	store,
-	vuex
+	vuex,
+	Memory
 }
