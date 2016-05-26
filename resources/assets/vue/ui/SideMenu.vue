@@ -3,6 +3,9 @@
 		<a @click="close()" class="item" v-link="{ name: 'home' }">
 			Home
 		</a>
+		<a @click="close()" class="item" v-link="{ name: 'tickets' }">
+			Tickets
+		</a>
 		<a @click="close()" v-if="!auth" class="item" v-link="{ name: 'login' }">
 			Login
 		</a>
