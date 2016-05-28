@@ -32,10 +32,10 @@
 					<label>Name</label>
 					<div class="two fields">
 						<div class="field">
-							<input type="text" name="firstname" placeholder="First Name">
+							<input v-model="user.fname" type="text" name="firstname" placeholder="First Name">
 						</div>
 						<div class="field">
-							<input type="text" name="lastname" placeholder="Last Name">
+							<input v-model="user.lname" type="text" name="lastname" placeholder="Last Name">
 						</div>
 					</div>
 				</div>
@@ -43,10 +43,10 @@
 					<label>Billing Address</label>
 					<div class="fields">
 						<div class="twelve wide field">
-							<input type="text" name="address" placeholder="Street Address">
+							<input v-model="user.street" type="text" name="address" placeholder="Street Address">
 						</div>
 						<div class="four wide field">
-							<input type="text" name="house" placeholder="Apt #">
+							<input v-model="user.house" type="text" name="house" placeholder="Apt #">
 						</div>
 					</div>
 				</div>
@@ -62,7 +62,7 @@
 				<div class="field">
 					<label>Card Type</label>
 					<div class="ui selection dropdown">
-						<input type="hidden" name="card[type]">
+						<input type="hidden" v-model="card.type" name="card[type]">
 						<div class="default text">Type</div>
 						<i class="dropdown icon"></i>
 						<div class="menu">
@@ -84,17 +84,17 @@
 				<div class="fields">
 					<div class="seven wide field">
 						<label>Card Number</label>
-						<input type="text" name="card[number]" maxlength="16" placeholder="Card #">
+						<input type="text" v-model="card.number" name="card[number]" maxlength="16" placeholder="Card #">
 					</div>
 					<div class="three wide field">
 						<label>CVC</label>
-						<input type="text" name="card[cvc]" maxlength="3" placeholder="CVC">
+						<input type="text" v-model="card.cvc" name="card[cvc]" maxlength="3" placeholder="CVC">
 					</div>
 					<div class="six wide field">
 						<label>Expiration</label>
 						<div class="two fields">
 							<div class="field">
-								<select class="ui fluid search dropdown" name="card[expire-month]">
+								<select class="ui fluid search dropdown" v-model="card['expire-month']" name="card[expire-month]">
 									<option value="">Month</option>
 									<option value="1">January</option>
 									<option value="2">February</option>
@@ -111,7 +111,7 @@
 								</select>
 							</div>
 							<div class="field">
-								<input type="text" name="card[expire-year]" maxlength="4" placeholder="Year">
+								<input type="text" v-model="card['expire-year']" name="card[expire-year]" maxlength="4" placeholder="Year">
 							</div>
 						</div>
 					</div>
@@ -156,7 +156,7 @@
 				<i>show the QR code of the ticket</i>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row" v-if="error">
 			<div class="ui negative message">
 				<div class="header">
 					Whoops, we can't proceed just yet
@@ -174,6 +174,7 @@
 	export default {
 		name: 'ticket-purchase',
 		ready() {
+			console.warn('TODO: add Semantic validation to forms for client side');
 			this.$watch('step', function() {
 				$('.ui.dropdown').dropdown();
 			});
@@ -181,7 +182,11 @@
 		data() {
 			return {
 				step: 1,
-				loading: false
+				error: false,
+				loading: false,
+				user: {},
+				card: {},
+				ticket: {}
 			}
 		},
 		computed: {
@@ -204,23 +209,31 @@
 			},
 			validateFirst() {
 				this.loading = true;
-				$.get('/api').then(() => {
-					this.loading = false;
+				this.error = false;
+				$.post('/api/user', {
+					fname: this.user.fname,
+					lname: this.user.lname,
+					street: this.user.street,
+					house: this.user.house
+				}).fail(res => { this.error = true; })
+				.then((res) => {
 					this.step++;
-				});
+				}).always(r => this.loading = false);
 			},
 			validateSecond() {
 				this.loading = true;
-				$.get('/api').then(() => {
-					this.loading = false;
+				this.error = false;
+				$.post('/api/payment',{card: this.card}).fail(res => { this.error = true; })
+			.then((res) => {
 					this.step++;
-				});
+			}).always(r => this.loading = false);
 			},
 			generateTicket() {
-				$.post('/api/tickets').then(() => {
-					this.loading = false;
+				$.post('/api/tickets').then((r) => {
+					console.log(r);
+					this.ticket = r;
 					this.step++;
-				});
+				}).always(r => this.loading = false);
 			}
 		}
 	}
