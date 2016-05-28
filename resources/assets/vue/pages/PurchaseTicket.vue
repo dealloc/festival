@@ -152,8 +152,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="ui segment" v-if="completed">
-				<i>show the QR code of the ticket</i>
+			<div class="ui segment" v-if="complete">
+				<h4 class="ui dividing header">Your ticket</h4>
+				<p>Below is your ticket, don't lose it!</p>
+				<img :src="qr" alt="The QR code of your ticket">
+				<p>Return to <a v-link="{ name: 'home' }">home</a></p>
 			</div>
 		</div>
 		<div class="row" v-if="error">
@@ -201,6 +204,9 @@
 			},
 			complete() {
 				return (this.step === 4);
+			},
+			qr() {
+				return `https://api.qrserver.com/v1/create-qr-code/?size=500x500&data=${this.ticket.token}`;
 			}
 		},
 		methods: {
@@ -230,7 +236,7 @@
 			},
 			generateTicket() {
 				$.post('/api/tickets').then((r) => {
-					console.log(r);
+					console.log(this);
 					this.ticket = r;
 					this.step++;
 				}).always(r => this.loading = false);
