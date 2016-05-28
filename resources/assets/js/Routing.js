@@ -2,7 +2,7 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
-import { Home, Login, NewsDetail, PurchaseTicket } from 'pages';
+import { Home, Login, NewsDetail, PurchaseTicket, Registration } from 'pages';
 
 Vue.use( Router );
 let router = new Router( { history: true } );
@@ -15,6 +15,10 @@ router.map({
 	'/login': {
 		name: 'login',
 		component: Login
+	},
+	'/register': {
+		name: 'registration',
+		component: Registration
 	},
 	'/news/:id': {
 		name: 'news',
