@@ -27,7 +27,37 @@
 		</div>
 		<div class="doubling eight column row">
 			<div class="ui segment" v-if="first">
-				personal information
+				<form class="ui form">
+					<h4 class="ui dividing header">Shipping Information</h4>
+					<div class="field">
+						<label>Name</label>
+						<div class="two fields">
+							<div class="field">
+								<input type="text" name="firstname" placeholder="First Name">
+							</div>
+							<div class="field">
+								<input type="text" name="lastname" placeholder="Last Name">
+							</div>
+						</div>
+					</div>
+					<div class="field">
+						<label>Billing Address</label>
+						<div class="fields">
+							<div class="twelve wide field">
+								<input type="text" name="address" placeholder="Street Address">
+							</div>
+							<div class="four wide field">
+								<input type="text" name="house" placeholder="Apt #">
+							</div>
+						</div>
+					</div>
+					<div class="ui basic blue animated button" tabindex="0">
+						<div class="visible content">Next step</div>
+						<div class="hidden content">
+							<i class="right arrow icon"></i>
+						</div>
+					</div>
+				</form>
 			</div>
 			<div class="ui segment" v-if="second">
 				billing information
