@@ -9,6 +9,9 @@
 		<a @click="close()" v-if="!auth" class="item" v-link="{ name: 'login' }">
 			Login
 		</a>
+		<a @click="close()" v-if="!auth" class="item" v-link="{ name: 'registration' }">
+			Register
+		</a>
 		<a @click="logout()" v-if="auth" class="item">
 			Logout
 		</a>
