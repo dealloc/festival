@@ -2,7 +2,7 @@
 // Created by dealloc. All rights reserved.
 
 $router->get('user', [ 'uses' => 'UserController@get', 'as' => 'api.users.me' ]);
-$router->get('user', [ 'uses' => 'UserController@update', 'as' => 'api.user.update' ]);
+$router->post('user', [ 'uses' => 'UserController@update', 'as' => 'api.user.update' ]);
 
 $router->put('token', [ 'uses' => 'AuthController@refresh', 'as' => 'api.token.refresh' ]);
 
