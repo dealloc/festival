@@ -16,7 +16,7 @@
 						<div class="description">Enter billing information</div>
 					</div>
 				</div>
-				<div class="step" :class="{ 'active': third, 'completed': complete }">
+				<div class="step" :class="{ 'active': third, 'completed': step>3 }">
 					<i class="info icon"></i>
 					<div class="content">
 						<div class="title">Ticket</div>
@@ -51,7 +51,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="ui basic blue animated button" tabindex="0">
+					<div class="ui basic blue animated button" @click="next()">
 						<div class="visible content">Next step</div>
 						<div class="hidden content">
 							<i class="right arrow icon"></i>
@@ -61,10 +61,37 @@
 			</div>
 			<div class="ui segment" v-if="second">
 				billing information
+				<div class="ui basic red animated button" @click="previous()">
+					<div class="visible content">Previous step</div>
+					<div class="hidden content">
+						<i class="left arrow icon"></i>
+					</div>
+				</div>
+				<div class="ui basic blue animated button" @click="next()">
+					<div class="visible content">Next step</div>
+					<div class="hidden content">
+						<i class="right arrow icon"></i>
+					</div>
+				</div>
 			</div>
 			<div class="ui segment" v-if="third">
 				show ticket
+				<div class="ui basic red animated button" @click="previous()">
+					<div class="visible content">Previous step</div>
+					<div class="hidden content">
+						<i class="left arrow icon"></i>
+					</div>
+				</div>
+				<div class="ui basic blue animated button" @click="next()">
+					<div class="visible content">Purchase</div>
+					<div class="hidden content">
+						<i class="shop icon"></i>
+					</div>
+				</div>
 			</div>
+		</div>
+		<div class="ui active inverted dimmer" v-if="loading">
+			<div class="ui text loader">it's still faster than <strong><i>you</i></strong> could draw it</div>
 		</div>
 	</div>
 </template>
@@ -73,7 +100,9 @@
 	export default {
 		name: 'ticket-purchase',
 		data() {
-			return { step: 1 }
+			return {
+				step: 1
+			}
 		},
 		computed: {
 			first() {
@@ -85,8 +114,19 @@
 			third() {
 				return (this.step === 3);
 			},
-			complete() {
+			loading() {
 				return (this.step === 4);
+			},
+			complete() {
+				return (this.step === 5);
+			}
+		},
+		methods: {
+			next() {
+				this.step++;
+			},
+			previous() {
+				this.step--;
 			}
 		}
 	}
