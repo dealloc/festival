@@ -6,16 +6,18 @@ namespace Festival\Http\Controllers\Api;
 use Festival\Contracts\Auth\AuthenticateService;
 use Festival\Http\Controllers\Controller;
 use Festival\Http\Requests\Users\UpdateUserRequest;
+use Illuminate\Contracts\Auth\Guard;
 
 class UserController extends Controller
 {
-	public function get(AuthenticateService $service)
+
+	public function get(Guard $guard)
 	{
-		return $service->user();
+		return $guard->user();
 	}
 
-	public function update(UpdateUserRequest $request)
+	public function update(UpdateUserRequest $request, Guard $guard)
 	{
-		return [];
+		return $guard->user();
 	}
 }
