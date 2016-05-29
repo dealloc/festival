@@ -3,8 +3,8 @@
 		<a @click="close()" class="item" v-link="{ name: 'home' }">
 			Home
 		</a>
-		<a @click="close()" class="item" v-link="{ name: 'contact' }">
-			contact
+		<a @click="close()" class="item" v-link="{ name: 'lineup' }">
+			Artists
 		</a>
 		<a @click="close()" class="item" v-link="{ name: 'tickets' }">
 			Tickets
@@ -17,6 +17,9 @@
 		</a>
 		<a @click="logout()" v-if="auth" class="item">
 			Logout
+		</a>
+		<a @click="close()" class="item" v-link="{ name: 'contact' }">
+			Contact
 		</a>
 	</div>
 </template>
