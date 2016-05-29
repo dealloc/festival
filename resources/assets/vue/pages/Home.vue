@@ -8,6 +8,9 @@
 				<i class="icon plus"></i>
 			</button>
 		</div>
+		<div class="loader row">
+			<i class="huge notched circle loading icon"></i>
+		</div>
 		<add-news-article v-ref:modals></add-news-article>
 	</div>
 </template>
@@ -18,17 +21,33 @@
 
 	export default {
 		name: 'Home',
-		created() {
-			$.get('/api/news').then(function (res) {
-				this.cards = res.data;
-			}.bind(this));
-		},
 		data() {
-			return { cards: [] }
+			return { cards: [], page: 1 }
+		},
+		created() {
+			this.refresh();
+		},
+		ready() {
+			let self = this;
+			$('.loader.row').visibility({
+				once: false,
+				initialCheck: false,
+				throttle: 30,
+				onTopVisible() {
+					self.page++;
+					self.refresh();
+				}
+			});
 		},
 		methods: {
 			compose() {
 				this.$broadcast('add-news-article::show');
+			},
+			refresh() {
+				$.get(`/api/news?page=${this.page}`).then(function (res) {
+					for (let i = 0; i < res.data.length; i++)
+						this.cards.push(res.data[i]);
+				}.bind(this));
 			}
 		},
 		components: {
@@ -47,6 +66,9 @@
 		transform: scale(0);
 		animation: scaleIn 1.5s forwards;
 		animation-delay: 0.75s;
+	}
+	div.loader.row {
+		text-align: center;
 	}
 	.ui.container
 	{
