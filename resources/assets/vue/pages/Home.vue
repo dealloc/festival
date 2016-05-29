@@ -4,6 +4,9 @@
 			<news-item v-for="card in cards" track-by="identifier"
 					:card="card">
 			</news-item>
+			<button class="massive red circular ui icon button" v-link="{ name: 'login' }">
+				<i class="icon plus"></i>
+			</button>
 		</div>
 	</div>
 </template>
@@ -28,6 +31,14 @@
 </script>
 
 <style lang="sass" scoped>
+	button {
+		position: fixed;
+		right: 1vw;
+		bottom: 1vh;
+		transform: scale(0);
+		animation: scaleIn 1.5s forwards;
+		animation-delay: 0.75s;
+	}
 	.ui.container
 	{
 		margin-top: 1vh;
