@@ -45,3 +45,13 @@ $factory->define(\Festival\Entities\Tickets\Ticket::class, function (Faker\Gener
         'token'   => uniqid('evento-', true),
     ];
 });
+
+$factory->define(\Festival\Entities\Artists\Artist::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'description' => $faker->text,
+        'start' => $faker->dateTimeThisMonth,
+        'end' => $faker->dateTimeThisYear,
+        'image' => $faker->imageUrl()
+    ];
+});
