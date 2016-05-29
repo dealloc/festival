@@ -1,17 +1,17 @@
 <template>
 	<div class="ui middle aligned center aligned grid">
 		<div class="column">
-			<h2 class="ui teal image header">
-				<img src="http://semantic-ui.com/examples/assets/images/logo.png" class="image">
+			<h2 class="ui red image header">
+				<img src="/icons/logo-128.png" class="image">
 				<div class="content">
-					Log-in to your account
+					Log in to your account
 				</div>
 			</h2>
 			<section class="ui large form">
 				<div class="ui stacked segment">
 					<div class="field">
 						<div class="ui left icon input">
-							<i class="user icon"></i>
+							<i class="mail icon"></i>
 							<input v-model="email" type="text" name="email" placeholder="E-mail address">
 						</div>
 					</div>
@@ -21,13 +21,13 @@
 							<input v-model="password" type="password" name="password" placeholder="Password">
 						</div>
 					</div>
-					<ui-button :loading="loading" class="ui fluid large teal button" @click="authenticate()">login</ui-button>
+					<ui-button :loading="loading" class="ui fluid large red button" @click="authenticate()">login</ui-button>
 				</div>
 
 			</section>
 
 			<div class="ui message">
-				New to us? <a href="#">Sign Up</a>
+				Don't have an account? <a v-link="{ name: 'registration' }">Sign Up</a>
 			</div>
 		</div>
 	</div>
