@@ -4,15 +4,16 @@
 			<news-item v-for="card in cards" track-by="identifier"
 					:card="card">
 			</news-item>
-			<button v-if="admin" class="massive red circular ui icon button" v-link="{ name: 'login' }">
+			<button v-if="admin" class="massive red circular ui icon button" @click="compose()">
 				<i class="icon plus"></i>
 			</button>
 		</div>
+		<add-news-article v-ref:modals></add-news-article>
 	</div>
 </template>
 
 <script>
-	import { NewsItem } from 'ui';
+	import { NewsItem, AddNewsArticle } from 'ui';
 	import { store, vuex } from 'Store';
 
 	export default {
@@ -25,8 +26,14 @@
 		data() {
 			return { cards: [] }
 		},
+		methods: {
+			compose() {
+				this.$broadcast('add-news-article::show');
+			}
+		},
 		components: {
-			NewsItem
+			NewsItem,
+			AddNewsArticle
 		},
 		store, vuex
 	}
