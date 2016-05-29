@@ -12,6 +12,7 @@
 		<link rel="apple-touch-startup-image" href="{{ asset('/icons/icon.png') }}">
 		<link rel="apple-touch-icon" href="{{ asset('/icons/icon.png') }}">
 		<link rel="icon" sizes="192x192" href="{{ asset('/icons/logo-192.png') }}">
+		<style> .pusher>*:not(.menu) { animation: scaleIn 0.5s forwards; will-change: transform; } </style>
 		<title>EHB rock</title>
 	</head>
 	<body>
