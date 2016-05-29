@@ -1,6 +1,6 @@
 <template>
 	<div class="ui container">
-		<div class="ui link cards">
+		<div class="ui special stackable cards">
 			<div class="card" v-for="artist in artists">
 				<div class="image">
 					<img :src="artist.image">
@@ -32,14 +32,28 @@
 		created() {
 			$.get('/api/lineup').then(r => {
 				this.artists = r.data;
-				this.artists.forEach((e) => {
+				this.artists.forEach((e) => { // transform dates using momentJS
 					e.start = moment(e.start).fromNow();
 					e.end = moment(e.end).fromNow();
 				});
 			});
+		},
+		destroyed() {
+			clearInterval(this.timer);
 		}
 	}
 </script>
 
 <style lang="sass" scoped>
+	.ui.container
+	{
+		margin-top: 1vh;
+	}
+	@media only screen and (max-width: 767px)
+	{
+		.ui.container
+		{
+			margin-top: 3vh;
+		}
+	}
 </style>
