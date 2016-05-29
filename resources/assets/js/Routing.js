@@ -2,7 +2,7 @@
 
 import Vue from 'vue';
 import Router from 'vue-router';
-import { Home, Login, NewsDetail, PurchaseTicket, Registration, Contact } from 'pages';
+import { Home, Login, NewsDetail, PurchaseTicket, Registration, Contact, Lineup } from 'pages';
 
 Vue.use( Router );
 let router = new Router( { history: true } );
@@ -31,6 +31,10 @@ router.map({
 	'contact': {
 		name: 'contact',
 		component: Contact
+	},
+	'lineup': {
+		name: 'lineup',
+		component: Lineup
 	}
 });
 

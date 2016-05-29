@@ -6,6 +6,7 @@ import NewsDetail from 'pages/NewsDetail.vue';
 import PurchaseTicket from 'pages/PurchaseTicket.vue';
 import Registration from 'pages/Registration.vue';
 import Contact from 'pages/Contact.vue';
+import Lineup from 'pages/Lineup.vue';
 
 export {
 	Home,
@@ -13,5 +14,6 @@ export {
 	NewsDetail,
 	PurchaseTicket,
 	Registration,
-	Contact
+	Contact,
+	Lineup
 }
