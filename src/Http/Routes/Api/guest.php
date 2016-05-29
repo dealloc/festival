@@ -17,3 +17,5 @@ $router->get('news', [ 'uses' => 'NewsController@all', 'as' => 'api.news' ]);
 $router->get('news/{article}', [ 'uses' => 'NewsController@get', 'as' => 'api.news.article' ]);
 
 $router->post('contact', [ 'uses' => 'ContactController@create', 'as' => 'api.contact' ]);
+
+$router->get('lineup', [ 'uses' => 'ArtistController@lineup', 'as' => 'api.lineup' ]);
