@@ -19,12 +19,14 @@
 		<button v-if="admin" class="massive teal circular ui fabulous icon button" @click="compose()">
 			<i class="icon plus"></i>
 		</button>
+		<add-artist></add-artist>
 	</div>
 </template>
 
 <script>
 	import moment from 'moment';
 	import { store, vuex } from 'Store';
+	import { AddArtist } from 'ui';
 
 	export default {
 		name: 'lineup',
@@ -44,8 +46,10 @@
 		},
 		methods: {
 			compose() {
+				this.$broadcast('add-artist::show');
 			}
 		},
+		components: { AddArtist },
 		store, vuex
 	}
 </script>
