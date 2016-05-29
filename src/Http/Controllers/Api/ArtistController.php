@@ -4,6 +4,7 @@
 namespace Festival\Http\Controllers\Api;
 
 use Festival\Commands\Artists\CreateArtistCommand;
+use Festival\Contracts\Repositories\Artists\ArtistRepository;
 use Festival\Http\Controllers\Controller;
 use Festival\Http\Requests\Artists\CreateArtistRequest;
 
@@ -24,5 +25,10 @@ class ArtistController extends Controller
 	public function create(CreateArtistRequest $request)
 	{
 		return $this->execute(new CreateArtistCommand($request));
+	}
+
+	public function lineup(ArtistRepository $repository)
+	{
+		return $repository->paginated();
 	}
 }
