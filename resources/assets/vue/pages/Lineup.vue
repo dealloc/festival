@@ -16,11 +16,15 @@
 				</div>
 			</div>
 		</div>
+		<button v-if="admin" class="massive teal circular ui fabulous icon button" @click="compose()">
+			<i class="icon plus"></i>
+		</button>
 	</div>
 </template>
 
 <script>
 	import moment from 'moment';
+	import { store, vuex } from 'Store';
 
 	export default {
 		name: 'lineup',
@@ -38,9 +42,11 @@
 				});
 			});
 		},
-		destroyed() {
-			clearInterval(this.timer);
-		}
+		methods: {
+			compose() {
+			}
+		},
+		store, vuex
 	}
 </script>
 
@@ -55,5 +61,13 @@
 		{
 			margin-top: 3vh;
 		}
+	}
+	button {
+		position: fixed;
+		right: 1vw;
+		bottom: 1vh;
+		transform: scale(0);
+		animation: scaleIn 1.5s forwards;
+		animation-delay: 0.75s;
 	}
 </style>
