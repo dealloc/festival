@@ -36,6 +36,9 @@ let vuex = {
 		first_time: function(state)
 		{
 			return state.first_time;
+		},
+		admin: function(state) {
+			return (state.authenticated && (state.user !== null) && state.user.admin);
 		}
 	},
 	actions: {

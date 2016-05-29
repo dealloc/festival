@@ -4,7 +4,7 @@
 			<news-item v-for="card in cards" track-by="identifier"
 					:card="card">
 			</news-item>
-			<button class="massive red circular ui icon button" v-link="{ name: 'login' }">
+			<button v-if="admin" class="massive red circular ui icon button" v-link="{ name: 'login' }">
 				<i class="icon plus"></i>
 			</button>
 		</div>
@@ -13,6 +13,7 @@
 
 <script>
 	import { NewsItem } from 'ui';
+	import { store, vuex } from 'Store';
 
 	export default {
 		name: 'Home',
@@ -26,7 +27,8 @@
 		},
 		components: {
 			NewsItem
-		}
+		},
+		store, vuex
 	}
 </script>
 
