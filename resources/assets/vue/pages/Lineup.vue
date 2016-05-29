@@ -11,7 +11,7 @@
 						<a>{{ artist.start }} - {{ artist.end }}</a>
 					</div>
 					<div class="description">
-						{{ artist.description }}
+						{{{ artist.description | markdown }}}
 					</div>
 				</div>
 			</div>
@@ -20,10 +20,14 @@
 			<i class="icon plus"></i>
 		</button>
 		<add-artist></add-artist>
+		<div class="loader row">
+			<i class="huge notched circle loading icon"></i>
+		</div>
 	</div>
 </template>
 
 <script>
+	import 'filters/markdown';
 	import moment from 'moment';
 	import { store, vuex } from 'Store';
 	import { AddArtist } from 'ui';
@@ -32,21 +36,38 @@
 		name: 'lineup',
 		data() {
 			return {
-				artists: []
+				artists: [],
+				page: 1
 			};
 		},
 		created() {
-			$.get('/api/lineup').then(r => {
-				this.artists = r.data;
-				this.artists.forEach((e) => { // transform dates using momentJS
-					e.start = moment(e.start).fromNow();
-					e.end = moment(e.end).fromNow();
-				});
+			this.refresh();
+		},
+		ready() {
+			let self = this;
+			$('.loader.row').visibility({
+				once: false,
+				initialCheck: false,
+				throttle: 30,
+				observeChanges: true,
+				onTopVisible() {
+					self.page++;
+					self.refresh();
+				}
 			});
 		},
 		methods: {
 			compose() {
 				this.$broadcast('add-artist::show');
+			},
+			refresh() {
+				$.get(`/api/lineup?page=${this.page}`).then(r => {
+					r.data.forEach((e) => { // transform dates using momentJS
+						e.start = moment(e.start).fromNow();
+						e.end = moment(e.end).fromNow();
+						this.artists.push(e);
+					});
+				});
 			}
 		},
 		components: { AddArtist },
@@ -73,5 +94,8 @@
 		transform: scale(0);
 		animation: scaleIn 1.5s forwards;
 		animation-delay: 0.75s;
+	}
+	div.loader.row {
+		text-align: center;
 	}
 </style>
