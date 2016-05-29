@@ -4,7 +4,7 @@
 			<news-item v-for="card in cards" track-by="identifier"
 					:card="card">
 			</news-item>
-			<button v-if="admin" class="massive red circular ui icon button" @click="compose()">
+			<button v-if="admin" class="massive red circular ui fabulous icon button" @click="compose()">
 				<i class="icon plus"></i>
 			</button>
 		</div>
